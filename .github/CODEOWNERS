@@ -1,0 +1,12 @@
+# Global owners for Elfye Keyboard monorepo
+* @elfye/maintainers
+
+# Platform-specific maintainers
+/packages/core/ @elfye/core-team
+/packages/react/ @elfye/frontend-team
+/apps/web/ @elfye/frontend-team
+/apps/desktop/ @elfye/desktop-team
+/apps/desktop-ime/ @elfye/desktop-team
+/apps/android/ @elfye/mobile-team
+/apps/ios/ @elfye/mobile-team
+/apps/mobile/ @elfye/mobile-team

@@ -1,0 +1,37 @@
+name: iOS Keyboard Extension & Core
+
+on:
+  push:
+    branches: [master, main]
+    paths:
+      - 'apps/ios/**'
+      - '.github/workflows/ios.yml'
+  pull_request:
+    paths:
+      - 'apps/ios/**'
+      - '.github/workflows/ios.yml'
+
+jobs:
+  ios-test-build:
+    name: Build & Test AmharicCore (macOS Runner)
+    runs-on: macos-14
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Select Xcode Version
+        run: sudo xcode-select -s /Applications/Xcode_15.4.app/Contents/Developer
+
+      - name: Test AmharicCore Swift Package
+        working-directory: apps/ios/AmharicCore
+        run: swift test --enable-code-coverage
+
+      - name: Build iOS Container App & Keyboard Target (No Code Signing)
+        working-directory: apps/ios
+        run: |
+          xcodebuild build-for-testing \
+            -scheme AmharicKeyboard \
+            -destination 'generic/platform=iOS' \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY=""

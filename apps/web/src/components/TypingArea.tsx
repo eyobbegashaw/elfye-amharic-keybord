@@ -1,5 +1,5 @@
 import { forwardRef, useState } from 'react';
-import { AmharicTextarea } from '@amharic-keyboard/react';
+import { AmharicTextarea } from '@elfye/react';
 import { Translations } from '../translations.js';
 
 interface TypingAreaProps {

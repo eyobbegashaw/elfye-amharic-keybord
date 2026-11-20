@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { generateReferenceChart } from '../src/chartData.js';
-import { transliterate } from '@amharic-keyboard/core';
+import { transliterate } from '@elfye/core';
 
 describe('Web Reference Chart Generation from Core', () => {
   it('generates rows for lone vowels, pharyngeal vowels, and consonants', () => {

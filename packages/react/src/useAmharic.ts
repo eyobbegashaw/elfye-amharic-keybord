@@ -1,5 +1,5 @@
 import { useCallback, useLayoutEffect, useRef, useState } from 'react';
-import { LiveTypingEngine, transliterate } from '@amharic-keyboard/core';
+import { LiveTypingEngine, transliterate } from '@elfye/core';
 import { UseAmharicOptions, UseAmharicReturn } from './types.js';
 
 /**

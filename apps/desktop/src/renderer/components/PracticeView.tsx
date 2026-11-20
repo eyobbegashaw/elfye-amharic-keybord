@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AmharicTextarea } from '@amharic-keyboard/react';
+import { AmharicTextarea } from '@elfye/react';
 import { DesktopTranslations } from '../translations.js';
 
 interface PracticeViewProps {

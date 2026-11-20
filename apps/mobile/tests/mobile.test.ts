@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { mobileTranslations } from '../src/utils/translations.js';
-import { LiveTypingEngine } from '@amharic-keyboard/core';
+import { LiveTypingEngine } from '@elfye/core';
 
 describe('Mobile Companion App', () => {
   it('defaults to Amharic translations with English option', () => {

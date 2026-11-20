@@ -9,7 +9,7 @@ import {
   NativeSyntheticEvent,
   TextInputSelectionChangeEventData,
 } from 'react-native';
-import { LiveTypingEngine } from '@amharic-keyboard/core';
+import { LiveTypingEngine } from '@elfye/core';
 
 export interface AmharicTextInputProps extends Omit<TextInputProps, 'onChangeText'> {
   value?: string;

@@ -1,4 +1,8 @@
-# @amharic-keyboard/react
+# @elfye/react
+
+[![npm version](https://img.shields.io/npm/v/@elfye/react.svg?style=flat-square)](https://www.npmjs.com/package/@elfye/react)
+[![license](https://img.shields.io/npm/l/@elfye/react.svg?style=flat-square)](https://github.com/elfye/elfye/blob/main/LICENSE)
+[![CI](https://img.shields.io/github/actions/workflow/status/elfye/elfye/ci.yml?branch=main&label=CI&style=flat-square)](https://github.com/elfye/elfye/actions)
 
 NPM package providing React hooks and components for real-time Amharic (Ethiopic) phonetic transliteration following the **Addiyon Keyboard scheme**.
 
@@ -16,9 +20,9 @@ NPM package providing React hooks and components for real-time Amharic (Ethiopic
 ## Installation
 
 ```bash
-pnpm add @amharic-keyboard/react @amharic-keyboard/core
+pnpm add @elfye/react @elfye/core
 # or
-npm install @amharic-keyboard/react @amharic-keyboard/core
+npm install @elfye/react @elfye/core
 ```
 
 ## Quick Start
@@ -27,7 +31,7 @@ npm install @amharic-keyboard/react @amharic-keyboard/core
 
 ```tsx
 import { useState } from 'react';
-import { AmharicTextarea, AmharicInput } from '@amharic-keyboard/react';
+import { AmharicTextarea, AmharicInput } from '@elfye/react';
 
 export function Example() {
   const [text, setText] = useState('');
@@ -53,7 +57,7 @@ export function Example() {
 ### 2. Using `useAmharic` Hook
 
 ```tsx
-import { useAmharic } from '@amharic-keyboard/react';
+import { useAmharic } from '@elfye/react';
 
 export function CustomInput() {
   const { bind, enabled, toggleEnabled } = useAmharic();

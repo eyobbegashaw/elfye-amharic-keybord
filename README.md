@@ -1,6 +1,11 @@
-# Amharic Phonetic Keyboard (Addiyon Scheme)
+# Elfye (እልፍዬ) — Amharic Phonetic Keyboard
 
-A cross-platform input system and transliteration engine converting Latin letters into Amharic (Ethiopic/Ge'ez) script in real time.
+[![CI](https://github.com/elfye/elfye/actions/workflows/ci.yml/badge.svg)](https://github.com/elfye/elfye/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![npm @elfye/core](https://img.shields.io/npm/v/@elfye/core.svg?label=%40elfye%2Fcore)](https://www.npmjs.com/package/@elfye/core)
+[![npm @elfye/react](https://img.shields.io/npm/v/@elfye/react.svg?label=%40elfye%2Freact)](https://www.npmjs.com/package/@elfye/react)
+
+A cross-platform input system and phonetic transliteration engine converting Latin letters into Amharic (Ethiopic/Ge'ez) script in real time following the **Addiyon Scheme**.
 
 ```
 selam , endiet nesh  ──►  ሰላም ፣ እንዴት ነሽ
@@ -46,7 +51,7 @@ To guarantee identical behavior across all platforms (TypeScript, Java, Swift, C
 
 ## 3. Locked Defaults & Decisions
 
-The following defaults are locked into `@amharic-keyboard/core`:
+The following defaults are locked into `@elfye/core`:
 
 1. **4th form of አ (ኣ)** = `"aa"` (`a` = **አ**, `aa` = **ኣ**).
 2. **4th and 5th forms of ዐ (ዓ, ዔ)** = `"Aa"` (alias `"AA"`) for **ዓ**, and `"Aie"` (alias `"EE"`) for **ዔ**.
@@ -58,7 +63,7 @@ The following defaults are locked into `@amharic-keyboard/core`:
 
 ---
 
-## 4. React Library (`@amharic-keyboard/react`)
+## 4. React Library (`@elfye/react`)
 
 - **useAmharic(options)**: React hook with full caret management, IME composition state, progressive backspace, and native undo stack preservation via `document.execCommand('insertText')`.
 - **`<AmharicInput />` & `<AmharicTextarea />`**: Drop-in accessible components with forward refs supporting all native HTML attributes.

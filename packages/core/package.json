@@ -1,8 +1,9 @@
 {
-  "name": "@amharic-keyboard/core",
+  "name": "@elfye/core",
   "version": "1.0.0",
-  "description": "Zero-dependency, cross-platform Amharic Phonetic transliteration engine (Addiyon scheme)",
+  "description": "Zero-dependency, cross-platform Amharic Phonetic transliteration engine for Elfye Keyboard (Addiyon scheme)",
   "keywords": [
+    "elfye",
     "amharic",
     "ethiopic",
     "geez",
@@ -12,8 +13,9 @@
     "ime",
     "addiyon"
   ],
-  "author": "Antigravity",
+  "author": "Elfye Team",
   "license": "MIT",
+  "sideEffects": false,
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -26,7 +28,8 @@
   },
   "files": [
     "dist",
-    "README.md"
+    "README.md",
+    "LICENSE"
   ],
   "scripts": {
     "build": "tsup",

@@ -12,7 +12,7 @@
     "lint": "echo Mobile lint ok"
   },
   "dependencies": {
-    "@amharic-keyboard/core": "workspace:*",
+    "@elfye/core": "workspace:*",
     "expo": "~52.0.0",
     "expo-linking": "~7.0.0",
     "react": "18.3.1",

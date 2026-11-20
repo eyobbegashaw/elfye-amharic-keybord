@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { translations } from '../src/renderer/translations.js';
-import { generateReferenceChart } from '@amharic-keyboard/react';
+import { generateReferenceChart } from '@elfye/react';
 
 describe('Desktop Companion App', () => {
   it('loads translations for both Amharic and English', () => {

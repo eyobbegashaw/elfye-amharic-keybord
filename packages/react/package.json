@@ -1,8 +1,9 @@
 {
-  "name": "@amharic-keyboard/react",
+  "name": "@elfye/react",
   "version": "1.0.0",
-  "description": "React hook and input components for real-time Amharic Phonetic transliteration",
+  "description": "React hook and input components for Elfye Amharic Phonetic Keyboard",
   "keywords": [
+    "elfye",
     "react",
     "amharic",
     "ethiopic",
@@ -12,8 +13,9 @@
     "ime",
     "hook"
   ],
-  "author": "Antigravity",
+  "author": "Elfye Team",
   "license": "MIT",
+  "sideEffects": false,
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -26,18 +28,19 @@
   },
   "files": [
     "dist",
-    "README.md"
+    "README.md",
+    "LICENSE"
   ],
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
-    "test": "vitest run",
+    "test": "vitest run --test-timeout 20000",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit",
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "@amharic-keyboard/core": "workspace:*"
+    "@elfye/core": "workspace:*"
   },
   "peerDependencies": {
     "react": ">=18.0.0",

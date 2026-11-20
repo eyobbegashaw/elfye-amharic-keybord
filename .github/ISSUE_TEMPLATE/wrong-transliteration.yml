@@ -1,0 +1,56 @@
+name: Wrong Transliteration Report
+description: Report an incorrect phonetic mapping or transliteration bug
+title: "[Transliteration]: "
+labels: ["bug", "transliteration", "parity"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting a transliteration issue in **Elfye Keyboard**.
+        Please provide the exact Latin sequence typed and the expected Amharic output.
+  - type: input
+    id: typed_latin
+    attributes:
+      label: Typed Latin Input
+      description: What exact Latin characters did you type?
+      placeholder: "e.g. selam"
+    validations:
+      required: true
+  - type: input
+    id: expected_ethiopic
+    attributes:
+      label: Expected Ethiopic Output
+      description: What Amharic (Ethiopic) text should be produced?
+      placeholder: "e.g. ሰላም"
+    validations:
+      required: true
+  - type: input
+    id: actual_got
+    attributes:
+      label: Actual Output Received
+      description: What output did the keyboard actually produce?
+      placeholder: "e.g. ሰላም or incorrect character"
+    validations:
+      required: true
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      description: On which platform/engine did you observe this?
+      options:
+        - "Web Demo (apps/web)"
+        - "Android Keyboard (apps/android)"
+        - "iOS Keyboard Extension (apps/ios)"
+        - "Linux IBus IME (apps/desktop-ime/linux)"
+        - "Windows TSF (apps/desktop-ime/windows)"
+        - "macOS InputMethodKit (apps/desktop-ime/macos)"
+        - "Desktop Companion (apps/desktop)"
+        - "Mobile Companion (apps/mobile)"
+        - "TypeScript Package (@elfye/core)"
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional Details & Rule Context
+      description: Any grammar, linguistic rationale, or vowel order explanation.

@@ -1,4 +1,8 @@
-# @amharic-keyboard/core
+# @elfye/core
+
+[![npm version](https://img.shields.io/npm/v/@elfye/core.svg?style=flat-square)](https://www.npmjs.com/package/@elfye/core)
+[![license](https://img.shields.io/npm/l/@elfye/core.svg?style=flat-square)](https://github.com/elfye/elfye/blob/main/LICENSE)
+[![CI](https://img.shields.io/github/actions/workflow/status/elfye/elfye/ci.yml?branch=main&label=CI&style=flat-square)](https://github.com/elfye/elfye/actions)
 
 Zero-dependency, cross-platform Amharic (Ethiopic/Ge'ez) Phonetic transliteration engine following the **Addiyon Keyboard** scheme.
 
@@ -125,7 +129,7 @@ pnpm add @amharic-keyboard/core
 
 ### 3.1 Whole-String Transliteration
 ```typescript
-import { transliterate } from '@amharic-keyboard/core';
+import { transliterate } from '@elfye/core';
 
 console.log(transliterate('selam , endiet nesh'));
 // Output: ሰላም ፣ እንዴት ነሽ
@@ -139,7 +143,7 @@ console.log(transliterate("k'wa"));  // ክዋ (escaped unlabialized)
 
 ### 3.2 Live Typing Engine (IME & Input components)
 ```typescript
-import { LiveTypingEngine } from '@amharic-keyboard/core';
+import { LiveTypingEngine } from '@elfye/core';
 
 const engine = new LiveTypingEngine();
 

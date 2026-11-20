@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AmharicInput } from '@amharic-keyboard/react';
+import { AmharicInput } from '@elfye/react';
 import { Translations } from '../translations.js';
 
 interface PracticeItem {

@@ -1,4 +1,4 @@
-import { TransliterationOptions } from '@amharic-keyboard/core';
+import { TransliterationOptions } from '@elfye/core';
 
 export interface UseAmharicOptions {
   /**

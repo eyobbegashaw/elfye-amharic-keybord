@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ReferenceChart } from '@amharic-keyboard/react';
+import { ReferenceChart } from '@elfye/react';
 import { DesktopTranslations } from '../translations.js';
 
 interface ChartViewProps {

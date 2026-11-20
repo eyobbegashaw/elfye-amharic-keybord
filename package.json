@@ -1,17 +1,21 @@
 {
-  "name": "amharic-keyboard-monorepo",
+  "name": "elfye-monorepo",
   "version": "1.0.0",
   "private": true,
-  "description": "Cross-platform Amharic Phonetic Keyboard (Addiyon scheme)",
+  "description": "Elfye - Cross-platform Amharic Phonetic Keyboard (Addiyon scheme)",
   "packageManager": "pnpm@12.21.0",
   "scripts": {
     "build": "turbo run build",
     "test": "turbo run test",
     "typecheck": "turbo run typecheck",
     "lint": "turbo run lint",
-    "clean": "turbo run clean"
+    "clean": "turbo run clean",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "changeset publish"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.27.12",
     "turbo": "^2.4.4",
     "typescript": "^5.7.3",
     "vitest": "^3.0.7"

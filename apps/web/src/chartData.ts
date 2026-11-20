@@ -5,7 +5,7 @@ import {
   EthiopicOrder,
   getEthiopicChar,
   ConsonantMeta,
-} from '@amharic-keyboard/core';
+} from '@elfye/core';
 
 export interface ChartCell {
   order: EthiopicOrder;

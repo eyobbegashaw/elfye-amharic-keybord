@@ -10,7 +10,7 @@ interface ReferenceChartProps {
 export const ReferenceChart: React.FC<ReferenceChartProps> = ({ t, onSelectChar }) => {
   const [search, setSearch] = useState('');
 
-  // Dynamically generated from @amharic-keyboard/core
+  // Dynamically generated from @elfye/core
   const allRows = useMemo(() => generateReferenceChart(), []);
 
   const filteredRows = useMemo(() => {

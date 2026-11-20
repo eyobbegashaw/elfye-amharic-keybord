@@ -13,8 +13,8 @@
     "lint": "echo Web lint ok"
   },
   "dependencies": {
-    "@amharic-keyboard/core": "workspace:*",
-    "@amharic-keyboard/react": "workspace:*",
+    "@elfye/core": "workspace:*",
+    "@elfye/react": "workspace:*",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
