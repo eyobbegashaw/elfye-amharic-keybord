@@ -230,6 +230,9 @@ importers:
 
   apps/mobile:
     dependencies:
+      '@babel/runtime':
+        specifier: ^7.26.0
+        version: 7.29.14
       '@elfye/core':
         specifier: workspace:*
         version: link:../../packages/core

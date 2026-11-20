@@ -12,6 +12,7 @@
     "lint": "echo Mobile lint ok"
   },
   "dependencies": {
+    "@babel/runtime": "^7.26.0",
     "@elfye/core": "workspace:*",
     "@expo/metro-runtime": "~4.0.1",
     "expo": "~52.0.0",
