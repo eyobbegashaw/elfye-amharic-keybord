@@ -19,12 +19,13 @@ DBU_app/
  ├── pnpm-workspace.yaml          # Workspaces definition (packages/*, apps/*)
  ├── package.json                 # Monorepo root package.json
  ├── packages/
- │    └── core/                   # Zero-dependency TypeScript core (npm-publishable, ESM+CJS)
+ │    ├── core/                   # Zero-dependency TypeScript core (npm-publishable, ESM+CJS)
+ │    └── react/                  # React hook, input/textarea components, beforeinput handling
  ├── apps/
- │    ├── web/                    # React + Vite web playground and rules demo
- │    ├── android/                # Native Java InputMethodService keyboard + companion app
- │    ├── ios/                    # Swift Keyboard Extension + companion app
- │    └── desktop/                # Native OS IME (IBus / IMK / TSF) + Electron companion
+ │    ├── web/                    # React + Vite web playground, dynamic chart, practice area
+ │    ├── android/                # Native Java InputMethodService keyboard (Phase 3)
+ │    ├── ios/                    # Swift Keyboard Extension (Phase 4)
+ │    └── desktop/                # Native OS IME (IBus / IMK / TSF) + Electron companion (Phase 5)
  └── scripts/
       ├── build-corpus-source.js  # Generator/validator for corpus.source.json
       └── generate-vectors.js     # Validates corpus.source.json & exports test-vectors.json
@@ -57,16 +58,34 @@ The following defaults are locked into `@amharic-keyboard/core`:
 
 ---
 
-## 4. Quick Start
+## 4. React Library (`@amharic-keyboard/react`)
 
-### Build & Run Tests
+- **useAmharic(options)**: React hook with full caret management, IME composition state, progressive backspace, and native undo stack preservation via `document.execCommand('insertText')`.
+- **`<AmharicInput />` & `<AmharicTextarea />`**: Drop-in accessible components with forward refs supporting all native HTML attributes.
+- **Level 2 Input Events (`beforeinput`)**: Intercepts `insertText`, `insertCompositionText`, and `deleteContentBackward`.
+- **Keyboard Shortcut**: `Ctrl+Space` toggles between English and Amharic.
+
+---
+
+## 5. Web Application (`apps/web`)
+
+- **Landing / Demo Page**: Interactive `<AmharicTextarea />` with live transliteration, character/word counters, copy-to-clipboard toast, and clear buttons.
+- **Typing Rules Reference Chart (የፊደል ገበታ)**: Generated dynamically from core tables (`CONSONANT_DEFINITIONS`, `getEthiopicChar`, etc.) with zero drift, searchable by Latin key or Ethiopic glyph, and click-to-insert.
+- **Try It Practice Area (ተለማመዱ)**: Interactive typing practice with prompt rotation and instant visual feedback on match.
+- **Installation Guide (የአጫጫን መመሪያ)**: Clear steps for enabling native Android, iOS, and desktop system-wide keyboards.
+- **Accessibility & Themes**: Full Light/Dark mode, mobile-first responsive layout, and Google Font `Noto Sans Ethiopic` with system fallbacks. Amharic UI by default with English toggle.
+
+---
+
+## 6. Verification & Testing
+
 ```bash
-# Install dependencies
-pnpm install
-
-# Build all packages via Turborepo
+# Build all workspaces
 pnpm build
 
-# Run test suite across packages against test-vectors.json
+# Run unit tests across core, react, and web packages
 pnpm test
+
+# Run Playwright E2E smoke tests for web
+pnpm --filter web run test:e2e
 ```
