@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
-import { MobileLocale } from '../types.js';
-import { MobileTranslations } from '../utils/translations.js';
+import { MobileLocale } from '../types';
+import { MobileTranslations } from '../utils/translations';
 
 interface SettingsScreenProps {
   t: MobileTranslations;

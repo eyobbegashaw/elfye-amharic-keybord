@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { SafeAreaView, View, Text, TouchableOpacity, StyleSheet, StatusBar } from 'react-native';
-import { ScreenName, MobileLocale } from './src/types.js';
-import { mobileTranslations } from './src/utils/translations.js';
-import { OnboardingScreen } from './src/screens/OnboardingScreen.js';
-import { PracticeScreen } from './src/screens/PracticeScreen.js';
-import { RulesChartScreen } from './src/screens/RulesChartScreen.js';
-import { SettingsScreen } from './src/screens/SettingsScreen.js';
+import { ScreenName, MobileLocale } from './src/types';
+import { mobileTranslations } from './src/utils/translations';
+import { OnboardingScreen } from './src/screens/OnboardingScreen';
+import { PracticeScreen } from './src/screens/PracticeScreen';
+import { RulesChartScreen } from './src/screens/RulesChartScreen';
+import { SettingsScreen } from './src/screens/SettingsScreen';
 
 export default function App() {
   const [currentScreen, setCurrentScreen] = useState<ScreenName>('onboarding');

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
-import { MobileTranslations } from '../utils/translations.js';
-import { AmharicTextInput } from '../components/AmharicTextInput.js';
+import { MobileTranslations } from '../utils/translations';
+import { AmharicTextInput } from '../components/AmharicTextInput';
 
 interface PracticeScreenProps {
   t: MobileTranslations;

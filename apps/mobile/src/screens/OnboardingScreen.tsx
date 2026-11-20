@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Platform } from 'react-native';
-import { MobileTranslations } from '../utils/translations.js';
-import { openKeyboardSettings } from '../utils/linking.js';
+import { MobileTranslations } from '../utils/translations';
+import { openKeyboardSettings } from '../utils/linking';
 
 interface OnboardingScreenProps {
   t: MobileTranslations;

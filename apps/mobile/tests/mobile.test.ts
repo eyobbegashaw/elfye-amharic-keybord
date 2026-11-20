@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { mobileTranslations } from '../src/utils/translations.js';
+import { mobileTranslations } from '../src/utils/translations';
 import { LiveTypingEngine } from '@elfye/core';
 
 describe('Mobile Companion App', () => {

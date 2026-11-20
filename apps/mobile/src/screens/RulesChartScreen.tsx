@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TextInput } from 'react-native';
-import { MobileTranslations } from '../utils/translations.js';
+import { MobileTranslations } from '../utils/translations';
 
 interface RulesChartScreenProps {
   t: MobileTranslations;
