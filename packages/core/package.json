@@ -1,0 +1,46 @@
+{
+  "name": "@amharic-keyboard/core",
+  "version": "1.0.0",
+  "description": "Zero-dependency, cross-platform Amharic Phonetic transliteration engine (Addiyon scheme)",
+  "keywords": [
+    "amharic",
+    "ethiopic",
+    "geez",
+    "keyboard",
+    "transliteration",
+    "phonetic",
+    "ime",
+    "addiyon"
+  ],
+  "author": "Antigravity",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "rimraf": "^6.0.1",
+    "tsup": "^8.3.6",
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.7"
+  }
+}

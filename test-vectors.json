@@ -1,0 +1,4914 @@
+{
+  "$schema": "./test-vectors.schema.json",
+  "version": "1.0.0",
+  "description": "Cross-platform test vectors for Amharic Phonetic transliteration (Addiyon scheme). Used by TypeScript, Java (Android), Swift (iOS), and Native Desktop IME.",
+  "metadata": {
+    "totalFullVectors": 87,
+    "totalLiveTypingSequences": 5,
+    "totalBackspaceSequences": 4,
+    "totalCorpusWords": 1050
+  },
+  "fullTransliteration": [
+    {
+      "input": "selam , endiet nesh",
+      "expected": "ሰላም ፣ እንዴት ነሽ",
+      "description": "Prompt primary test case"
+    },
+    {
+      "input": "selam",
+      "expected": "ሰላም",
+      "description": "Standard greeting"
+    },
+    {
+      "input": "endiet nesh",
+      "expected": "እንዴት ነሽ",
+      "description": "How are you (fem.)"
+    },
+    {
+      "input": "endiet neh",
+      "expected": "እንዴት ነህ",
+      "description": "How are you (masc.)"
+    },
+    {
+      "input": "he",
+      "expected": "ሀ",
+      "description": "1st order (Ge'ez)"
+    },
+    {
+      "input": "hu",
+      "expected": "ሁ",
+      "description": "2nd order (Ka'eb)"
+    },
+    {
+      "input": "hi",
+      "expected": "ሂ",
+      "description": "3rd order (Sales)"
+    },
+    {
+      "input": "ha",
+      "expected": "ሃ",
+      "description": "4th order (Rabe)"
+    },
+    {
+      "input": "hie",
+      "expected": "ሄ",
+      "description": "5th order (Hames)"
+    },
+    {
+      "input": "h",
+      "expected": "ህ",
+      "description": "6th order (Sades)"
+    },
+    {
+      "input": "ho",
+      "expected": "ሆ",
+      "description": "7th order (Sabe)"
+    },
+    {
+      "input": "hua",
+      "expected": "ኋ",
+      "description": "8th order (Labialized)"
+    },
+    {
+      "input": "he ha hie h ho hua",
+      "expected": "ሀ ሃ ሄ ህ ሆ ኋ",
+      "description": "Full order sequence for h"
+    },
+    {
+      "input": "hel",
+      "expected": "ሀል",
+      "description": "Unambiguous 1st order + 6th"
+    },
+    {
+      "input": "hal",
+      "expected": "ሃል",
+      "description": "Unambiguous 4th order + 6th"
+    },
+    {
+      "input": "se",
+      "expected": "ሰ",
+      "description": "Lowercase s (ሰ)"
+    },
+    {
+      "input": "Se",
+      "expected": "ሠ",
+      "description": "Uppercase S (ሠ - rarer homophone)"
+    },
+    {
+      "input": "te",
+      "expected": "ተ",
+      "description": "Lowercase t (ተ)"
+    },
+    {
+      "input": "Te",
+      "expected": "ጠ",
+      "description": "Uppercase T (ጠ - glottalic)"
+    },
+    {
+      "input": "che",
+      "expected": "ቸ",
+      "description": "Lowercase ch (ቸ)"
+    },
+    {
+      "input": "Ce",
+      "expected": "ጨ",
+      "description": "Uppercase C (ጨ - glottalic)"
+    },
+    {
+      "input": "pe",
+      "expected": "ፐ",
+      "description": "Lowercase p (ፐ)"
+    },
+    {
+      "input": "Pe",
+      "expected": "ጰ",
+      "description": "Uppercase P (ጰ)"
+    },
+    {
+      "input": "tse",
+      "expected": "ጸ",
+      "description": "Lowercase ts (ጸ)"
+    },
+    {
+      "input": "Tse",
+      "expected": "ፀ",
+      "description": "Mixed case Ts (ፀ - homophone)"
+    },
+    {
+      "input": "she",
+      "expected": "ሸ",
+      "description": "Digraph sh (ሸ)"
+    },
+    {
+      "input": "gne",
+      "expected": "ኘ",
+      "description": "Digraph gn (ኘ)"
+    },
+    {
+      "input": "khe",
+      "expected": "ኸ",
+      "description": "Digraph kh (ኸ)"
+    },
+    {
+      "input": "zhe",
+      "expected": "ዠ",
+      "description": "Digraph zh (ዠ)"
+    },
+    {
+      "input": "a",
+      "expected": "አ",
+      "description": "Lone vowel a (አ - 1st order)"
+    },
+    {
+      "input": "u",
+      "expected": "ኡ",
+      "description": "Lone vowel u (ኡ)"
+    },
+    {
+      "input": "i",
+      "expected": "ኢ",
+      "description": "Lone vowel i (ኢ)"
+    },
+    {
+      "input": "ie",
+      "expected": "ኤ",
+      "description": "Lone vowel ie (ኤ - 5th order)"
+    },
+    {
+      "input": "e",
+      "expected": "እ",
+      "description": "Lone vowel e (እ - 6th order)"
+    },
+    {
+      "input": "o",
+      "expected": "ኦ",
+      "description": "Lone vowel o (ኦ)"
+    },
+    {
+      "input": "aa",
+      "expected": "ኣ",
+      "description": "Lone vowel aa (ኣ - 4th order)"
+    },
+    {
+      "input": "A",
+      "expected": "ዐ",
+      "description": "Pharyngeal lone vowel A (ዐ - 1st order)"
+    },
+    {
+      "input": "U",
+      "expected": "ዑ",
+      "description": "Pharyngeal lone vowel U (ዑ)"
+    },
+    {
+      "input": "I",
+      "expected": "ዒ",
+      "description": "Pharyngeal lone vowel I (ዒ)"
+    },
+    {
+      "input": "E",
+      "expected": "ዕ",
+      "description": "Pharyngeal lone vowel E (ዕ - 6th order)"
+    },
+    {
+      "input": "O",
+      "expected": "ዖ",
+      "description": "Pharyngeal lone vowel O (ዖ)"
+    },
+    {
+      "input": "Aa",
+      "expected": "ዓ",
+      "description": "Pharyngeal lone vowel Aa (ዓ - 4th order)"
+    },
+    {
+      "input": "AA",
+      "expected": "ዓ",
+      "description": "Pharyngeal lone vowel AA (ዓ - 4th order)"
+    },
+    {
+      "input": "Aie",
+      "expected": "ዔ",
+      "description": "Pharyngeal lone vowel Aie (ዔ - 5th order)"
+    },
+    {
+      "input": "lua",
+      "expected": "ሏ",
+      "description": "Labialized l"
+    },
+    {
+      "input": "mua",
+      "expected": "ሟ",
+      "description": "Labialized m"
+    },
+    {
+      "input": "rua",
+      "expected": "ሯ",
+      "description": "Labialized r"
+    },
+    {
+      "input": "sua",
+      "expected": "ሷ",
+      "description": "Labialized s"
+    },
+    {
+      "input": "shua",
+      "expected": "ሿ",
+      "description": "Labialized sh"
+    },
+    {
+      "input": "qua",
+      "expected": "ቋ",
+      "description": "Labialized q (override)"
+    },
+    {
+      "input": "bua",
+      "expected": "ቧ",
+      "description": "Labialized b"
+    },
+    {
+      "input": "vua",
+      "expected": "ቯ",
+      "description": "Labialized v"
+    },
+    {
+      "input": "tua",
+      "expected": "ቷ",
+      "description": "Labialized t"
+    },
+    {
+      "input": "chua",
+      "expected": "ቿ",
+      "description": "Labialized ch"
+    },
+    {
+      "input": "nua",
+      "expected": "ኗ",
+      "description": "Labialized n"
+    },
+    {
+      "input": "gnua",
+      "expected": "ኟ",
+      "description": "Labialized gn"
+    },
+    {
+      "input": "kua",
+      "expected": "ኳ",
+      "description": "Labialized k (override)"
+    },
+    {
+      "input": "khua",
+      "expected": "ዃ",
+      "description": "Labialized kh (override)"
+    },
+    {
+      "input": "zua",
+      "expected": "ዟ",
+      "description": "Labialized z"
+    },
+    {
+      "input": "zhua",
+      "expected": "ዧ",
+      "description": "Labialized zh"
+    },
+    {
+      "input": "dua",
+      "expected": "ዷ",
+      "description": "Labialized d"
+    },
+    {
+      "input": "jua",
+      "expected": "ጇ",
+      "description": "Labialized j"
+    },
+    {
+      "input": "gua",
+      "expected": "ጓ",
+      "description": "Labialized g (override)"
+    },
+    {
+      "input": "Tua",
+      "expected": "ጧ",
+      "description": "Labialized T"
+    },
+    {
+      "input": "Cua",
+      "expected": "ጯ",
+      "description": "Labialized C"
+    },
+    {
+      "input": "Pua",
+      "expected": "ጷ",
+      "description": "Labialized P"
+    },
+    {
+      "input": "tsua",
+      "expected": "ጿ",
+      "description": "Labialized ts"
+    },
+    {
+      "input": "Tsua",
+      "expected": "ፇ",
+      "description": "Labialized Ts"
+    },
+    {
+      "input": "fua",
+      "expected": "ፏ",
+      "description": "Labialized f"
+    },
+    {
+      "input": "pua",
+      "expected": "ፗ",
+      "description": "Labialized p"
+    },
+    {
+      "input": "kwa",
+      "expected": "ኳ",
+      "description": "Labialized k with wa alias"
+    },
+    {
+      "input": "gwa",
+      "expected": "ጓ",
+      "description": "Labialized g with wa alias"
+    },
+    {
+      "input": "qwa",
+      "expected": "ቋ",
+      "description": "Labialized q with wa alias"
+    },
+    {
+      "input": "hwa",
+      "expected": "ኋ",
+      "description": "Labialized h with wa alias"
+    },
+    {
+      "input": "s'h",
+      "expected": "ስህ",
+      "description": "Escape breaking sh digraph"
+    },
+    {
+      "input": "t's",
+      "expected": "ትስ",
+      "description": "Escape breaking ts digraph"
+    },
+    {
+      "input": "T's",
+      "expected": "ጥስ",
+      "description": "Escape breaking Ts digraph"
+    },
+    {
+      "input": "k'h",
+      "expected": "ክህ",
+      "description": "Escape breaking kh digraph"
+    },
+    {
+      "input": "g'n",
+      "expected": "ግን",
+      "description": "Escape breaking gn digraph"
+    },
+    {
+      "input": "se'el",
+      "expected": "ሰእል",
+      "description": "Escape before lone vowel"
+    },
+    {
+      "input": "a''b",
+      "expected": "አ'ብ",
+      "description": "Double apostrophe escapes literal apostrophe"
+    },
+    {
+      "input": ",",
+      "expected": "፣",
+      "description": "Ethiopic comma"
+    },
+    {
+      "input": ".",
+      "expected": "።",
+      "description": "Ethiopic full stop"
+    },
+    {
+      "input": ";",
+      "expected": "፤",
+      "description": "Ethiopic semicolon"
+    },
+    {
+      "input": ":",
+      "expected": "፡",
+      "description": "Ethiopic wordspace"
+    },
+    {
+      "input": "selam. dehna neh?",
+      "expected": "ሰላም። ደህና ነህ?",
+      "description": "Sentence with Ethiopic full stop"
+    },
+    {
+      "input": "and, hulet, sost.",
+      "expected": "አንድ፣ ሁለት፣ ሶስት።",
+      "description": "List with commas and full stop"
+    }
+  ],
+  "liveTypingSequences": [
+    {
+      "name": "Live typing 'selam'",
+      "steps": [
+        {
+          "input": "s",
+          "expectedCommitted": "",
+          "expectedComposing": "ስ"
+        },
+        {
+          "input": "e",
+          "expectedCommitted": "",
+          "expectedComposing": "ሰ"
+        },
+        {
+          "input": "l",
+          "expectedCommitted": "ሰ",
+          "expectedComposing": "ል"
+        },
+        {
+          "input": "a",
+          "expectedCommitted": "",
+          "expectedComposing": "ላ"
+        },
+        {
+          "input": "m",
+          "expectedCommitted": "ላ",
+          "expectedComposing": "ም"
+        },
+        {
+          "input": " ",
+          "expectedCommitted": "ም ",
+          "expectedComposing": ""
+        }
+      ]
+    },
+    {
+      "name": "Live typing 'hua' (labialized)",
+      "steps": [
+        {
+          "input": "h",
+          "expectedCommitted": "",
+          "expectedComposing": "ህ"
+        },
+        {
+          "input": "u",
+          "expectedCommitted": "",
+          "expectedComposing": "ሁ"
+        },
+        {
+          "input": "a",
+          "expectedCommitted": "",
+          "expectedComposing": "ኋ"
+        }
+      ]
+    },
+    {
+      "name": "Live typing 'endiet'",
+      "steps": [
+        {
+          "input": "e",
+          "expectedCommitted": "",
+          "expectedComposing": "እ"
+        },
+        {
+          "input": "n",
+          "expectedCommitted": "እ",
+          "expectedComposing": "ን"
+        },
+        {
+          "input": "d",
+          "expectedCommitted": "ን",
+          "expectedComposing": "ድ"
+        },
+        {
+          "input": "i",
+          "expectedCommitted": "",
+          "expectedComposing": "ዲ"
+        },
+        {
+          "input": "e",
+          "expectedCommitted": "",
+          "expectedComposing": "ዴ"
+        },
+        {
+          "input": "t",
+          "expectedCommitted": "ዴ",
+          "expectedComposing": "ት"
+        }
+      ]
+    },
+    {
+      "name": "Live typing digraph 'she'",
+      "steps": [
+        {
+          "input": "s",
+          "expectedCommitted": "",
+          "expectedComposing": "ስ"
+        },
+        {
+          "input": "h",
+          "expectedCommitted": "",
+          "expectedComposing": "ሽ"
+        },
+        {
+          "input": "e",
+          "expectedCommitted": "",
+          "expectedComposing": "ሸ"
+        }
+      ]
+    },
+    {
+      "name": "Live typing escape 's\\'h'",
+      "steps": [
+        {
+          "input": "s",
+          "expectedCommitted": "",
+          "expectedComposing": "ስ"
+        },
+        {
+          "input": "'",
+          "expectedCommitted": "ስ",
+          "expectedComposing": ""
+        },
+        {
+          "input": "h",
+          "expectedCommitted": "",
+          "expectedComposing": "ህ"
+        }
+      ]
+    }
+  ],
+  "backspaceSequences": [
+    {
+      "name": "Typing 'se' and backspacing to empty",
+      "steps": [
+        {
+          "action": "type",
+          "char": "s",
+          "expectedCommitted": "",
+          "expectedComposing": "ስ"
+        },
+        {
+          "action": "type",
+          "char": "e",
+          "expectedCommitted": "",
+          "expectedComposing": "ሰ"
+        },
+        {
+          "action": "backspace",
+          "expectedCommitted": "",
+          "expectedComposing": "ስ"
+        },
+        {
+          "action": "backspace",
+          "expectedCommitted": "",
+          "expectedComposing": ""
+        }
+      ]
+    },
+    {
+      "name": "Typing 'hua' and backspacing sequentially",
+      "steps": [
+        {
+          "action": "type",
+          "char": "h",
+          "expectedCommitted": "",
+          "expectedComposing": "ህ"
+        },
+        {
+          "action": "type",
+          "char": "u",
+          "expectedCommitted": "",
+          "expectedComposing": "ሁ"
+        },
+        {
+          "action": "type",
+          "char": "a",
+          "expectedCommitted": "",
+          "expectedComposing": "ኋ"
+        },
+        {
+          "action": "backspace",
+          "expectedCommitted": "",
+          "expectedComposing": "ሁ"
+        },
+        {
+          "action": "backspace",
+          "expectedCommitted": "",
+          "expectedComposing": "ህ"
+        },
+        {
+          "action": "backspace",
+          "expectedCommitted": "",
+          "expectedComposing": ""
+        }
+      ]
+    },
+    {
+      "name": "Typing digraph 'sh' and backspacing",
+      "steps": [
+        {
+          "action": "type",
+          "char": "s",
+          "expectedCommitted": "",
+          "expectedComposing": "ስ"
+        },
+        {
+          "action": "type",
+          "char": "h",
+          "expectedCommitted": "",
+          "expectedComposing": "ሽ"
+        },
+        {
+          "action": "backspace",
+          "expectedCommitted": "",
+          "expectedComposing": "ስ"
+        },
+        {
+          "action": "backspace",
+          "expectedCommitted": "",
+          "expectedComposing": ""
+        }
+      ]
+    },
+    {
+      "name": "Typing 5th order 'die' and backspacing",
+      "steps": [
+        {
+          "action": "type",
+          "char": "d",
+          "expectedCommitted": "",
+          "expectedComposing": "ድ"
+        },
+        {
+          "action": "type",
+          "char": "i",
+          "expectedCommitted": "",
+          "expectedComposing": "ዲ"
+        },
+        {
+          "action": "type",
+          "char": "e",
+          "expectedCommitted": "",
+          "expectedComposing": "ዴ"
+        },
+        {
+          "action": "backspace",
+          "expectedCommitted": "",
+          "expectedComposing": "ዲ"
+        },
+        {
+          "action": "backspace",
+          "expectedCommitted": "",
+          "expectedComposing": "ድ"
+        },
+        {
+          "action": "backspace",
+          "expectedCommitted": "",
+          "expectedComposing": ""
+        }
+      ]
+    }
+  ],
+  "commonWordsCorpus": [
+    {
+      "latin": "selam",
+      "amharic": "ሰላም"
+    },
+    {
+      "latin": "endiet",
+      "amharic": "እንዴት"
+    },
+    {
+      "latin": "nesh",
+      "amharic": "ነሽ"
+    },
+    {
+      "latin": "neh",
+      "amharic": "ነህ"
+    },
+    {
+      "latin": "not",
+      "amharic": "ኖት"
+    },
+    {
+      "latin": "nachew",
+      "amharic": "ናቸው"
+    },
+    {
+      "latin": "dehna",
+      "amharic": "ደህና"
+    },
+    {
+      "latin": "amesegenalehu",
+      "amharic": "አመሰገናለሁ"
+    },
+    {
+      "latin": "yiqirta",
+      "amharic": "ዪቂርታ"
+    },
+    {
+      "latin": "betam",
+      "amharic": "በታም"
+    },
+    {
+      "latin": "konjo",
+      "amharic": "ኮንጆ"
+    },
+    {
+      "latin": "gobez",
+      "amharic": "ጎበዝ"
+    },
+    {
+      "latin": "ow",
+      "amharic": "ኦው"
+    },
+    {
+      "latin": "aydelem",
+      "amharic": "አይደለም"
+    },
+    {
+      "latin": "eshi",
+      "amharic": "እሺ"
+    },
+    {
+      "latin": "menem",
+      "amharic": "መነም"
+    },
+    {
+      "latin": "chigger",
+      "amharic": "ቺግገር"
+    },
+    {
+      "latin": "yelem",
+      "amharic": "የለም"
+    },
+    {
+      "latin": "ale",
+      "amharic": "አለ"
+    },
+    {
+      "latin": "alew",
+      "amharic": "አለው"
+    },
+    {
+      "latin": "alat",
+      "amharic": "አላት"
+    },
+    {
+      "latin": "alen",
+      "amharic": "አለን"
+    },
+    {
+      "latin": "alachew",
+      "amharic": "አላቸው"
+    },
+    {
+      "latin": "new",
+      "amharic": "ነው"
+    },
+    {
+      "latin": "nat",
+      "amharic": "ናት"
+    },
+    {
+      "latin": "nagn",
+      "amharic": "ናኝ"
+    },
+    {
+      "latin": "nen",
+      "amharic": "ነን"
+    },
+    {
+      "latin": "nachu",
+      "amharic": "ናቹ"
+    },
+    {
+      "latin": "ene",
+      "amharic": "እነ"
+    },
+    {
+      "latin": "ante",
+      "amharic": "አንተ"
+    },
+    {
+      "latin": "anchi",
+      "amharic": "አንቺ"
+    },
+    {
+      "latin": "erso",
+      "amharic": "እርሶ"
+    },
+    {
+      "latin": "essu",
+      "amharic": "እስሱ"
+    },
+    {
+      "latin": "esswa",
+      "amharic": "እስሷ"
+    },
+    {
+      "latin": "egna",
+      "amharic": "እኛ"
+    },
+    {
+      "latin": "enante",
+      "amharic": "እናንተ"
+    },
+    {
+      "latin": "ennensu",
+      "amharic": "እንነንሱ"
+    },
+    {
+      "latin": "abat",
+      "amharic": "አባት"
+    },
+    {
+      "latin": "enat",
+      "amharic": "እናት"
+    },
+    {
+      "latin": "wondem",
+      "amharic": "ዎንደም"
+    },
+    {
+      "latin": "ehet",
+      "amharic": "እሀት"
+    },
+    {
+      "latin": "lij",
+      "amharic": "ሊጅ"
+    },
+    {
+      "latin": "set",
+      "amharic": "ሰት"
+    },
+    {
+      "latin": "wond",
+      "amharic": "ዎንድ"
+    },
+    {
+      "latin": "beteseb",
+      "amharic": "በተሰብ"
+    },
+    {
+      "latin": "aytie",
+      "amharic": "አይቴ"
+    },
+    {
+      "latin": "emebiet",
+      "amharic": "እመቤት"
+    },
+    {
+      "latin": "balebet",
+      "amharic": "ባለበት"
+    },
+    {
+      "latin": "miste",
+      "amharic": "ሚስተ"
+    },
+    {
+      "latin": "bal",
+      "amharic": "ባል"
+    },
+    {
+      "latin": "agashe",
+      "amharic": "አጋሸ"
+    },
+    {
+      "latin": "akest",
+      "amharic": "አከስት"
+    },
+    {
+      "latin": "wedaj",
+      "amharic": "ወዳጅ"
+    },
+    {
+      "latin": "guadegna",
+      "amharic": "ጓደኛ"
+    },
+    {
+      "latin": "sew",
+      "amharic": "ሰው"
+    },
+    {
+      "latin": "manem",
+      "amharic": "ማነም"
+    },
+    {
+      "latin": "and",
+      "amharic": "አንድ"
+    },
+    {
+      "latin": "hulet",
+      "amharic": "ሁለት"
+    },
+    {
+      "latin": "sost",
+      "amharic": "ሶስት"
+    },
+    {
+      "latin": "arat",
+      "amharic": "አራት"
+    },
+    {
+      "latin": "amest",
+      "amharic": "አመስት"
+    },
+    {
+      "latin": "sedest",
+      "amharic": "ሰደስት"
+    },
+    {
+      "latin": "sebat",
+      "amharic": "ሰባት"
+    },
+    {
+      "latin": "semment",
+      "amharic": "ሰምመንት"
+    },
+    {
+      "latin": "zetegn",
+      "amharic": "ዘተኝ"
+    },
+    {
+      "latin": "aser",
+      "amharic": "አሰር"
+    },
+    {
+      "latin": "asrand",
+      "amharic": "አስራንድ"
+    },
+    {
+      "latin": "asrahulet",
+      "amharic": "አስራሁለት"
+    },
+    {
+      "latin": "asrasost",
+      "amharic": "አስራሶስት"
+    },
+    {
+      "latin": "asraarat",
+      "amharic": "አስራአራት"
+    },
+    {
+      "latin": "asraamest",
+      "amharic": "አስራአመስት"
+    },
+    {
+      "latin": "asrasedest",
+      "amharic": "አስራሰደስት"
+    },
+    {
+      "latin": "asrasebat",
+      "amharic": "አስራሰባት"
+    },
+    {
+      "latin": "asrasemment",
+      "amharic": "አስራሰምመንት"
+    },
+    {
+      "latin": "asrazetegn",
+      "amharic": "አስራዘተኝ"
+    },
+    {
+      "latin": "haya",
+      "amharic": "ሃያ"
+    },
+    {
+      "latin": "selasa",
+      "amharic": "ሰላሳ"
+    },
+    {
+      "latin": "arba",
+      "amharic": "አርባ"
+    },
+    {
+      "latin": "hamsa",
+      "amharic": "ሃምሳ"
+    },
+    {
+      "latin": "selsa",
+      "amharic": "ሰልሳ"
+    },
+    {
+      "latin": "seba",
+      "amharic": "ሰባ"
+    },
+    {
+      "latin": "semanya",
+      "amharic": "ሰማንያ"
+    },
+    {
+      "latin": "zetena",
+      "amharic": "ዘተና"
+    },
+    {
+      "latin": "meto",
+      "amharic": "መቶ"
+    },
+    {
+      "latin": "sheh",
+      "amharic": "ሸህ"
+    },
+    {
+      "latin": "miliyon",
+      "amharic": "ሚሊዮን"
+    },
+    {
+      "latin": "qen",
+      "amharic": "ቀን"
+    },
+    {
+      "latin": "zariend",
+      "amharic": "ዛሬንድ"
+    },
+    {
+      "latin": "zare",
+      "amharic": "ዛረ"
+    },
+    {
+      "latin": "nege",
+      "amharic": "ነገ"
+    },
+    {
+      "latin": "tellant",
+      "amharic": "ተልላንት"
+    },
+    {
+      "latin": "tellantena",
+      "amharic": "ተልላንተና"
+    },
+    {
+      "latin": "samint",
+      "amharic": "ሳሚንት"
+    },
+    {
+      "latin": "wor",
+      "amharic": "ዎር"
+    },
+    {
+      "latin": "amet",
+      "amharic": "አመት"
+    },
+    {
+      "latin": "se'at",
+      "amharic": "ሰአት"
+    },
+    {
+      "latin": "deqieqa",
+      "amharic": "ደቄቃ"
+    },
+    {
+      "latin": "sekond",
+      "amharic": "ሰኮንድ"
+    },
+    {
+      "latin": "sawat",
+      "amharic": "ሳዋት"
+    },
+    {
+      "latin": "mata",
+      "amharic": "ማታ"
+    },
+    {
+      "latin": "qeter",
+      "amharic": "ቀተር"
+    },
+    {
+      "latin": "lieyt",
+      "amharic": "ሌይት"
+    },
+    {
+      "latin": "gzie",
+      "amharic": "ግዜ"
+    },
+    {
+      "latin": "hulu",
+      "amharic": "ሁሉ"
+    },
+    {
+      "latin": "kiremt",
+      "amharic": "ኪረምት"
+    },
+    {
+      "latin": "bega",
+      "amharic": "በጋ"
+    },
+    {
+      "latin": "belg",
+      "amharic": "በልግ"
+    },
+    {
+      "latin": "tsedey",
+      "amharic": "ጸደይ"
+    },
+    {
+      "latin": "senyo",
+      "amharic": "ሰንዮ"
+    },
+    {
+      "latin": "maksenyo",
+      "amharic": "ማክሰንዮ"
+    },
+    {
+      "latin": "erob",
+      "amharic": "እሮብ"
+    },
+    {
+      "latin": "hamus",
+      "amharic": "ሃሙስ"
+    },
+    {
+      "latin": "arb",
+      "amharic": "አርብ"
+    },
+    {
+      "latin": "qedamie",
+      "amharic": "ቀዳሜ"
+    },
+    {
+      "latin": "ehud",
+      "amharic": "እሁድ"
+    },
+    {
+      "latin": "enjera",
+      "amharic": "እንጀራ"
+    },
+    {
+      "latin": "wat",
+      "amharic": "ዋት"
+    },
+    {
+      "latin": "dabbo",
+      "amharic": "ዳብቦ"
+    },
+    {
+      "latin": "wuha",
+      "amharic": "ዉሃ"
+    },
+    {
+      "latin": "buna",
+      "amharic": "ቡና"
+    },
+    {
+      "latin": "shay",
+      "amharic": "ሻይ"
+    },
+    {
+      "latin": "wetet",
+      "amharic": "ወተት"
+    },
+    {
+      "latin": "sega",
+      "amharic": "ሰጋ"
+    },
+    {
+      "latin": "doro",
+      "amharic": "ዶሮ"
+    },
+    {
+      "latin": "asa",
+      "amharic": "አሳ"
+    },
+    {
+      "latin": "ayb",
+      "amharic": "አይብ"
+    },
+    {
+      "latin": "qibe",
+      "amharic": "ቂበ"
+    },
+    {
+      "latin": "berbere",
+      "amharic": "በርበረ"
+    },
+    {
+      "latin": "shiro",
+      "amharic": "ሺሮ"
+    },
+    {
+      "latin": "tibs",
+      "amharic": "ቲብስ"
+    },
+    {
+      "latin": "kitfo",
+      "amharic": "ኪትፎ"
+    },
+    {
+      "latin": "gomen",
+      "amharic": "ጎመን"
+    },
+    {
+      "latin": "mesir",
+      "amharic": "መሲር"
+    },
+    {
+      "latin": "alicha",
+      "amharic": "አሊቻ"
+    },
+    {
+      "latin": "firfir",
+      "amharic": "ፊርፊር"
+    },
+    {
+      "latin": "kinche",
+      "amharic": "ኪንቸ"
+    },
+    {
+      "latin": "tela",
+      "amharic": "ተላ"
+    },
+    {
+      "latin": "tedj",
+      "amharic": "ተድጅ"
+    },
+    {
+      "latin": "sukar",
+      "amharic": "ሱካር"
+    },
+    {
+      "latin": "chew",
+      "amharic": "ቸው"
+    },
+    {
+      "latin": "friy",
+      "amharic": "ፍሪይ"
+    },
+    {
+      "latin": "tumatim",
+      "amharic": "ቱማቲም"
+    },
+    {
+      "latin": "shenkurt",
+      "amharic": "ሸንኩርት"
+    },
+    {
+      "latin": "qariya",
+      "amharic": "ቃሪያ"
+    },
+    {
+      "latin": "bula",
+      "amharic": "ቡላ"
+    },
+    {
+      "latin": "koshari",
+      "amharic": "ኮሻሪ"
+    },
+    {
+      "latin": "lomi",
+      "amharic": "ሎሚ"
+    },
+    {
+      "latin": "mize",
+      "amharic": "ሚዘ"
+    },
+    {
+      "latin": "birtukan",
+      "amharic": "ቢርቱካን"
+    },
+    {
+      "latin": "tiri",
+      "amharic": "ቲሪ"
+    },
+    {
+      "latin": "beles",
+      "amharic": "በለስ"
+    },
+    {
+      "latin": "ananas",
+      "amharic": "አናናስ"
+    },
+    {
+      "latin": "ras",
+      "amharic": "ራስ"
+    },
+    {
+      "latin": "tsagur",
+      "amharic": "ጻጉር"
+    },
+    {
+      "latin": "ayn",
+      "amharic": "አይን"
+    },
+    {
+      "latin": "afencha",
+      "amharic": "አፈንቻ"
+    },
+    {
+      "latin": "af",
+      "amharic": "አፍ"
+    },
+    {
+      "latin": "ters",
+      "amharic": "ተርስ"
+    },
+    {
+      "latin": "melas",
+      "amharic": "መላስ"
+    },
+    {
+      "latin": "joro",
+      "amharic": "ጆሮ"
+    },
+    {
+      "latin": "anget",
+      "amharic": "አንገት"
+    },
+    {
+      "latin": "tekesha",
+      "amharic": "ተከሻ"
+    },
+    {
+      "latin": "ej",
+      "amharic": "እጅ"
+    },
+    {
+      "latin": "tefer",
+      "amharic": "ተፈር"
+    },
+    {
+      "latin": "deb",
+      "amharic": "ደብ"
+    },
+    {
+      "latin": "lebo",
+      "amharic": "ለቦ"
+    },
+    {
+      "latin": "hode",
+      "amharic": "ሆደ"
+    },
+    {
+      "latin": "zeng",
+      "amharic": "ዘንግ"
+    },
+    {
+      "latin": "wogeb",
+      "amharic": "ዎገብ"
+    },
+    {
+      "latin": "gulebat",
+      "amharic": "ጉለባት"
+    },
+    {
+      "latin": "eger",
+      "amharic": "እገር"
+    },
+    {
+      "latin": "dam",
+      "amharic": "ዳም"
+    },
+    {
+      "latin": "meder",
+      "amharic": "መደር"
+    },
+    {
+      "latin": "samay",
+      "amharic": "ሳማይ"
+    },
+    {
+      "latin": "tsehay",
+      "amharic": "ጸሃይ"
+    },
+    {
+      "latin": "chereqa",
+      "amharic": "ቸረቃ"
+    },
+    {
+      "latin": "kokeb",
+      "amharic": "ኮከብ"
+    },
+    {
+      "latin": "zena",
+      "amharic": "ዘና"
+    },
+    {
+      "latin": "damega",
+      "amharic": "ዳመጋ"
+    },
+    {
+      "latin": "damena",
+      "amharic": "ዳመና"
+    },
+    {
+      "latin": "nefas",
+      "amharic": "ነፋስ"
+    },
+    {
+      "latin": "beredo",
+      "amharic": "በረዶ"
+    },
+    {
+      "latin": "tara",
+      "amharic": "ታራ"
+    },
+    {
+      "latin": "deda",
+      "amharic": "ደዳ"
+    },
+    {
+      "latin": "fese",
+      "amharic": "ፈሰ"
+    },
+    {
+      "latin": "bahir",
+      "amharic": "ባሂር"
+    },
+    {
+      "latin": "weha",
+      "amharic": "ወሃ"
+    },
+    {
+      "latin": "mamo",
+      "amharic": "ማሞ"
+    },
+    {
+      "latin": "densa",
+      "amharic": "ደንሳ"
+    },
+    {
+      "latin": "chaka",
+      "amharic": "ቻካ"
+    },
+    {
+      "latin": "adawa",
+      "amharic": "አዳዋ"
+    },
+    {
+      "latin": "hager",
+      "amharic": "ሃገር"
+    },
+    {
+      "latin": "ketema",
+      "amharic": "ከተማ"
+    },
+    {
+      "latin": "mender",
+      "amharic": "መንደር"
+    },
+    {
+      "latin": "maget",
+      "amharic": "ማገት"
+    },
+    {
+      "latin": "menged",
+      "amharic": "መንገድ"
+    },
+    {
+      "latin": "dar",
+      "amharic": "ዳር"
+    },
+    {
+      "latin": "kefil",
+      "amharic": "ከፊል"
+    },
+    {
+      "latin": "wenz",
+      "amharic": "ወንዝ"
+    },
+    {
+      "latin": "ayq",
+      "amharic": "አይቅ"
+    },
+    {
+      "latin": "bota",
+      "amharic": "ቦታ"
+    },
+    {
+      "latin": "bet",
+      "amharic": "በት"
+    },
+    {
+      "latin": "temhert",
+      "amharic": "ተምሀርት"
+    },
+    {
+      "latin": "temhertbet",
+      "amharic": "ተምሀርትበት"
+    },
+    {
+      "latin": "meshaf",
+      "amharic": "መሻፍ"
+    },
+    {
+      "latin": "debdabie",
+      "amharic": "ደብዳቤ"
+    },
+    {
+      "latin": "erisas",
+      "amharic": "እሪሳስ"
+    },
+    {
+      "latin": "kirey",
+      "amharic": "ኪረይ"
+    },
+    {
+      "latin": "alga",
+      "amharic": "አልጋ"
+    },
+    {
+      "latin": "terepeza",
+      "amharic": "ተረፐዛ"
+    },
+    {
+      "latin": "wenber",
+      "amharic": "ወንበር"
+    },
+    {
+      "latin": "masewat",
+      "amharic": "ማሰዋት"
+    },
+    {
+      "latin": "ber",
+      "amharic": "በር"
+    },
+    {
+      "latin": "meskot",
+      "amharic": "መስኮት"
+    },
+    {
+      "latin": "gedgida",
+      "amharic": "ገድጊዳ"
+    },
+    {
+      "latin": "safet",
+      "amharic": "ሳፈት"
+    },
+    {
+      "latin": "mewtata",
+      "amharic": "መውታታ"
+    },
+    {
+      "latin": "mekina",
+      "amharic": "መኪና"
+    },
+    {
+      "latin": "babur",
+      "amharic": "ባቡር"
+    },
+    {
+      "latin": "awroplan",
+      "amharic": "አውሮፕላን"
+    },
+    {
+      "latin": "bisiklet",
+      "amharic": "ቢሲክለት"
+    },
+    {
+      "latin": "bale",
+      "amharic": "ባለ"
+    },
+    {
+      "latin": "fanos",
+      "amharic": "ፋኖስ"
+    },
+    {
+      "latin": "kora",
+      "amharic": "ኮራ"
+    },
+    {
+      "latin": "keshis",
+      "amharic": "ከሺስ"
+    },
+    {
+      "latin": "mehed",
+      "amharic": "መሀድ"
+    },
+    {
+      "latin": "meblat",
+      "amharic": "መብላት"
+    },
+    {
+      "latin": "metetat",
+      "amharic": "መተታት"
+    },
+    {
+      "latin": "metegnat",
+      "amharic": "መተኛት"
+    },
+    {
+      "latin": "menager",
+      "amharic": "መናገር"
+    },
+    {
+      "latin": "mesmat",
+      "amharic": "መስማት"
+    },
+    {
+      "latin": "mayet",
+      "amharic": "ማየት"
+    },
+    {
+      "latin": "madreg",
+      "amharic": "ማድረግ"
+    },
+    {
+      "latin": "mewded",
+      "amharic": "መውደድ"
+    },
+    {
+      "latin": "mesrat",
+      "amharic": "መስራት"
+    },
+    {
+      "latin": "megezat",
+      "amharic": "መገዛት"
+    },
+    {
+      "latin": "meshet",
+      "amharic": "መሸት"
+    },
+    {
+      "latin": "metsaf",
+      "amharic": "መጻፍ"
+    },
+    {
+      "latin": "manbeb",
+      "amharic": "ማንበብ"
+    },
+    {
+      "latin": "mewedeq",
+      "amharic": "መወደቅ"
+    },
+    {
+      "latin": "menstat",
+      "amharic": "መንስታት"
+    },
+    {
+      "latin": "merot",
+      "amharic": "መሮት"
+    },
+    {
+      "latin": "megbat",
+      "amharic": "መግባት"
+    },
+    {
+      "latin": "mewtat",
+      "amharic": "መውታት"
+    },
+    {
+      "latin": "maqeq",
+      "amharic": "ማቀቅ"
+    },
+    {
+      "latin": "melewet",
+      "amharic": "መለወት"
+    },
+    {
+      "latin": "mefelag",
+      "amharic": "መፈላግ"
+    },
+    {
+      "latin": "metew",
+      "amharic": "መተው"
+    },
+    {
+      "latin": "medres",
+      "amharic": "መድረስ"
+    },
+    {
+      "latin": "mekfet",
+      "amharic": "መክፈት"
+    },
+    {
+      "latin": "mezgat",
+      "amharic": "መዝጋት"
+    },
+    {
+      "latin": "medewel",
+      "amharic": "መደወል"
+    },
+    {
+      "latin": "meteyeq",
+      "amharic": "መተየቅ"
+    },
+    {
+      "latin": "meles",
+      "amharic": "መለስ"
+    },
+    {
+      "latin": "meqemet",
+      "amharic": "መቀመት"
+    },
+    {
+      "latin": "meqom",
+      "amharic": "መቆም"
+    },
+    {
+      "latin": "mehedachu",
+      "amharic": "መሀዳቹ"
+    },
+    {
+      "latin": "hedku",
+      "amharic": "ሀድኩ"
+    },
+    {
+      "latin": "hedk",
+      "amharic": "ሀድክ"
+    },
+    {
+      "latin": "hedsh",
+      "amharic": "ሀድሽ"
+    },
+    {
+      "latin": "hede",
+      "amharic": "ሀደ"
+    },
+    {
+      "latin": "hedet",
+      "amharic": "ሀደት"
+    },
+    {
+      "latin": "hedn",
+      "amharic": "ሀድን"
+    },
+    {
+      "latin": "hedachu",
+      "amharic": "ሀዳቹ"
+    },
+    {
+      "latin": "hedu",
+      "amharic": "ሀዱ"
+    },
+    {
+      "latin": "belahu",
+      "amharic": "በላሁ"
+    },
+    {
+      "latin": "belah",
+      "amharic": "በላህ"
+    },
+    {
+      "latin": "belash",
+      "amharic": "በላሽ"
+    },
+    {
+      "latin": "bela",
+      "amharic": "በላ"
+    },
+    {
+      "latin": "belat",
+      "amharic": "በላት"
+    },
+    {
+      "latin": "belan",
+      "amharic": "በላን"
+    },
+    {
+      "latin": "belachu",
+      "amharic": "በላቹ"
+    },
+    {
+      "latin": "belu",
+      "amharic": "በሉ"
+    },
+    {
+      "latin": "tetahu",
+      "amharic": "ተታሁ"
+    },
+    {
+      "latin": "tetah",
+      "amharic": "ተታህ"
+    },
+    {
+      "latin": "tetash",
+      "amharic": "ተታሽ"
+    },
+    {
+      "latin": "teta",
+      "amharic": "ተታ"
+    },
+    {
+      "latin": "tetat",
+      "amharic": "ተታት"
+    },
+    {
+      "latin": "tetan",
+      "amharic": "ተታን"
+    },
+    {
+      "latin": "tetachu",
+      "amharic": "ተታቹ"
+    },
+    {
+      "latin": "tetu",
+      "amharic": "ተቱ"
+    },
+    {
+      "latin": "tenyahu",
+      "amharic": "ተንያሁ"
+    },
+    {
+      "latin": "tenyah",
+      "amharic": "ተንያህ"
+    },
+    {
+      "latin": "tenyash",
+      "amharic": "ተንያሽ"
+    },
+    {
+      "latin": "tenya",
+      "amharic": "ተንያ"
+    },
+    {
+      "latin": "tenyat",
+      "amharic": "ተንያት"
+    },
+    {
+      "latin": "tenyan",
+      "amharic": "ተንያን"
+    },
+    {
+      "latin": "tenyachu",
+      "amharic": "ተንያቹ"
+    },
+    {
+      "latin": "tenyu",
+      "amharic": "ተንዩ"
+    },
+    {
+      "latin": "negere",
+      "amharic": "ነገረ"
+    },
+    {
+      "latin": "negerech",
+      "amharic": "ነገረች"
+    },
+    {
+      "latin": "negerun",
+      "amharic": "ነገሩን"
+    },
+    {
+      "latin": "negerk",
+      "amharic": "ነገርክ"
+    },
+    {
+      "latin": "negersh",
+      "amharic": "ነገርሽ"
+    },
+    {
+      "latin": "negerku",
+      "amharic": "ነገርኩ"
+    },
+    {
+      "latin": "negerachu",
+      "amharic": "ነገራቹ"
+    },
+    {
+      "latin": "sammau",
+      "amharic": "ሳምማኡ"
+    },
+    {
+      "latin": "sammah",
+      "amharic": "ሳምማህ"
+    },
+    {
+      "latin": "sammash",
+      "amharic": "ሳምማሽ"
+    },
+    {
+      "latin": "samma",
+      "amharic": "ሳምማ"
+    },
+    {
+      "latin": "sammat",
+      "amharic": "ሳምማት"
+    },
+    {
+      "latin": "samman",
+      "amharic": "ሳምማን"
+    },
+    {
+      "latin": "sammachu",
+      "amharic": "ሳምማቹ"
+    },
+    {
+      "latin": "sammu",
+      "amharic": "ሳምሙ"
+    },
+    {
+      "latin": "ayehu",
+      "amharic": "አየሁ"
+    },
+    {
+      "latin": "ayeh",
+      "amharic": "አየህ"
+    },
+    {
+      "latin": "ayesh",
+      "amharic": "አየሽ"
+    },
+    {
+      "latin": "aye",
+      "amharic": "አየ"
+    },
+    {
+      "latin": "ayech",
+      "amharic": "አየች"
+    },
+    {
+      "latin": "ayen",
+      "amharic": "አየን"
+    },
+    {
+      "latin": "ayachu",
+      "amharic": "አያቹ"
+    },
+    {
+      "latin": "ayu",
+      "amharic": "አዩ"
+    },
+    {
+      "latin": "aderegku",
+      "amharic": "አደረግኩ"
+    },
+    {
+      "latin": "aderegk",
+      "amharic": "አደረግክ"
+    },
+    {
+      "latin": "aderegsh",
+      "amharic": "አደረግሽ"
+    },
+    {
+      "latin": "aderege",
+      "amharic": "አደረገ"
+    },
+    {
+      "latin": "aderegech",
+      "amharic": "አደረገች"
+    },
+    {
+      "latin": "aderegn",
+      "amharic": "አደረኝ"
+    },
+    {
+      "latin": "aderegu",
+      "amharic": "አደረጉ"
+    },
+    {
+      "latin": "wededku",
+      "amharic": "ወደድኩ"
+    },
+    {
+      "latin": "wededk",
+      "amharic": "ወደድክ"
+    },
+    {
+      "latin": "wededsh",
+      "amharic": "ወደድሽ"
+    },
+    {
+      "latin": "wodede",
+      "amharic": "ዎደደ"
+    },
+    {
+      "latin": "wodedech",
+      "amharic": "ዎደደች"
+    },
+    {
+      "latin": "wodedn",
+      "amharic": "ዎደድን"
+    },
+    {
+      "latin": "wodedu",
+      "amharic": "ዎደዱ"
+    },
+    {
+      "latin": "serahu",
+      "amharic": "ሰራሁ"
+    },
+    {
+      "latin": "serah",
+      "amharic": "ሰራህ"
+    },
+    {
+      "latin": "serash",
+      "amharic": "ሰራሽ"
+    },
+    {
+      "latin": "sera",
+      "amharic": "ሰራ"
+    },
+    {
+      "latin": "serat",
+      "amharic": "ሰራት"
+    },
+    {
+      "latin": "seran",
+      "amharic": "ሰራን"
+    },
+    {
+      "latin": "serachu",
+      "amharic": "ሰራቹ"
+    },
+    {
+      "latin": "seru",
+      "amharic": "ሰሩ"
+    },
+    {
+      "latin": "gezahu",
+      "amharic": "ገዛሁ"
+    },
+    {
+      "latin": "gezah",
+      "amharic": "ገዛህ"
+    },
+    {
+      "latin": "gezash",
+      "amharic": "ገዛሽ"
+    },
+    {
+      "latin": "geza",
+      "amharic": "ገዛ"
+    },
+    {
+      "latin": "gezat",
+      "amharic": "ገዛት"
+    },
+    {
+      "latin": "gezan",
+      "amharic": "ገዛን"
+    },
+    {
+      "latin": "gezachu",
+      "amharic": "ገዛቹ"
+    },
+    {
+      "latin": "gezu",
+      "amharic": "ገዙ"
+    },
+    {
+      "latin": "safku",
+      "amharic": "ሳፍኩ"
+    },
+    {
+      "latin": "safk",
+      "amharic": "ሳፍክ"
+    },
+    {
+      "latin": "safsh",
+      "amharic": "ሳፍሽ"
+    },
+    {
+      "latin": "safe",
+      "amharic": "ሳፈ"
+    },
+    {
+      "latin": "safech",
+      "amharic": "ሳፈች"
+    },
+    {
+      "latin": "safn",
+      "amharic": "ሳፍን"
+    },
+    {
+      "latin": "safu",
+      "amharic": "ሳፉ"
+    },
+    {
+      "latin": "anebebku",
+      "amharic": "አነበብኩ"
+    },
+    {
+      "latin": "anebebk",
+      "amharic": "አነበብክ"
+    },
+    {
+      "latin": "anebebsh",
+      "amharic": "አነበብሽ"
+    },
+    {
+      "latin": "anebebe",
+      "amharic": "አነበበ"
+    },
+    {
+      "latin": "anebebech",
+      "amharic": "አነበበች"
+    },
+    {
+      "latin": "anebebn",
+      "amharic": "አነበብን"
+    },
+    {
+      "latin": "anebebu",
+      "amharic": "አነበቡ"
+    },
+    {
+      "latin": "felegku",
+      "amharic": "ፈለግኩ"
+    },
+    {
+      "latin": "felegk",
+      "amharic": "ፈለግክ"
+    },
+    {
+      "latin": "felegsh",
+      "amharic": "ፈለግሽ"
+    },
+    {
+      "latin": "felege",
+      "amharic": "ፈለገ"
+    },
+    {
+      "latin": "felegech",
+      "amharic": "ፈለገች"
+    },
+    {
+      "latin": "felegn",
+      "amharic": "ፈለኝ"
+    },
+    {
+      "latin": "felegu",
+      "amharic": "ፈለጉ"
+    },
+    {
+      "latin": "tiru",
+      "amharic": "ቲሩ"
+    },
+    {
+      "latin": "mefu",
+      "amharic": "መፉ"
+    },
+    {
+      "latin": "tiliq",
+      "amharic": "ቲሊቅ"
+    },
+    {
+      "latin": "tenesh",
+      "amharic": "ተነሽ"
+    },
+    {
+      "latin": "rejem",
+      "amharic": "ረጀም"
+    },
+    {
+      "latin": "achir",
+      "amharic": "አቺር"
+    },
+    {
+      "latin": "qenja",
+      "amharic": "ቀንጃ"
+    },
+    {
+      "latin": "deg",
+      "amharic": "ደግ"
+    },
+    {
+      "latin": "keffu",
+      "amharic": "ከፍፉ"
+    },
+    {
+      "latin": "lezzan",
+      "amharic": "ለዝዛን"
+    },
+    {
+      "latin": "chiss",
+      "amharic": "ቺስስ"
+    },
+    {
+      "latin": "qelem",
+      "amharic": "ቀለም"
+    },
+    {
+      "latin": "nech",
+      "amharic": "ነች"
+    },
+    {
+      "latin": "tequr",
+      "amharic": "ተቁር"
+    },
+    {
+      "latin": "qey",
+      "amharic": "ቀይ"
+    },
+    {
+      "latin": "bicha",
+      "amharic": "ቢቻ"
+    },
+    {
+      "latin": "arenguadie",
+      "amharic": "አረንጓዴ"
+    },
+    {
+      "latin": "semayawi",
+      "amharic": "ሰማያዊ"
+    },
+    {
+      "latin": "buni",
+      "amharic": "ቡኒ"
+    },
+    {
+      "latin": "wefram",
+      "amharic": "ወፍራም"
+    },
+    {
+      "latin": "qechin",
+      "amharic": "ቀቺን"
+    },
+    {
+      "latin": "haptam",
+      "amharic": "ሃፕታም"
+    },
+    {
+      "latin": "deha",
+      "amharic": "ደሃ"
+    },
+    {
+      "latin": "tinsu",
+      "amharic": "ቲንሱ"
+    },
+    {
+      "latin": "adis",
+      "amharic": "አዲስ"
+    },
+    {
+      "latin": "aroqie",
+      "amharic": "አሮቄ"
+    },
+    {
+      "latin": "qezqaza",
+      "amharic": "ቀዝቃዛ"
+    },
+    {
+      "latin": "muq",
+      "amharic": "ሙቅ"
+    },
+    {
+      "latin": "fetun",
+      "amharic": "ፈቱን"
+    },
+    {
+      "latin": "zegay",
+      "amharic": "ዘጋይ"
+    },
+    {
+      "latin": "kebad",
+      "amharic": "ከባድ"
+    },
+    {
+      "latin": "qelal",
+      "amharic": "ቀላል"
+    },
+    {
+      "latin": "fiker",
+      "amharic": "ፊከር"
+    },
+    {
+      "latin": "selamawi",
+      "amharic": "ሰላማዊ"
+    },
+    {
+      "latin": "andnet",
+      "amharic": "አንድነት"
+    },
+    {
+      "latin": "natanet",
+      "amharic": "ናታነት"
+    },
+    {
+      "latin": "hbret",
+      "amharic": "ህብረት"
+    },
+    {
+      "latin": "hizb",
+      "amharic": "ሂዝብ"
+    },
+    {
+      "latin": "mengist",
+      "amharic": "መንጊስት"
+    },
+    {
+      "latin": "heg",
+      "amharic": "ሀግ"
+    },
+    {
+      "latin": "fered",
+      "amharic": "ፈረድ"
+    },
+    {
+      "latin": "eqed",
+      "amharic": "እቀድ"
+    },
+    {
+      "latin": "wutet",
+      "amharic": "ዉተት"
+    },
+    {
+      "latin": "mahiber",
+      "amharic": "ማሂበር"
+    },
+    {
+      "latin": "kibre",
+      "amharic": "ኪብረ"
+    },
+    {
+      "latin": "tifat",
+      "amharic": "ቲፋት"
+    },
+    {
+      "latin": "amlak",
+      "amharic": "አምላክ"
+    },
+    {
+      "latin": "egziabiher",
+      "amharic": "እግዚአቢሀር"
+    },
+    {
+      "latin": "kristos",
+      "amharic": "ክሪስቶስ"
+    },
+    {
+      "latin": "mariam",
+      "amharic": "ማሪአም"
+    },
+    {
+      "latin": "tewahedo",
+      "amharic": "ተዋሀዶ"
+    },
+    {
+      "latin": "betekristiyan",
+      "amharic": "በተክሪስቲያን"
+    },
+    {
+      "latin": "mesgid",
+      "amharic": "መስጊድ"
+    },
+    {
+      "latin": "haymanot",
+      "amharic": "ሃይማኖት"
+    },
+    {
+      "latin": "tselot",
+      "amharic": "ጸሎት"
+    },
+    {
+      "latin": "qedase",
+      "amharic": "ቀዳሰ"
+    },
+    {
+      "latin": "be'al",
+      "amharic": "በአል"
+    },
+    {
+      "latin": "fasika",
+      "amharic": "ፋሲካ"
+    },
+    {
+      "latin": "genna",
+      "amharic": "ገንና"
+    },
+    {
+      "latin": "mesqel",
+      "amharic": "መስቀል"
+    },
+    {
+      "latin": "enqutatash",
+      "amharic": "እንቁታታሽ"
+    },
+    {
+      "latin": "timqet",
+      "amharic": "ቲምቀት"
+    },
+    {
+      "latin": "rufael",
+      "amharic": "ሩፋእል"
+    },
+    {
+      "latin": "mikael",
+      "amharic": "ሚካእል"
+    },
+    {
+      "latin": "gebriel",
+      "amharic": "ገብሬል"
+    },
+    {
+      "latin": "selamie",
+      "amharic": "ሰላሜ"
+    },
+    {
+      "latin": "selameh",
+      "amharic": "ሰላመህ"
+    },
+    {
+      "latin": "selamesh",
+      "amharic": "ሰላመሽ"
+    },
+    {
+      "latin": "selamu",
+      "amharic": "ሰላሙ"
+    },
+    {
+      "latin": "selamwa",
+      "amharic": "ሰላሟ"
+    },
+    {
+      "latin": "selamachin",
+      "amharic": "ሰላማቺን"
+    },
+    {
+      "latin": "selamachu",
+      "amharic": "ሰላማቹ"
+    },
+    {
+      "latin": "selamachew",
+      "amharic": "ሰላማቸው"
+    },
+    {
+      "latin": "endietie",
+      "amharic": "እንዴቴ"
+    },
+    {
+      "latin": "endieteh",
+      "amharic": "እንዴተህ"
+    },
+    {
+      "latin": "endietesh",
+      "amharic": "እንዴተሽ"
+    },
+    {
+      "latin": "endietu",
+      "amharic": "እንዴቱ"
+    },
+    {
+      "latin": "endietwa",
+      "amharic": "እንዴቷ"
+    },
+    {
+      "latin": "endietachin",
+      "amharic": "እንዴታቺን"
+    },
+    {
+      "latin": "endietachu",
+      "amharic": "እንዴታቹ"
+    },
+    {
+      "latin": "endietachew",
+      "amharic": "እንዴታቸው"
+    },
+    {
+      "latin": "neshie",
+      "amharic": "ነሼ"
+    },
+    {
+      "latin": "nesheh",
+      "amharic": "ነሸህ"
+    },
+    {
+      "latin": "neshesh",
+      "amharic": "ነሸሽ"
+    },
+    {
+      "latin": "neshu",
+      "amharic": "ነሹ"
+    },
+    {
+      "latin": "neshwa",
+      "amharic": "ነሿ"
+    },
+    {
+      "latin": "neshachin",
+      "amharic": "ነሻቺን"
+    },
+    {
+      "latin": "neshachu",
+      "amharic": "ነሻቹ"
+    },
+    {
+      "latin": "neshachew",
+      "amharic": "ነሻቸው"
+    },
+    {
+      "latin": "nehie",
+      "amharic": "ነሄ"
+    },
+    {
+      "latin": "neheh",
+      "amharic": "ነሀህ"
+    },
+    {
+      "latin": "nehesh",
+      "amharic": "ነሀሽ"
+    },
+    {
+      "latin": "nehu",
+      "amharic": "ነሁ"
+    },
+    {
+      "latin": "nehwa",
+      "amharic": "ነኋ"
+    },
+    {
+      "latin": "nehachin",
+      "amharic": "ነሃቺን"
+    },
+    {
+      "latin": "nehachu",
+      "amharic": "ነሃቹ"
+    },
+    {
+      "latin": "nehachew",
+      "amharic": "ነሃቸው"
+    },
+    {
+      "latin": "notie",
+      "amharic": "ኖቴ"
+    },
+    {
+      "latin": "noteh",
+      "amharic": "ኖተህ"
+    },
+    {
+      "latin": "notesh",
+      "amharic": "ኖተሽ"
+    },
+    {
+      "latin": "notu",
+      "amharic": "ኖቱ"
+    },
+    {
+      "latin": "notwa",
+      "amharic": "ኖቷ"
+    },
+    {
+      "latin": "notachin",
+      "amharic": "ኖታቺን"
+    },
+    {
+      "latin": "notachu",
+      "amharic": "ኖታቹ"
+    },
+    {
+      "latin": "notachew",
+      "amharic": "ኖታቸው"
+    },
+    {
+      "latin": "nachewie",
+      "amharic": "ናቸዌ"
+    },
+    {
+      "latin": "nacheweh",
+      "amharic": "ናቸወህ"
+    },
+    {
+      "latin": "nachewesh",
+      "amharic": "ናቸወሽ"
+    },
+    {
+      "latin": "nachewu",
+      "amharic": "ናቸዉ"
+    },
+    {
+      "latin": "nachewwa",
+      "amharic": "ናቸውዋ"
+    },
+    {
+      "latin": "nachewachin",
+      "amharic": "ናቸዋቺን"
+    },
+    {
+      "latin": "nachewachu",
+      "amharic": "ናቸዋቹ"
+    },
+    {
+      "latin": "nachewachew",
+      "amharic": "ናቸዋቸው"
+    },
+    {
+      "latin": "dehnaie",
+      "amharic": "ደህናኤ"
+    },
+    {
+      "latin": "dehnaeh",
+      "amharic": "ደህናእህ"
+    },
+    {
+      "latin": "dehnaesh",
+      "amharic": "ደህናእሽ"
+    },
+    {
+      "latin": "dehnau",
+      "amharic": "ደህናኡ"
+    },
+    {
+      "latin": "dehnawa",
+      "amharic": "ደህናዋ"
+    },
+    {
+      "latin": "dehnaachin",
+      "amharic": "ደህናአቺን"
+    },
+    {
+      "latin": "dehnaachu",
+      "amharic": "ደህናአቹ"
+    },
+    {
+      "latin": "dehnaachew",
+      "amharic": "ደህናአቸው"
+    },
+    {
+      "latin": "amesegenalehuie",
+      "amharic": "አመሰገናለሁኤ"
+    },
+    {
+      "latin": "amesegenalehueh",
+      "amharic": "አመሰገናለሁእህ"
+    },
+    {
+      "latin": "amesegenalehuesh",
+      "amharic": "አመሰገናለሁእሽ"
+    },
+    {
+      "latin": "amesegenalehuu",
+      "amharic": "አመሰገናለሁኡ"
+    },
+    {
+      "latin": "amesegenalehuwa",
+      "amharic": "አመሰገናለሁዋ"
+    },
+    {
+      "latin": "amesegenalehuachin",
+      "amharic": "አመሰገናለኋቺን"
+    },
+    {
+      "latin": "amesegenalehuachu",
+      "amharic": "አመሰገናለኋቹ"
+    },
+    {
+      "latin": "amesegenalehuachew",
+      "amharic": "አመሰገናለኋቸው"
+    },
+    {
+      "latin": "yiqirtaie",
+      "amharic": "ዪቂርታኤ"
+    },
+    {
+      "latin": "yiqirtaeh",
+      "amharic": "ዪቂርታእህ"
+    },
+    {
+      "latin": "yiqirtaesh",
+      "amharic": "ዪቂርታእሽ"
+    },
+    {
+      "latin": "yiqirtau",
+      "amharic": "ዪቂርታኡ"
+    },
+    {
+      "latin": "yiqirtawa",
+      "amharic": "ዪቂርታዋ"
+    },
+    {
+      "latin": "yiqirtaachin",
+      "amharic": "ዪቂርታአቺን"
+    },
+    {
+      "latin": "yiqirtaachu",
+      "amharic": "ዪቂርታአቹ"
+    },
+    {
+      "latin": "yiqirtaachew",
+      "amharic": "ዪቂርታአቸው"
+    },
+    {
+      "latin": "betamie",
+      "amharic": "በታሜ"
+    },
+    {
+      "latin": "betameh",
+      "amharic": "በታመህ"
+    },
+    {
+      "latin": "betamesh",
+      "amharic": "በታመሽ"
+    },
+    {
+      "latin": "betamu",
+      "amharic": "በታሙ"
+    },
+    {
+      "latin": "betamwa",
+      "amharic": "በታሟ"
+    },
+    {
+      "latin": "betamachin",
+      "amharic": "በታማቺን"
+    },
+    {
+      "latin": "betamachu",
+      "amharic": "በታማቹ"
+    },
+    {
+      "latin": "betamachew",
+      "amharic": "በታማቸው"
+    },
+    {
+      "latin": "konjoie",
+      "amharic": "ኮንጆኤ"
+    },
+    {
+      "latin": "konjoeh",
+      "amharic": "ኮንጆእህ"
+    },
+    {
+      "latin": "konjoesh",
+      "amharic": "ኮንጆእሽ"
+    },
+    {
+      "latin": "konjou",
+      "amharic": "ኮንጆኡ"
+    },
+    {
+      "latin": "konjowa",
+      "amharic": "ኮንጆዋ"
+    },
+    {
+      "latin": "konjoachin",
+      "amharic": "ኮንጆአቺን"
+    },
+    {
+      "latin": "konjoachu",
+      "amharic": "ኮንጆአቹ"
+    },
+    {
+      "latin": "konjoachew",
+      "amharic": "ኮንጆአቸው"
+    },
+    {
+      "latin": "gobezie",
+      "amharic": "ጎበዜ"
+    },
+    {
+      "latin": "gobezeh",
+      "amharic": "ጎበዘህ"
+    },
+    {
+      "latin": "gobezesh",
+      "amharic": "ጎበዘሽ"
+    },
+    {
+      "latin": "gobezu",
+      "amharic": "ጎበዙ"
+    },
+    {
+      "latin": "gobezwa",
+      "amharic": "ጎበዟ"
+    },
+    {
+      "latin": "gobezachin",
+      "amharic": "ጎበዛቺን"
+    },
+    {
+      "latin": "gobezachu",
+      "amharic": "ጎበዛቹ"
+    },
+    {
+      "latin": "gobezachew",
+      "amharic": "ጎበዛቸው"
+    },
+    {
+      "latin": "owie",
+      "amharic": "ኦዌ"
+    },
+    {
+      "latin": "oweh",
+      "amharic": "ኦወህ"
+    },
+    {
+      "latin": "owesh",
+      "amharic": "ኦወሽ"
+    },
+    {
+      "latin": "owu",
+      "amharic": "ኦዉ"
+    },
+    {
+      "latin": "owwa",
+      "amharic": "ኦውዋ"
+    },
+    {
+      "latin": "owachin",
+      "amharic": "ኦዋቺን"
+    },
+    {
+      "latin": "owachu",
+      "amharic": "ኦዋቹ"
+    },
+    {
+      "latin": "owachew",
+      "amharic": "ኦዋቸው"
+    },
+    {
+      "latin": "aydelemie",
+      "amharic": "አይደለሜ"
+    },
+    {
+      "latin": "aydelemeh",
+      "amharic": "አይደለመህ"
+    },
+    {
+      "latin": "aydelemesh",
+      "amharic": "አይደለመሽ"
+    },
+    {
+      "latin": "aydelemu",
+      "amharic": "አይደለሙ"
+    },
+    {
+      "latin": "aydelemwa",
+      "amharic": "አይደለሟ"
+    },
+    {
+      "latin": "aydelemachin",
+      "amharic": "አይደለማቺን"
+    },
+    {
+      "latin": "aydelemachu",
+      "amharic": "አይደለማቹ"
+    },
+    {
+      "latin": "aydelemachew",
+      "amharic": "አይደለማቸው"
+    },
+    {
+      "latin": "eshiie",
+      "amharic": "እሺኤ"
+    },
+    {
+      "latin": "eshieh",
+      "amharic": "እሼህ"
+    },
+    {
+      "latin": "eshiesh",
+      "amharic": "እሼሽ"
+    },
+    {
+      "latin": "eshiu",
+      "amharic": "እሺኡ"
+    },
+    {
+      "latin": "eshiwa",
+      "amharic": "እሺዋ"
+    },
+    {
+      "latin": "eshiachin",
+      "amharic": "እሺአቺን"
+    },
+    {
+      "latin": "eshiachu",
+      "amharic": "እሺአቹ"
+    },
+    {
+      "latin": "eshiachew",
+      "amharic": "እሺአቸው"
+    },
+    {
+      "latin": "menemie",
+      "amharic": "መነሜ"
+    },
+    {
+      "latin": "menemeh",
+      "amharic": "መነመህ"
+    },
+    {
+      "latin": "menemesh",
+      "amharic": "መነመሽ"
+    },
+    {
+      "latin": "menemu",
+      "amharic": "መነሙ"
+    },
+    {
+      "latin": "menemwa",
+      "amharic": "መነሟ"
+    },
+    {
+      "latin": "menemachin",
+      "amharic": "መነማቺን"
+    },
+    {
+      "latin": "menemachu",
+      "amharic": "መነማቹ"
+    },
+    {
+      "latin": "menemachew",
+      "amharic": "መነማቸው"
+    },
+    {
+      "latin": "chiggerie",
+      "amharic": "ቺግገሬ"
+    },
+    {
+      "latin": "chiggereh",
+      "amharic": "ቺግገረህ"
+    },
+    {
+      "latin": "chiggeresh",
+      "amharic": "ቺግገረሽ"
+    },
+    {
+      "latin": "chiggeru",
+      "amharic": "ቺግገሩ"
+    },
+    {
+      "latin": "chiggerwa",
+      "amharic": "ቺግገሯ"
+    },
+    {
+      "latin": "chiggerachin",
+      "amharic": "ቺግገራቺን"
+    },
+    {
+      "latin": "chiggerachu",
+      "amharic": "ቺግገራቹ"
+    },
+    {
+      "latin": "chiggerachew",
+      "amharic": "ቺግገራቸው"
+    },
+    {
+      "latin": "yelemie",
+      "amharic": "የለሜ"
+    },
+    {
+      "latin": "yelemeh",
+      "amharic": "የለመህ"
+    },
+    {
+      "latin": "yelemesh",
+      "amharic": "የለመሽ"
+    },
+    {
+      "latin": "yelemu",
+      "amharic": "የለሙ"
+    },
+    {
+      "latin": "yelemwa",
+      "amharic": "የለሟ"
+    },
+    {
+      "latin": "yelemachin",
+      "amharic": "የለማቺን"
+    },
+    {
+      "latin": "yelemachu",
+      "amharic": "የለማቹ"
+    },
+    {
+      "latin": "yelemachew",
+      "amharic": "የለማቸው"
+    },
+    {
+      "latin": "aleie",
+      "amharic": "አለኤ"
+    },
+    {
+      "latin": "aleeh",
+      "amharic": "አለእህ"
+    },
+    {
+      "latin": "aleesh",
+      "amharic": "አለእሽ"
+    },
+    {
+      "latin": "aleu",
+      "amharic": "አለኡ"
+    },
+    {
+      "latin": "alewa",
+      "amharic": "አለዋ"
+    },
+    {
+      "latin": "aleachin",
+      "amharic": "አለአቺን"
+    },
+    {
+      "latin": "aleachu",
+      "amharic": "አለአቹ"
+    },
+    {
+      "latin": "aleachew",
+      "amharic": "አለአቸው"
+    },
+    {
+      "latin": "alewie",
+      "amharic": "አለዌ"
+    },
+    {
+      "latin": "aleweh",
+      "amharic": "አለወህ"
+    },
+    {
+      "latin": "alewesh",
+      "amharic": "አለወሽ"
+    },
+    {
+      "latin": "alewu",
+      "amharic": "አለዉ"
+    },
+    {
+      "latin": "alewwa",
+      "amharic": "አለውዋ"
+    },
+    {
+      "latin": "alewachin",
+      "amharic": "አለዋቺን"
+    },
+    {
+      "latin": "alewachu",
+      "amharic": "አለዋቹ"
+    },
+    {
+      "latin": "alewachew",
+      "amharic": "አለዋቸው"
+    },
+    {
+      "latin": "alatie",
+      "amharic": "አላቴ"
+    },
+    {
+      "latin": "alateh",
+      "amharic": "አላተህ"
+    },
+    {
+      "latin": "alatesh",
+      "amharic": "አላተሽ"
+    },
+    {
+      "latin": "alatu",
+      "amharic": "አላቱ"
+    },
+    {
+      "latin": "alatwa",
+      "amharic": "አላቷ"
+    },
+    {
+      "latin": "alatachin",
+      "amharic": "አላታቺን"
+    },
+    {
+      "latin": "alatachu",
+      "amharic": "አላታቹ"
+    },
+    {
+      "latin": "alatachew",
+      "amharic": "አላታቸው"
+    },
+    {
+      "latin": "alenie",
+      "amharic": "አለኔ"
+    },
+    {
+      "latin": "aleneh",
+      "amharic": "አለነህ"
+    },
+    {
+      "latin": "alenesh",
+      "amharic": "አለነሽ"
+    },
+    {
+      "latin": "alenu",
+      "amharic": "አለኑ"
+    },
+    {
+      "latin": "alenwa",
+      "amharic": "አለኗ"
+    },
+    {
+      "latin": "alenachin",
+      "amharic": "አለናቺን"
+    },
+    {
+      "latin": "alenachu",
+      "amharic": "አለናቹ"
+    },
+    {
+      "latin": "alenachew",
+      "amharic": "አለናቸው"
+    },
+    {
+      "latin": "alachewie",
+      "amharic": "አላቸዌ"
+    },
+    {
+      "latin": "alacheweh",
+      "amharic": "አላቸወህ"
+    },
+    {
+      "latin": "alachewesh",
+      "amharic": "አላቸወሽ"
+    },
+    {
+      "latin": "alachewu",
+      "amharic": "አላቸዉ"
+    },
+    {
+      "latin": "alachewwa",
+      "amharic": "አላቸውዋ"
+    },
+    {
+      "latin": "alachewachin",
+      "amharic": "አላቸዋቺን"
+    },
+    {
+      "latin": "alachewachu",
+      "amharic": "አላቸዋቹ"
+    },
+    {
+      "latin": "alachewachew",
+      "amharic": "አላቸዋቸው"
+    },
+    {
+      "latin": "newie",
+      "amharic": "ነዌ"
+    },
+    {
+      "latin": "neweh",
+      "amharic": "ነወህ"
+    },
+    {
+      "latin": "newesh",
+      "amharic": "ነወሽ"
+    },
+    {
+      "latin": "newu",
+      "amharic": "ነዉ"
+    },
+    {
+      "latin": "newwa",
+      "amharic": "ነውዋ"
+    },
+    {
+      "latin": "newachin",
+      "amharic": "ነዋቺን"
+    },
+    {
+      "latin": "newachu",
+      "amharic": "ነዋቹ"
+    },
+    {
+      "latin": "newachew",
+      "amharic": "ነዋቸው"
+    },
+    {
+      "latin": "natie",
+      "amharic": "ናቴ"
+    },
+    {
+      "latin": "nateh",
+      "amharic": "ናተህ"
+    },
+    {
+      "latin": "natesh",
+      "amharic": "ናተሽ"
+    },
+    {
+      "latin": "natu",
+      "amharic": "ናቱ"
+    },
+    {
+      "latin": "natwa",
+      "amharic": "ናቷ"
+    },
+    {
+      "latin": "natachin",
+      "amharic": "ናታቺን"
+    },
+    {
+      "latin": "natachu",
+      "amharic": "ናታቹ"
+    },
+    {
+      "latin": "natachew",
+      "amharic": "ናታቸው"
+    },
+    {
+      "latin": "nagnie",
+      "amharic": "ናኜ"
+    },
+    {
+      "latin": "nagneh",
+      "amharic": "ናኘህ"
+    },
+    {
+      "latin": "nagnesh",
+      "amharic": "ናኘሽ"
+    },
+    {
+      "latin": "nagnu",
+      "amharic": "ናኙ"
+    },
+    {
+      "latin": "nagnwa",
+      "amharic": "ናኟ"
+    },
+    {
+      "latin": "nagnachin",
+      "amharic": "ናኛቺን"
+    },
+    {
+      "latin": "nagnachu",
+      "amharic": "ናኛቹ"
+    },
+    {
+      "latin": "nagnachew",
+      "amharic": "ናኛቸው"
+    },
+    {
+      "latin": "nenie",
+      "amharic": "ነኔ"
+    },
+    {
+      "latin": "neneh",
+      "amharic": "ነነህ"
+    },
+    {
+      "latin": "nenesh",
+      "amharic": "ነነሽ"
+    },
+    {
+      "latin": "nenu",
+      "amharic": "ነኑ"
+    },
+    {
+      "latin": "nenwa",
+      "amharic": "ነኗ"
+    },
+    {
+      "latin": "nenachin",
+      "amharic": "ነናቺን"
+    },
+    {
+      "latin": "nenachu",
+      "amharic": "ነናቹ"
+    },
+    {
+      "latin": "nenachew",
+      "amharic": "ነናቸው"
+    },
+    {
+      "latin": "nachuie",
+      "amharic": "ናቹኤ"
+    },
+    {
+      "latin": "nachueh",
+      "amharic": "ናቹእህ"
+    },
+    {
+      "latin": "nachuesh",
+      "amharic": "ናቹእሽ"
+    },
+    {
+      "latin": "nachuu",
+      "amharic": "ናቹኡ"
+    },
+    {
+      "latin": "nachuwa",
+      "amharic": "ናቹዋ"
+    },
+    {
+      "latin": "nachuachin",
+      "amharic": "ናቿቺን"
+    },
+    {
+      "latin": "nachuachu",
+      "amharic": "ናቿቹ"
+    },
+    {
+      "latin": "nachuachew",
+      "amharic": "ናቿቸው"
+    },
+    {
+      "latin": "eneie",
+      "amharic": "እነኤ"
+    },
+    {
+      "latin": "eneeh",
+      "amharic": "እነእህ"
+    },
+    {
+      "latin": "eneesh",
+      "amharic": "እነእሽ"
+    },
+    {
+      "latin": "eneu",
+      "amharic": "እነኡ"
+    },
+    {
+      "latin": "enewa",
+      "amharic": "እነዋ"
+    },
+    {
+      "latin": "eneachin",
+      "amharic": "እነአቺን"
+    },
+    {
+      "latin": "eneachu",
+      "amharic": "እነአቹ"
+    },
+    {
+      "latin": "eneachew",
+      "amharic": "እነአቸው"
+    },
+    {
+      "latin": "anteie",
+      "amharic": "አንተኤ"
+    },
+    {
+      "latin": "anteeh",
+      "amharic": "አንተእህ"
+    },
+    {
+      "latin": "anteesh",
+      "amharic": "አንተእሽ"
+    },
+    {
+      "latin": "anteu",
+      "amharic": "አንተኡ"
+    },
+    {
+      "latin": "antewa",
+      "amharic": "አንተዋ"
+    },
+    {
+      "latin": "anteachin",
+      "amharic": "አንተአቺን"
+    },
+    {
+      "latin": "anteachu",
+      "amharic": "አንተአቹ"
+    },
+    {
+      "latin": "anteachew",
+      "amharic": "አንተአቸው"
+    },
+    {
+      "latin": "anchiie",
+      "amharic": "አንቺኤ"
+    },
+    {
+      "latin": "anchieh",
+      "amharic": "አንቼህ"
+    },
+    {
+      "latin": "anchiesh",
+      "amharic": "አንቼሽ"
+    },
+    {
+      "latin": "anchiu",
+      "amharic": "አንቺኡ"
+    },
+    {
+      "latin": "anchiwa",
+      "amharic": "አንቺዋ"
+    },
+    {
+      "latin": "anchiachin",
+      "amharic": "አንቺአቺን"
+    },
+    {
+      "latin": "anchiachu",
+      "amharic": "አንቺአቹ"
+    },
+    {
+      "latin": "anchiachew",
+      "amharic": "አንቺአቸው"
+    },
+    {
+      "latin": "ersoie",
+      "amharic": "እርሶኤ"
+    },
+    {
+      "latin": "ersoeh",
+      "amharic": "እርሶእህ"
+    },
+    {
+      "latin": "ersoesh",
+      "amharic": "እርሶእሽ"
+    },
+    {
+      "latin": "ersou",
+      "amharic": "እርሶኡ"
+    },
+    {
+      "latin": "ersowa",
+      "amharic": "እርሶዋ"
+    },
+    {
+      "latin": "ersoachin",
+      "amharic": "እርሶአቺን"
+    },
+    {
+      "latin": "ersoachu",
+      "amharic": "እርሶአቹ"
+    },
+    {
+      "latin": "ersoachew",
+      "amharic": "እርሶአቸው"
+    },
+    {
+      "latin": "essuie",
+      "amharic": "እስሱኤ"
+    },
+    {
+      "latin": "essueh",
+      "amharic": "እስሱእህ"
+    },
+    {
+      "latin": "essuesh",
+      "amharic": "እስሱእሽ"
+    },
+    {
+      "latin": "essuu",
+      "amharic": "እስሱኡ"
+    },
+    {
+      "latin": "essuwa",
+      "amharic": "እስሱዋ"
+    },
+    {
+      "latin": "essuachin",
+      "amharic": "እስሷቺን"
+    },
+    {
+      "latin": "essuachu",
+      "amharic": "እስሷቹ"
+    },
+    {
+      "latin": "essuachew",
+      "amharic": "እስሷቸው"
+    },
+    {
+      "latin": "esswaie",
+      "amharic": "እስሷኤ"
+    },
+    {
+      "latin": "esswaeh",
+      "amharic": "እስሷእህ"
+    },
+    {
+      "latin": "esswaesh",
+      "amharic": "እስሷእሽ"
+    },
+    {
+      "latin": "esswau",
+      "amharic": "እስሷኡ"
+    },
+    {
+      "latin": "esswawa",
+      "amharic": "እስሷዋ"
+    },
+    {
+      "latin": "esswaachin",
+      "amharic": "እስሷአቺን"
+    },
+    {
+      "latin": "esswaachu",
+      "amharic": "እስሷአቹ"
+    },
+    {
+      "latin": "esswaachew",
+      "amharic": "እስሷአቸው"
+    },
+    {
+      "latin": "egnaie",
+      "amharic": "እኛኤ"
+    },
+    {
+      "latin": "egnaeh",
+      "amharic": "እኛእህ"
+    },
+    {
+      "latin": "egnaesh",
+      "amharic": "እኛእሽ"
+    },
+    {
+      "latin": "egnau",
+      "amharic": "እኛኡ"
+    },
+    {
+      "latin": "egnawa",
+      "amharic": "እኛዋ"
+    },
+    {
+      "latin": "egnaachin",
+      "amharic": "እኛአቺን"
+    },
+    {
+      "latin": "egnaachu",
+      "amharic": "እኛአቹ"
+    },
+    {
+      "latin": "egnaachew",
+      "amharic": "እኛአቸው"
+    },
+    {
+      "latin": "enanteie",
+      "amharic": "እናንተኤ"
+    },
+    {
+      "latin": "enanteeh",
+      "amharic": "እናንተእህ"
+    },
+    {
+      "latin": "enanteesh",
+      "amharic": "እናንተእሽ"
+    },
+    {
+      "latin": "enanteu",
+      "amharic": "እናንተኡ"
+    },
+    {
+      "latin": "enantewa",
+      "amharic": "እናንተዋ"
+    },
+    {
+      "latin": "enanteachin",
+      "amharic": "እናንተአቺን"
+    },
+    {
+      "latin": "enanteachu",
+      "amharic": "እናንተአቹ"
+    },
+    {
+      "latin": "enanteachew",
+      "amharic": "እናንተአቸው"
+    },
+    {
+      "latin": "ennensuie",
+      "amharic": "እንነንሱኤ"
+    },
+    {
+      "latin": "ennensueh",
+      "amharic": "እንነንሱእህ"
+    },
+    {
+      "latin": "ennensuesh",
+      "amharic": "እንነንሱእሽ"
+    },
+    {
+      "latin": "ennensuu",
+      "amharic": "እንነንሱኡ"
+    },
+    {
+      "latin": "ennensuwa",
+      "amharic": "እንነንሱዋ"
+    },
+    {
+      "latin": "ennensuachin",
+      "amharic": "እንነንሷቺን"
+    },
+    {
+      "latin": "ennensuachu",
+      "amharic": "እንነንሷቹ"
+    },
+    {
+      "latin": "ennensuachew",
+      "amharic": "እንነንሷቸው"
+    },
+    {
+      "latin": "abatie",
+      "amharic": "አባቴ"
+    },
+    {
+      "latin": "abateh",
+      "amharic": "አባተህ"
+    },
+    {
+      "latin": "abatesh",
+      "amharic": "አባተሽ"
+    },
+    {
+      "latin": "abatu",
+      "amharic": "አባቱ"
+    },
+    {
+      "latin": "abatwa",
+      "amharic": "አባቷ"
+    },
+    {
+      "latin": "abatachin",
+      "amharic": "አባታቺን"
+    },
+    {
+      "latin": "abatachu",
+      "amharic": "አባታቹ"
+    },
+    {
+      "latin": "abatachew",
+      "amharic": "አባታቸው"
+    },
+    {
+      "latin": "enatie",
+      "amharic": "እናቴ"
+    },
+    {
+      "latin": "enateh",
+      "amharic": "እናተህ"
+    },
+    {
+      "latin": "enatesh",
+      "amharic": "እናተሽ"
+    },
+    {
+      "latin": "enatu",
+      "amharic": "እናቱ"
+    },
+    {
+      "latin": "enatwa",
+      "amharic": "እናቷ"
+    },
+    {
+      "latin": "enatachin",
+      "amharic": "እናታቺን"
+    },
+    {
+      "latin": "enatachu",
+      "amharic": "እናታቹ"
+    },
+    {
+      "latin": "enatachew",
+      "amharic": "እናታቸው"
+    },
+    {
+      "latin": "wondemie",
+      "amharic": "ዎንደሜ"
+    },
+    {
+      "latin": "wondemeh",
+      "amharic": "ዎንደመህ"
+    },
+    {
+      "latin": "wondemesh",
+      "amharic": "ዎንደመሽ"
+    },
+    {
+      "latin": "wondemu",
+      "amharic": "ዎንደሙ"
+    },
+    {
+      "latin": "wondemwa",
+      "amharic": "ዎንደሟ"
+    },
+    {
+      "latin": "wondemachin",
+      "amharic": "ዎንደማቺን"
+    },
+    {
+      "latin": "wondemachu",
+      "amharic": "ዎንደማቹ"
+    },
+    {
+      "latin": "wondemachew",
+      "amharic": "ዎንደማቸው"
+    },
+    {
+      "latin": "ehetie",
+      "amharic": "እሀቴ"
+    },
+    {
+      "latin": "eheteh",
+      "amharic": "እሀተህ"
+    },
+    {
+      "latin": "ehetesh",
+      "amharic": "እሀተሽ"
+    },
+    {
+      "latin": "ehetu",
+      "amharic": "እሀቱ"
+    },
+    {
+      "latin": "ehetwa",
+      "amharic": "እሀቷ"
+    },
+    {
+      "latin": "ehetachin",
+      "amharic": "እሀታቺን"
+    },
+    {
+      "latin": "ehetachu",
+      "amharic": "እሀታቹ"
+    },
+    {
+      "latin": "ehetachew",
+      "amharic": "እሀታቸው"
+    },
+    {
+      "latin": "lijie",
+      "amharic": "ሊጄ"
+    },
+    {
+      "latin": "lijeh",
+      "amharic": "ሊጀህ"
+    },
+    {
+      "latin": "lijesh",
+      "amharic": "ሊጀሽ"
+    },
+    {
+      "latin": "liju",
+      "amharic": "ሊጁ"
+    },
+    {
+      "latin": "lijwa",
+      "amharic": "ሊጇ"
+    },
+    {
+      "latin": "lijachin",
+      "amharic": "ሊጃቺን"
+    },
+    {
+      "latin": "lijachu",
+      "amharic": "ሊጃቹ"
+    },
+    {
+      "latin": "lijachew",
+      "amharic": "ሊጃቸው"
+    },
+    {
+      "latin": "setie",
+      "amharic": "ሰቴ"
+    },
+    {
+      "latin": "seteh",
+      "amharic": "ሰተህ"
+    },
+    {
+      "latin": "setesh",
+      "amharic": "ሰተሽ"
+    },
+    {
+      "latin": "setu",
+      "amharic": "ሰቱ"
+    },
+    {
+      "latin": "setwa",
+      "amharic": "ሰቷ"
+    },
+    {
+      "latin": "setachin",
+      "amharic": "ሰታቺን"
+    },
+    {
+      "latin": "setachu",
+      "amharic": "ሰታቹ"
+    },
+    {
+      "latin": "setachew",
+      "amharic": "ሰታቸው"
+    },
+    {
+      "latin": "wondie",
+      "amharic": "ዎንዴ"
+    },
+    {
+      "latin": "wondeh",
+      "amharic": "ዎንደህ"
+    },
+    {
+      "latin": "wondesh",
+      "amharic": "ዎንደሽ"
+    },
+    {
+      "latin": "wondu",
+      "amharic": "ዎንዱ"
+    },
+    {
+      "latin": "wondwa",
+      "amharic": "ዎንዷ"
+    },
+    {
+      "latin": "wondachin",
+      "amharic": "ዎንዳቺን"
+    },
+    {
+      "latin": "wondachu",
+      "amharic": "ዎንዳቹ"
+    },
+    {
+      "latin": "wondachew",
+      "amharic": "ዎንዳቸው"
+    },
+    {
+      "latin": "betesebie",
+      "amharic": "በተሰቤ"
+    },
+    {
+      "latin": "betesebeh",
+      "amharic": "በተሰበህ"
+    },
+    {
+      "latin": "betesebesh",
+      "amharic": "በተሰበሽ"
+    },
+    {
+      "latin": "betesebu",
+      "amharic": "በተሰቡ"
+    },
+    {
+      "latin": "betesebwa",
+      "amharic": "በተሰቧ"
+    },
+    {
+      "latin": "betesebachin",
+      "amharic": "በተሰባቺን"
+    },
+    {
+      "latin": "betesebachu",
+      "amharic": "በተሰባቹ"
+    },
+    {
+      "latin": "betesebachew",
+      "amharic": "በተሰባቸው"
+    },
+    {
+      "latin": "aytieie",
+      "amharic": "አይቴኤ"
+    },
+    {
+      "latin": "aytieeh",
+      "amharic": "አይቴእህ"
+    },
+    {
+      "latin": "aytieesh",
+      "amharic": "አይቴእሽ"
+    },
+    {
+      "latin": "aytieu",
+      "amharic": "አይቴኡ"
+    },
+    {
+      "latin": "aytiewa",
+      "amharic": "አይቴዋ"
+    },
+    {
+      "latin": "aytieachin",
+      "amharic": "አይቴአቺን"
+    },
+    {
+      "latin": "aytieachu",
+      "amharic": "አይቴአቹ"
+    },
+    {
+      "latin": "aytieachew",
+      "amharic": "አይቴአቸው"
+    },
+    {
+      "latin": "emebietie",
+      "amharic": "እመቤቴ"
+    },
+    {
+      "latin": "emebieteh",
+      "amharic": "እመቤተህ"
+    },
+    {
+      "latin": "emebietesh",
+      "amharic": "እመቤተሽ"
+    },
+    {
+      "latin": "emebietu",
+      "amharic": "እመቤቱ"
+    },
+    {
+      "latin": "emebietwa",
+      "amharic": "እመቤቷ"
+    },
+    {
+      "latin": "emebietachin",
+      "amharic": "እመቤታቺን"
+    },
+    {
+      "latin": "emebietachu",
+      "amharic": "እመቤታቹ"
+    },
+    {
+      "latin": "emebietachew",
+      "amharic": "እመቤታቸው"
+    },
+    {
+      "latin": "balebetie",
+      "amharic": "ባለበቴ"
+    },
+    {
+      "latin": "balebeteh",
+      "amharic": "ባለበተህ"
+    },
+    {
+      "latin": "balebetesh",
+      "amharic": "ባለበተሽ"
+    },
+    {
+      "latin": "balebetu",
+      "amharic": "ባለበቱ"
+    },
+    {
+      "latin": "balebetwa",
+      "amharic": "ባለበቷ"
+    },
+    {
+      "latin": "balebetachin",
+      "amharic": "ባለበታቺን"
+    },
+    {
+      "latin": "balebetachu",
+      "amharic": "ባለበታቹ"
+    },
+    {
+      "latin": "balebetachew",
+      "amharic": "ባለበታቸው"
+    },
+    {
+      "latin": "misteie",
+      "amharic": "ሚስተኤ"
+    },
+    {
+      "latin": "misteeh",
+      "amharic": "ሚስተእህ"
+    },
+    {
+      "latin": "misteesh",
+      "amharic": "ሚስተእሽ"
+    },
+    {
+      "latin": "misteu",
+      "amharic": "ሚስተኡ"
+    },
+    {
+      "latin": "mistewa",
+      "amharic": "ሚስተዋ"
+    },
+    {
+      "latin": "misteachin",
+      "amharic": "ሚስተአቺን"
+    },
+    {
+      "latin": "misteachu",
+      "amharic": "ሚስተአቹ"
+    },
+    {
+      "latin": "misteachew",
+      "amharic": "ሚስተአቸው"
+    },
+    {
+      "latin": "balie",
+      "amharic": "ባሌ"
+    },
+    {
+      "latin": "baleh",
+      "amharic": "ባለህ"
+    },
+    {
+      "latin": "balesh",
+      "amharic": "ባለሽ"
+    },
+    {
+      "latin": "balu",
+      "amharic": "ባሉ"
+    },
+    {
+      "latin": "balwa",
+      "amharic": "ባሏ"
+    },
+    {
+      "latin": "balachin",
+      "amharic": "ባላቺን"
+    },
+    {
+      "latin": "balachu",
+      "amharic": "ባላቹ"
+    },
+    {
+      "latin": "balachew",
+      "amharic": "ባላቸው"
+    },
+    {
+      "latin": "agasheie",
+      "amharic": "አጋሸኤ"
+    },
+    {
+      "latin": "agasheeh",
+      "amharic": "አጋሸእህ"
+    },
+    {
+      "latin": "agasheesh",
+      "amharic": "አጋሸእሽ"
+    },
+    {
+      "latin": "agasheu",
+      "amharic": "አጋሸኡ"
+    },
+    {
+      "latin": "agashewa",
+      "amharic": "አጋሸዋ"
+    },
+    {
+      "latin": "agasheachin",
+      "amharic": "አጋሸአቺን"
+    },
+    {
+      "latin": "agasheachu",
+      "amharic": "አጋሸአቹ"
+    },
+    {
+      "latin": "agasheachew",
+      "amharic": "አጋሸአቸው"
+    },
+    {
+      "latin": "akestie",
+      "amharic": "አከስቴ"
+    },
+    {
+      "latin": "akesteh",
+      "amharic": "አከስተህ"
+    },
+    {
+      "latin": "akestesh",
+      "amharic": "አከስተሽ"
+    },
+    {
+      "latin": "akestu",
+      "amharic": "አከስቱ"
+    },
+    {
+      "latin": "akestwa",
+      "amharic": "አከስቷ"
+    },
+    {
+      "latin": "akestachin",
+      "amharic": "አከስታቺን"
+    },
+    {
+      "latin": "akestachu",
+      "amharic": "አከስታቹ"
+    },
+    {
+      "latin": "akestachew",
+      "amharic": "አከስታቸው"
+    },
+    {
+      "latin": "wedajie",
+      "amharic": "ወዳጄ"
+    },
+    {
+      "latin": "wedajeh",
+      "amharic": "ወዳጀህ"
+    },
+    {
+      "latin": "wedajesh",
+      "amharic": "ወዳጀሽ"
+    },
+    {
+      "latin": "wedaju",
+      "amharic": "ወዳጁ"
+    },
+    {
+      "latin": "wedajwa",
+      "amharic": "ወዳጇ"
+    },
+    {
+      "latin": "wedajachin",
+      "amharic": "ወዳጃቺን"
+    },
+    {
+      "latin": "wedajachu",
+      "amharic": "ወዳጃቹ"
+    },
+    {
+      "latin": "wedajachew",
+      "amharic": "ወዳጃቸው"
+    },
+    {
+      "latin": "guadegnaie",
+      "amharic": "ጓደኛኤ"
+    },
+    {
+      "latin": "guadegnaeh",
+      "amharic": "ጓደኛእህ"
+    },
+    {
+      "latin": "guadegnaesh",
+      "amharic": "ጓደኛእሽ"
+    },
+    {
+      "latin": "guadegnau",
+      "amharic": "ጓደኛኡ"
+    },
+    {
+      "latin": "guadegnawa",
+      "amharic": "ጓደኛዋ"
+    },
+    {
+      "latin": "guadegnaachin",
+      "amharic": "ጓደኛአቺን"
+    },
+    {
+      "latin": "guadegnaachu",
+      "amharic": "ጓደኛአቹ"
+    },
+    {
+      "latin": "guadegnaachew",
+      "amharic": "ጓደኛአቸው"
+    },
+    {
+      "latin": "sewie",
+      "amharic": "ሰዌ"
+    },
+    {
+      "latin": "seweh",
+      "amharic": "ሰወህ"
+    },
+    {
+      "latin": "sewesh",
+      "amharic": "ሰወሽ"
+    },
+    {
+      "latin": "sewu",
+      "amharic": "ሰዉ"
+    },
+    {
+      "latin": "sewwa",
+      "amharic": "ሰውዋ"
+    },
+    {
+      "latin": "sewachin",
+      "amharic": "ሰዋቺን"
+    },
+    {
+      "latin": "sewachu",
+      "amharic": "ሰዋቹ"
+    },
+    {
+      "latin": "sewachew",
+      "amharic": "ሰዋቸው"
+    },
+    {
+      "latin": "manemie",
+      "amharic": "ማነሜ"
+    },
+    {
+      "latin": "manemeh",
+      "amharic": "ማነመህ"
+    },
+    {
+      "latin": "manemesh",
+      "amharic": "ማነመሽ"
+    },
+    {
+      "latin": "manemu",
+      "amharic": "ማነሙ"
+    },
+    {
+      "latin": "manemwa",
+      "amharic": "ማነሟ"
+    },
+    {
+      "latin": "manemachin",
+      "amharic": "ማነማቺን"
+    },
+    {
+      "latin": "manemachu",
+      "amharic": "ማነማቹ"
+    },
+    {
+      "latin": "manemachew",
+      "amharic": "ማነማቸው"
+    },
+    {
+      "latin": "andie",
+      "amharic": "አንዴ"
+    },
+    {
+      "latin": "andeh",
+      "amharic": "አንደህ"
+    },
+    {
+      "latin": "andesh",
+      "amharic": "አንደሽ"
+    },
+    {
+      "latin": "andu",
+      "amharic": "አንዱ"
+    },
+    {
+      "latin": "andwa",
+      "amharic": "አንዷ"
+    },
+    {
+      "latin": "andachin",
+      "amharic": "አንዳቺን"
+    },
+    {
+      "latin": "andachu",
+      "amharic": "አንዳቹ"
+    },
+    {
+      "latin": "andachew",
+      "amharic": "አንዳቸው"
+    },
+    {
+      "latin": "huletie",
+      "amharic": "ሁለቴ"
+    },
+    {
+      "latin": "huleteh",
+      "amharic": "ሁለተህ"
+    },
+    {
+      "latin": "huletesh",
+      "amharic": "ሁለተሽ"
+    },
+    {
+      "latin": "huletu",
+      "amharic": "ሁለቱ"
+    },
+    {
+      "latin": "huletwa",
+      "amharic": "ሁለቷ"
+    },
+    {
+      "latin": "huletachin",
+      "amharic": "ሁለታቺን"
+    },
+    {
+      "latin": "huletachu",
+      "amharic": "ሁለታቹ"
+    },
+    {
+      "latin": "huletachew",
+      "amharic": "ሁለታቸው"
+    },
+    {
+      "latin": "sostie",
+      "amharic": "ሶስቴ"
+    },
+    {
+      "latin": "sosteh",
+      "amharic": "ሶስተህ"
+    },
+    {
+      "latin": "sostesh",
+      "amharic": "ሶስተሽ"
+    },
+    {
+      "latin": "sostu",
+      "amharic": "ሶስቱ"
+    },
+    {
+      "latin": "sostwa",
+      "amharic": "ሶስቷ"
+    },
+    {
+      "latin": "sostachin",
+      "amharic": "ሶስታቺን"
+    },
+    {
+      "latin": "sostachu",
+      "amharic": "ሶስታቹ"
+    },
+    {
+      "latin": "sostachew",
+      "amharic": "ሶስታቸው"
+    },
+    {
+      "latin": "aratie",
+      "amharic": "አራቴ"
+    },
+    {
+      "latin": "arateh",
+      "amharic": "አራተህ"
+    },
+    {
+      "latin": "aratesh",
+      "amharic": "አራተሽ"
+    },
+    {
+      "latin": "aratu",
+      "amharic": "አራቱ"
+    },
+    {
+      "latin": "aratwa",
+      "amharic": "አራቷ"
+    },
+    {
+      "latin": "aratachin",
+      "amharic": "አራታቺን"
+    },
+    {
+      "latin": "aratachu",
+      "amharic": "አራታቹ"
+    },
+    {
+      "latin": "aratachew",
+      "amharic": "አራታቸው"
+    },
+    {
+      "latin": "amestie",
+      "amharic": "አመስቴ"
+    },
+    {
+      "latin": "amesteh",
+      "amharic": "አመስተህ"
+    },
+    {
+      "latin": "amestesh",
+      "amharic": "አመስተሽ"
+    },
+    {
+      "latin": "amestu",
+      "amharic": "አመስቱ"
+    },
+    {
+      "latin": "amestwa",
+      "amharic": "አመስቷ"
+    },
+    {
+      "latin": "amestachin",
+      "amharic": "አመስታቺን"
+    },
+    {
+      "latin": "amestachu",
+      "amharic": "አመስታቹ"
+    },
+    {
+      "latin": "amestachew",
+      "amharic": "አመስታቸው"
+    },
+    {
+      "latin": "sedestie",
+      "amharic": "ሰደስቴ"
+    },
+    {
+      "latin": "sedesteh",
+      "amharic": "ሰደስተህ"
+    },
+    {
+      "latin": "sedestesh",
+      "amharic": "ሰደስተሽ"
+    },
+    {
+      "latin": "sedestu",
+      "amharic": "ሰደስቱ"
+    },
+    {
+      "latin": "sedestwa",
+      "amharic": "ሰደስቷ"
+    },
+    {
+      "latin": "sedestachin",
+      "amharic": "ሰደስታቺን"
+    },
+    {
+      "latin": "sedestachu",
+      "amharic": "ሰደስታቹ"
+    },
+    {
+      "latin": "sedestachew",
+      "amharic": "ሰደስታቸው"
+    },
+    {
+      "latin": "sebatie",
+      "amharic": "ሰባቴ"
+    },
+    {
+      "latin": "sebateh",
+      "amharic": "ሰባተህ"
+    },
+    {
+      "latin": "sebatesh",
+      "amharic": "ሰባተሽ"
+    },
+    {
+      "latin": "sebatu",
+      "amharic": "ሰባቱ"
+    },
+    {
+      "latin": "sebatwa",
+      "amharic": "ሰባቷ"
+    },
+    {
+      "latin": "sebatachin",
+      "amharic": "ሰባታቺን"
+    },
+    {
+      "latin": "sebatachu",
+      "amharic": "ሰባታቹ"
+    },
+    {
+      "latin": "sebatachew",
+      "amharic": "ሰባታቸው"
+    },
+    {
+      "latin": "semmentie",
+      "amharic": "ሰምመንቴ"
+    },
+    {
+      "latin": "semmenteh",
+      "amharic": "ሰምመንተህ"
+    },
+    {
+      "latin": "semmentesh",
+      "amharic": "ሰምመንተሽ"
+    },
+    {
+      "latin": "semmentu",
+      "amharic": "ሰምመንቱ"
+    },
+    {
+      "latin": "semmentwa",
+      "amharic": "ሰምመንቷ"
+    },
+    {
+      "latin": "semmentachin",
+      "amharic": "ሰምመንታቺን"
+    },
+    {
+      "latin": "semmentachu",
+      "amharic": "ሰምመንታቹ"
+    },
+    {
+      "latin": "semmentachew",
+      "amharic": "ሰምመንታቸው"
+    },
+    {
+      "latin": "zetegnie",
+      "amharic": "ዘተኜ"
+    },
+    {
+      "latin": "zetegneh",
+      "amharic": "ዘተኘህ"
+    },
+    {
+      "latin": "zetegnesh",
+      "amharic": "ዘተኘሽ"
+    },
+    {
+      "latin": "zetegnu",
+      "amharic": "ዘተኙ"
+    },
+    {
+      "latin": "zetegnwa",
+      "amharic": "ዘተኟ"
+    },
+    {
+      "latin": "zetegnachin",
+      "amharic": "ዘተኛቺን"
+    },
+    {
+      "latin": "zetegnachu",
+      "amharic": "ዘተኛቹ"
+    },
+    {
+      "latin": "zetegnachew",
+      "amharic": "ዘተኛቸው"
+    },
+    {
+      "latin": "aserie",
+      "amharic": "አሰሬ"
+    },
+    {
+      "latin": "asereh",
+      "amharic": "አሰረህ"
+    },
+    {
+      "latin": "aseresh",
+      "amharic": "አሰረሽ"
+    },
+    {
+      "latin": "aseru",
+      "amharic": "አሰሩ"
+    },
+    {
+      "latin": "aserwa",
+      "amharic": "አሰሯ"
+    },
+    {
+      "latin": "aserachin",
+      "amharic": "አሰራቺን"
+    },
+    {
+      "latin": "aserachu",
+      "amharic": "አሰራቹ"
+    },
+    {
+      "latin": "aserachew",
+      "amharic": "አሰራቸው"
+    },
+    {
+      "latin": "asrandie",
+      "amharic": "አስራንዴ"
+    },
+    {
+      "latin": "asrandeh",
+      "amharic": "አስራንደህ"
+    },
+    {
+      "latin": "asrandesh",
+      "amharic": "አስራንደሽ"
+    },
+    {
+      "latin": "asrandu",
+      "amharic": "አስራንዱ"
+    },
+    {
+      "latin": "asrandwa",
+      "amharic": "አስራንዷ"
+    },
+    {
+      "latin": "asrandachin",
+      "amharic": "አስራንዳቺን"
+    },
+    {
+      "latin": "asrandachu",
+      "amharic": "አስራንዳቹ"
+    },
+    {
+      "latin": "asrandachew",
+      "amharic": "አስራንዳቸው"
+    },
+    {
+      "latin": "asrahuletie",
+      "amharic": "አስራሁለቴ"
+    },
+    {
+      "latin": "asrahuleteh",
+      "amharic": "አስራሁለተህ"
+    },
+    {
+      "latin": "asrahuletesh",
+      "amharic": "አስራሁለተሽ"
+    },
+    {
+      "latin": "asrahuletu",
+      "amharic": "አስራሁለቱ"
+    },
+    {
+      "latin": "asrahuletwa",
+      "amharic": "አስራሁለቷ"
+    },
+    {
+      "latin": "asrahuletachin",
+      "amharic": "አስራሁለታቺን"
+    },
+    {
+      "latin": "asrahuletachu",
+      "amharic": "አስራሁለታቹ"
+    },
+    {
+      "latin": "asrahuletachew",
+      "amharic": "አስራሁለታቸው"
+    },
+    {
+      "latin": "asrasostie",
+      "amharic": "አስራሶስቴ"
+    },
+    {
+      "latin": "asrasosteh",
+      "amharic": "አስራሶስተህ"
+    },
+    {
+      "latin": "asrasostesh",
+      "amharic": "አስራሶስተሽ"
+    },
+    {
+      "latin": "asrasostu",
+      "amharic": "አስራሶስቱ"
+    },
+    {
+      "latin": "asrasostwa",
+      "amharic": "አስራሶስቷ"
+    },
+    {
+      "latin": "asrasostachin",
+      "amharic": "አስራሶስታቺን"
+    },
+    {
+      "latin": "asrasostachu",
+      "amharic": "አስራሶስታቹ"
+    },
+    {
+      "latin": "asrasostachew",
+      "amharic": "አስራሶስታቸው"
+    },
+    {
+      "latin": "asraaratie",
+      "amharic": "አስራአራቴ"
+    },
+    {
+      "latin": "asraarateh",
+      "amharic": "አስራአራተህ"
+    },
+    {
+      "latin": "asraaratesh",
+      "amharic": "አስራአራተሽ"
+    },
+    {
+      "latin": "asraaratu",
+      "amharic": "አስራአራቱ"
+    },
+    {
+      "latin": "asraaratwa",
+      "amharic": "አስራአራቷ"
+    },
+    {
+      "latin": "asraaratachin",
+      "amharic": "አስራአራታቺን"
+    },
+    {
+      "latin": "asraaratachu",
+      "amharic": "አስራአራታቹ"
+    },
+    {
+      "latin": "asraaratachew",
+      "amharic": "አስራአራታቸው"
+    },
+    {
+      "latin": "asraamestie",
+      "amharic": "አስራአመስቴ"
+    },
+    {
+      "latin": "asraamesteh",
+      "amharic": "አስራአመስተህ"
+    },
+    {
+      "latin": "asraamestesh",
+      "amharic": "አስራአመስተሽ"
+    },
+    {
+      "latin": "asraamestu",
+      "amharic": "አስራአመስቱ"
+    },
+    {
+      "latin": "asraamestwa",
+      "amharic": "አስራአመስቷ"
+    },
+    {
+      "latin": "asraamestachin",
+      "amharic": "አስራአመስታቺን"
+    },
+    {
+      "latin": "asraamestachu",
+      "amharic": "አስራአመስታቹ"
+    },
+    {
+      "latin": "asraamestachew",
+      "amharic": "አስራአመስታቸው"
+    },
+    {
+      "latin": "asrasedestie",
+      "amharic": "አስራሰደስቴ"
+    },
+    {
+      "latin": "asrasedesteh",
+      "amharic": "አስራሰደስተህ"
+    },
+    {
+      "latin": "asrasedestesh",
+      "amharic": "አስራሰደስተሽ"
+    },
+    {
+      "latin": "asrasedestu",
+      "amharic": "አስራሰደስቱ"
+    },
+    {
+      "latin": "asrasedestwa",
+      "amharic": "አስራሰደስቷ"
+    },
+    {
+      "latin": "asrasedestachin",
+      "amharic": "አስራሰደስታቺን"
+    },
+    {
+      "latin": "asrasedestachu",
+      "amharic": "አስራሰደስታቹ"
+    },
+    {
+      "latin": "asrasedestachew",
+      "amharic": "አስራሰደስታቸው"
+    },
+    {
+      "latin": "asrasebatie",
+      "amharic": "አስራሰባቴ"
+    },
+    {
+      "latin": "asrasebateh",
+      "amharic": "አስራሰባተህ"
+    },
+    {
+      "latin": "asrasebatesh",
+      "amharic": "አስራሰባተሽ"
+    },
+    {
+      "latin": "asrasebatu",
+      "amharic": "አስራሰባቱ"
+    },
+    {
+      "latin": "asrasebatwa",
+      "amharic": "አስራሰባቷ"
+    },
+    {
+      "latin": "asrasebatachin",
+      "amharic": "አስራሰባታቺን"
+    },
+    {
+      "latin": "asrasebatachu",
+      "amharic": "አስራሰባታቹ"
+    },
+    {
+      "latin": "asrasebatachew",
+      "amharic": "አስራሰባታቸው"
+    },
+    {
+      "latin": "asrasemmentie",
+      "amharic": "አስራሰምመንቴ"
+    },
+    {
+      "latin": "asrasemmenteh",
+      "amharic": "አስራሰምመንተህ"
+    },
+    {
+      "latin": "asrasemmentesh",
+      "amharic": "አስራሰምመንተሽ"
+    },
+    {
+      "latin": "asrasemmentu",
+      "amharic": "አስራሰምመንቱ"
+    },
+    {
+      "latin": "asrasemmentwa",
+      "amharic": "አስራሰምመንቷ"
+    },
+    {
+      "latin": "asrasemmentachin",
+      "amharic": "አስራሰምመንታቺን"
+    },
+    {
+      "latin": "asrasemmentachu",
+      "amharic": "አስራሰምመንታቹ"
+    },
+    {
+      "latin": "asrasemmentachew",
+      "amharic": "አስራሰምመንታቸው"
+    },
+    {
+      "latin": "asrazetegnie",
+      "amharic": "አስራዘተኜ"
+    },
+    {
+      "latin": "asrazetegneh",
+      "amharic": "አስራዘተኘህ"
+    },
+    {
+      "latin": "asrazetegnesh",
+      "amharic": "አስራዘተኘሽ"
+    },
+    {
+      "latin": "asrazetegnu",
+      "amharic": "አስራዘተኙ"
+    },
+    {
+      "latin": "asrazetegnwa",
+      "amharic": "አስራዘተኟ"
+    },
+    {
+      "latin": "asrazetegnachin",
+      "amharic": "አስራዘተኛቺን"
+    },
+    {
+      "latin": "asrazetegnachu",
+      "amharic": "አስራዘተኛቹ"
+    },
+    {
+      "latin": "asrazetegnachew",
+      "amharic": "አስራዘተኛቸው"
+    },
+    {
+      "latin": "hayaie",
+      "amharic": "ሃያኤ"
+    },
+    {
+      "latin": "hayaeh",
+      "amharic": "ሃያእህ"
+    },
+    {
+      "latin": "hayaesh",
+      "amharic": "ሃያእሽ"
+    },
+    {
+      "latin": "hayau",
+      "amharic": "ሃያኡ"
+    },
+    {
+      "latin": "hayawa",
+      "amharic": "ሃያዋ"
+    },
+    {
+      "latin": "hayaachin",
+      "amharic": "ሃያአቺን"
+    },
+    {
+      "latin": "hayaachu",
+      "amharic": "ሃያአቹ"
+    },
+    {
+      "latin": "hayaachew",
+      "amharic": "ሃያአቸው"
+    },
+    {
+      "latin": "selasaie",
+      "amharic": "ሰላሳኤ"
+    },
+    {
+      "latin": "selasaeh",
+      "amharic": "ሰላሳእህ"
+    },
+    {
+      "latin": "selasaesh",
+      "amharic": "ሰላሳእሽ"
+    },
+    {
+      "latin": "selasau",
+      "amharic": "ሰላሳኡ"
+    },
+    {
+      "latin": "selasawa",
+      "amharic": "ሰላሳዋ"
+    },
+    {
+      "latin": "selasaachin",
+      "amharic": "ሰላሳአቺን"
+    },
+    {
+      "latin": "selasaachu",
+      "amharic": "ሰላሳአቹ"
+    },
+    {
+      "latin": "selasaachew",
+      "amharic": "ሰላሳአቸው"
+    },
+    {
+      "latin": "arbaie",
+      "amharic": "አርባኤ"
+    },
+    {
+      "latin": "arbaeh",
+      "amharic": "አርባእህ"
+    },
+    {
+      "latin": "arbaesh",
+      "amharic": "አርባእሽ"
+    },
+    {
+      "latin": "arbau",
+      "amharic": "አርባኡ"
+    },
+    {
+      "latin": "arbawa",
+      "amharic": "አርባዋ"
+    },
+    {
+      "latin": "arbaachin",
+      "amharic": "አርባአቺን"
+    }
+  ]
+}
