@@ -1,0 +1,46 @@
+appId: com.dbu.amharickeyboard.desktop
+productName: Amharic Keyboard Companion
+copyright: Copyright © 2026 DBU App Team
+
+directories:
+  output: release
+  buildResources: build
+
+files:
+  - dist/**
+  - dist-electron/**
+  - package.json
+
+# Linux configuration
+linux:
+  target:
+    - AppImage
+    - deb
+  category: Utility
+  synopsis: Amharic Phonetic Keyboard Companion & Practice Tool
+  description: Companion app for typing practice and native IME setup on Linux (IBus).
+
+# macOS configuration
+mac:
+  target:
+    - dmg
+    - zip
+  category: public.app-category.utilities
+  hardenedRuntime: true
+  gatekeeperAssess: false
+  entitlements: build/entitlements.mac.plist
+  entitlementsInherit: build/entitlements.mac.plist
+
+# Windows configuration
+win:
+  target:
+    - nsis
+    - portable
+  publisherName: DBU App Team
+  verifyUpdateCodeSignature: false
+
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  deleteAppDataOnUninstall: true
