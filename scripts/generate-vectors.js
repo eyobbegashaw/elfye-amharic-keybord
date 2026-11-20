@@ -304,7 +304,14 @@ const testVectors = {
 };
 
 const outputPath = path.resolve(__dirname, '../test-vectors.json');
-fs.writeFileSync(outputPath, JSON.stringify(testVectors, null, 2), 'utf8');
+const jsonContent = JSON.stringify(testVectors, null, 2);
+fs.writeFileSync(outputPath, jsonContent, 'utf8');
+
+// Also sync copy to Swift package resources (single source of truth)
+const iosResourceDir = path.resolve(__dirname, '../apps/ios/AmharicCore/Tests/AmharicCoreTests/Resources');
+if (fs.existsSync(iosResourceDir)) {
+  fs.writeFileSync(path.join(iosResourceDir, 'test-vectors.json'), jsonContent, 'utf8');
+}
 
 console.log(`Generated test-vectors.json successfully:`);
 console.log(`- Full transliteration vectors: ${fullTransliteration.length}`);

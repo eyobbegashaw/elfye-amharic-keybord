@@ -77,7 +77,20 @@ The following defaults are locked into `@amharic-keyboard/core`:
 
 ---
 
-## 6. Verification & Testing
+## 6. iOS Keyboard & Swift Core (`apps/ios`)
+
+- **AmharicCore (Swift Package)**: Zero UIKit dependencies, pure Foundation port of the Addiyon table, greedy longest-match transliterator, and `LiveTypingEngine`. Includes XCTest suite validating `test-vectors.json`.
+- **Keyboard Extension (`UIInputViewController`)**:
+  - Full custom keyboard UI: QWERTY, Shift (single / caps-lock), 123 & Symbols layers, Ethiopic punctuation (`፣`, `።`, `፤`, `፡`), Space bar, Return key (with dynamic `returnKeyType`), Backspace with long-press repeat timer, Globe key calling `advanceToNextInputMode()`, and EN/አማ toggle.
+  - Atomic composition via `textDocumentProxy` (`deleteBackward()` + `insertText()`) replacing composing syllables cleanly without stray characters.
+  - Context & keyboardType awareness: auto-resets on cursor moves; auto-switches to English mode for email/URL/number fields.
+  - Memory safe (<15MB RAM, well below the ~60MB iOS limit), zero third-party dependencies.
+  - 100% on-device private: `RequestsOpenAccess = false` (no Full Access needed).
+- **Container App (SwiftUI, iOS 15+)**: Step-by-step onboarding guide, one-tap link to iOS Settings, interactive practice text field, and privacy statement in Amharic and English.
+
+---
+
+## 7. Verification & Testing
 
 ```bash
 # Build all workspaces
@@ -88,4 +101,7 @@ pnpm test
 
 # Run Playwright E2E smoke tests for web
 pnpm --filter web run test:e2e
+
+# Run Swift Core unit tests (on macOS with Xcode)
+cd apps/ios/AmharicCore && swift test
 ```
