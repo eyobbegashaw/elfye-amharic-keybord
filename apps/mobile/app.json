@@ -1,26 +1,29 @@
 {
   "expo": {
-    "name": "Amharic Keyboard Companion",
-    "slug": "amharic-keyboard-companion",
+    "name": "እልፍዬ (Elfye) - Amharic Keyboard",
+    "slug": "elfye-companion",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "automatic",
+    "userInterfaceStyle": "dark",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#0f172a"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.dbu.amharickeyboard.companion"
+      "bundleIdentifier": "com.elfye.companion"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#0f172a"
       },
-      "package": "com.dbu.amharickeyboard.companion"
+      "package": "com.elfye.companion"
     }
   }
 }
