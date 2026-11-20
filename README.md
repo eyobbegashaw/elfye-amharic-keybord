@@ -11,8 +11,13 @@ selam , endiet nesh  ──►  ሰላም ፣ እንዴት ነሽ
 ## 1. Monorepo Architecture
 
 ```
-amharic-keyboard/
+DBU_app/
  ├── test-vectors.json            # Shared source-of-truth test vectors across all platforms
+ ├── corpus.source.json           # Hand-written (non-circular) source corpus of 1,750+ words
+ ├── UNVERIFIED.md                # Homophone / dialectal review list for native speakers
+ ├── turbo.json                   # Turborepo task pipeline
+ ├── pnpm-workspace.yaml          # Workspaces definition (packages/*, apps/*)
+ ├── package.json                 # Monorepo root package.json
  ├── packages/
  │    └── core/                   # Zero-dependency TypeScript core (npm-publishable, ESM+CJS)
  ├── apps/
@@ -20,24 +25,39 @@ amharic-keyboard/
  │    ├── android/                # Native Java InputMethodService keyboard + companion app
  │    ├── ios/                    # Swift Keyboard Extension + companion app
  │    └── desktop/                # Native OS IME (IBus / IMK / TSF) + Electron companion
- ├── pnpm-workspace.yaml
- ├── turbo.json
- └── package.json
+ └── scripts/
+      ├── build-corpus-source.js  # Generator/validator for corpus.source.json
+      └── generate-vectors.js     # Validates corpus.source.json & exports test-vectors.json
 ```
 
 ---
 
-## 2. Shared `test-vectors.json`
+## 2. Shared `test-vectors.json` & Corpus Audit
 
 To guarantee identical behavior across all platforms (TypeScript, Java, Swift, C/Rust), every implementation must pass `test-vectors.json`:
-- **Full transliteration vectors**: Complete phrases, words, vowel orders, homophones, digraphs, punctuation.
+- **Full transliteration vectors**: Complete phrases, vowel orders, homophones, digraphs, punctuation, escapes.
 - **Live typing sequences**: Keystroke by keystroke composing state `{ committed, composing }`.
 - **Backspace sequences**: Progressive keystroke deletion behavior (e.g. `ሰ` → `ስ` → empty).
-- **Common words corpus**: **1,050 authentic Amharic words** for regression testing.
+- **Non-Circular Common Words Corpus**: **1,758 authentic Amharic words** loaded from `corpus.source.json` (where Ethiopic text is typed independently, not computed by the engine).
+- **Native Speaker Review**: Words with homophone ambiguity (e.g. `ሐ` vs `ሀ` vs `ኀ`, `ጸ` vs `ፀ`, `ዐ` vs `አ`) are flagged with `"unverified": true` and documented in [UNVERIFIED.md](file:///c:/Users/CS_LAB/Documents/appp/dbu/DBU_app/UNVERIFIED.md).
 
 ---
 
-## 3. Quick Start
+## 3. Locked Defaults & Decisions
+
+The following defaults are locked into `@amharic-keyboard/core`:
+
+1. **4th form of አ (ኣ)** = `"aa"` (`a` = **አ**, `aa` = **ኣ**).
+2. **4th and 5th forms of ዐ (ዓ, ዔ)** = `"Aa"` (alias `"AA"`) for **ዓ**, and `"Aie"` (alias `"EE"`) for **ዔ**.
+3. **The ኀ row (ኀ ኁ ኂ ኃ ኄ ኅ ኆ ኋ)** = `"hh"` (alias `"x"`).
+4. **The consonant ፈ (`f`)** = Standard consonant row (`fe`=**ፈ**, `fu`=**ፉ**, `fi`=**ፊ**, `fa`=**ፋ**, `fie`=**ፌ**, `f`=**ፍ**, `fo`=**ፎ**, `fua`/`fwa`=**ፏ**).
+5. **The 8th form of አ (ኧ)** = `"ea"`.
+6. **"wa" alias for labialized 8th form**: Stays enabled by default (`kwa` = **ኳ**, `gwa` = **ጓ**, `hwa` = **ኋ**). To type unlabialized 6th form + `ዋ` (such as **ክዋ**), use the escape character: `k'wa` → **ክዋ**, `h'wa` → **ህዋ**, `g'wa` → **ግዋ**.
+7. **Duplicated ኋ Note**: The duplicated **ኋ** (8th form of `h` via `hua`/`hwa` and 8th form of `hh` via `hhua`/`hhwa`) is intentional; in Unicode Ethiopic, both map to code point `U+128B` (ETHIOPIC SYLLABLE HWA).
+
+---
+
+## 4. Quick Start
 
 ### Build & Run Tests
 ```bash
@@ -50,17 +70,3 @@ pnpm build
 # Run test suite across packages against test-vectors.json
 pnpm test
 ```
-
----
-
-## 4. Open Decisions & Configuration
-
-The reference Addiyon chart leaves several rarer forms unspecified. In `@amharic-keyboard/core`, these are fully configurable and default to standard phonetic conventions:
-
-1. **4th form of አ (ኣ)**: Defaulted to `aa` (e.g. `a` = አ, `aa` = ኣ).
-2. **4th and 5th forms of ዐ (ዓ, ዔ)**: Defaulted to `Aa` / `AA` for ዓ, and `Aie` / `EE` for ዔ.
-3. **The ኀ row (ኀ ኁ ኂ ኃ ኄ ኅ ኆ ኋ)**: Defaulted to `hh` or `x`.
-4. **The consonant ፈ (`f`)**: Included with standard orders (`fe`=ፈ, `fu`=ፉ, `fi`=ፊ, `fa`=ፋ, `fie`=ፌ, `f`=ፍ, `fo`=ፎ, `fua`/`fwa`=ፏ).
-5. **The 8th form of አ (ኧ)**: Defaulted to `ea`.
-6. **Labialized alias (`wa` for `ua`)**: Enabled by default (`kwa` = `ኳ`, `hwa` = `ኋ`).
-7. **SERA aliases**: Optional flag (`enableSeraAliases: true` maps `ee`/`E` to 5th form ኃምስ).

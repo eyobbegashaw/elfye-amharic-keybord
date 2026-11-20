@@ -36,13 +36,17 @@ Suffix attached to any consonant selects its order:
 
 > **Unambiguity Principle**: `hel` produces **ሀል** and `hal` produces **ሃል**.
 
+> **Note on "wa" alias & Escape**: The `"wa"` alias is enabled by default (`kwa` = **ኳ**, `gwa` = **ጓ**, `hwa` = **ኋ**). To produce the unlabialized sequence of 6th form + `ዋ` (e.g. **ክዋ**), use the escape character: `k'wa` → **ክዋ**, `h'wa` → **ህዋ**, `g'wa` → **ግዋ**.
+
+> **Note on Duplicated ኋ**: The duplicated **ኋ** (8th form of `h` via `hua`/`hwa` and 8th form of `hh` via `hhua`/`hhwa`) is intentional; in Unicode Ethiopic, both map to code point `U+128B` (ETHIOPIC SYLLABLE HWA).
+
 ---
 
 ### 2.2 Consonant Table
 
 | Token | 1st (e) | 2nd (u) | 3rd (i) | 4th (a) | 5th (ie) | 6th (sixth) | 7th (o) | 8th (ua) | Unicode Base | Notes |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---|
-| **h** | ሀ | ሁ | ሂ | ሃ | ሄ | ህ | ሆ | ኋ | `0x1200` | 8th is override `0x128B` |
+| **h** | ሀ | ሁ | ሂ | ሃ | ሄ | ህ | ሆ | ኋ | `0x1200` | 8th is override `U+128B` |
 | **l** | ለ | ሉ | ሊ | ላ | ሌ | ል | ሎ | ሏ | `0x1208` | |
 | **H** | ሐ | ሑ | ሒ | ሓ | ሔ | ሕ | ሖ | - | `0x1210` | ሐ row (no 8th in chart) |
 | **m** | መ | ሙ | ሚ | ማ | ሜ | ም | ሞ | ሟ | `0x1218` | |
@@ -50,22 +54,22 @@ Suffix attached to any consonant selects its order:
 | **r** | ረ | ሩ | ሪ | ራ | ሬ | ር | ሮ | ሯ | `0x1228` | |
 | **s** | ሰ | ሱ | ሲ | ሳ | ሴ | ስ | ሶ | ሷ | `0x1230` | Standard ሰ |
 | **sh** | ሸ | ሹ | ሺ | ሻ | ሼ | ሽ | ሾ | ሿ | `0x1238` | Digraph |
-| **q** | ቀ | ቁ | ቂ | ቃ | ቄ | ቅ | ቆ | ቋ | `0x1240` | 8th is override `0x124B` |
+| **q** | ቀ | ቁ | ቂ | ቃ | ቄ | ቅ | ቆ | ቋ | `0x1240` | 8th is override `U+124B` |
 | **b** | በ | ቡ | ቢ | ባ | ቤ | ብ | ቦ | ቧ | `0x1260` | |
 | **v** | ቨ | ቩ | ቪ | ቫ | ቬ | ቭ | ቮ | ቯ | `0x1268` | |
 | **t** | ተ | ቱ | ቲ | ታ | ቴ | ት | ቶ | ቷ | `0x1270` | |
 | **ch** | ቸ | ቹ | ቺ | ቻ | ቼ | ች | ቾ | ቿ | `0x1278` | Digraph (`c` is alias) |
 | **n** | ነ | ኑ | ኒ | ና | ኔ | ን | ኖ | ኗ | `0x1290` | |
 | **gn** | ኘ | ኙ | ኚ | ኛ | ኜ | ኝ | ኞ | ኟ | `0x1298` | Digraph |
-| **k** | ከ | ኩ | ኪ | ካ | ኬ | ክ | ኮ | ኳ | `0x12A8` | 8th is override `0x12B3` |
-| **kh** | ኸ | ኹ | ኺ | ኻ | ኼ | ኽ | ኾ | ዃ | `0x12B8` | 8th is override `0x12C3` |
+| **k** | ከ | ኩ | ኪ | ካ | ኬ | ክ | ኮ | ኳ | `0x12A8` | 8th is override `U+12B3` |
+| **kh** | ኸ | ኹ | ኺ | ኻ | ኼ | ኽ | ኾ | ዃ | `0x12B8` | 8th is override `U+12C3` |
 | **w** | ወ | ዉ | ዊ | ዋ | ዌ | ው | ዎ | - | `0x12C8` | No 8th form |
 | **z** | ዘ | ዙ | ዚ | ዛ | ዜ | ዝ | ዞ | ዟ | `0x12D8` | |
 | **zh** | ዠ | ዡ | ዢ | ዣ | ዤ | ዥ | ዦ | ዧ | `0x12E0` | Digraph |
 | **y** | የ | ዩ | ዪ | ያ | ዬ | ይ | ዮ | - | `0x12E8` | No 8th form |
 | **d** | ደ | ዱ | ዲ | ዳ | ዴ | ድ | ዶ | ዷ | `0x12F0` | |
 | **j** | ጀ | ጁ | ጂ | ጃ | ጄ | ጅ | ጆ | ጇ | `0x1300` | |
-| **g** | ገ | ጉ | ጊ | ጋ | ጌ | ግ | ጎ | ጓ | `0x1308` | 8th is override `0x1313` |
+| **g** | ገ | ጉ | ጊ | ጋ | ጌ | ግ | ጎ | ጓ | `0x1308` | 8th is override `U+1313` |
 | **T** | ጠ | ጡ | ጢ | ጣ | ጤ | ጥ | ጦ | ጧ | `0x1320` | Glottalic ጠ |
 | **C** | ጨ | ጩ | ጪ | ጫ | ጬ | ጭ | ጮ | ጯ | `0x1328` | Glottalic ጨ |
 | **P** | ጰ | ጱ | ጲ | ጳ | ጴ | ጵ | ጶ | ጷ | `0x1330` | Glottalic ጰ |
@@ -73,34 +77,34 @@ Suffix attached to any consonant selects its order:
 | **Ts** | ፀ | ፁ | ፂ | ፃ | ፄ | ፅ | ፆ | ፇ | `0x1340` | Homophone ፀ |
 | **f** | ፈ | ፉ | ፊ | ፋ | ፌ | ፍ | ፎ | ፏ | `0x1348` | Standard ፈ |
 | **p** | ፐ | ፑ | ፒ | ፓ | ፔ | ፕ | ፖ | ፗ | `0x1350` | Standard ፐ |
-| **hh** / **x** | ኀ | ኁ | ኂ | ኃ | ኄ | ኅ | ኆ | ኋ | `0x1280` | Configurable ኀ row |
+| **hh** / **x** | ኀ | ኁ | ኂ | ኃ | ኄ | ኅ | ኆ | ኋ | `0x1280` | Default for ኀ row (`x` alias) |
 
 ---
 
 ### 2.3 Lone Vowels & Pharyngeals
 
 #### Lone Vowels (አ Row)
-| Input | Output | Order | Unicode |
-|:---:|:---:|:---:|:---:|
-| `a` | **አ** | 1st (ግዕዝ) | `0x12A0` |
-| `u` | **ኡ** | 2nd (ካዕብ) | `0x12A1` |
-| `i` | **ኢ** | 3rd (ሣልስ) | `0x12A2` |
-| `ie` | **ኤ** | 5th (ኃምስ) | `0x12A4` |
-| `e` | **እ** | 6th (ሳድስ) | `0x12A5` |
-| `o` | **ኦ** | 7th (ሳብዕ) | `0x12A6` |
-| `aa` | **ኣ** | 4th (ራብዕ) | `0x12A3` *(configurable)* |
-| `ea` | **ኧ** | 8th | `0x12A7` *(configurable)* |
+| Input | Output | Order | Unicode | Status |
+|:---:|:---:|:---:|:---:|:---|
+| `a` | **አ** | 1st (ግዕዝ) | `0x12A0` | Primary |
+| `u` | **ኡ** | 2nd (ካዕብ) | `0x12A1` | Primary |
+| `i` | **ኢ** | 3rd (ሣልስ) | `0x12A2` | Primary |
+| `aa` | **ኣ** | 4th (ራብዕ) | `0x12A3` | **Locked Default** |
+| `ie` | **ኤ** | 5th (ኃምስ) | `0x12A4` | Primary |
+| `e` | **እ** | 6th (ሳድስ) | `0x12A5` | Primary |
+| `o` | **ኦ** | 7th (ሳብዕ) | `0x12A6` | Primary |
+| `ea` | **ኧ** | 8th | `0x12A7` | **Locked Default** |
 
 #### Pharyngeal Lone Vowels (ዐ Row, Uppercase)
-| Input | Output | Order | Unicode |
-|:---:|:---:|:---:|:---:|
-| `A` | **ዐ** | 1st (ግዕዝ) | `0x12D0` |
-| `U` | **ዑ** | 2nd (ካዕብ) | `0x12D1` |
-| `I` | **ዒ** | 3rd (ሣልስ) | `0x12D2` |
-| `E` | **ዕ** | 6th (ሳድስ) | `0x12D5` |
-| `O` | **ዖ** | 7th (ሳብዕ) | `0x12D6` |
-| `Aa` / `AA` | **ዓ** | 4th (ራብዕ) | `0x12D3` *(configurable)* |
-| `Aie` / `EE` | **ዔ** | 5th (ኃምስ) | `0x12D4` *(configurable)* |
+| Input | Output | Order | Unicode | Status |
+|:---:|:---:|:---:|:---:|:---|
+| `A` | **ዐ** | 1st (ግዕዝ) | `0x12D0` | Primary |
+| `U` | **ዑ** | 2nd (ካዕብ) | `0x12D1` | Primary |
+| `I` | **ዒ** | 3rd (ሣልስ) | `0x12D2` | Primary |
+| `Aa` *(alias `AA`)* | **ዓ** | 4th (ራብዕ) | `0x12D3` | **Locked Default** |
+| `Aie` *(alias `EE`)* | **ዔ** | 5th (ኃምስ) | `0x12D4` | **Locked Default** |
+| `E` | **ዕ** | 6th (ሳድስ) | `0x12D5` | Primary |
+| `O` | **ዖ** | 7th (ሳብዕ) | `0x12D6` | Primary |
 
 ---
 
@@ -109,7 +113,7 @@ Suffix attached to any consonant selects its order:
 - `.` → **።** (`0x1362`)
 - `;` → **፤** (`0x1364`)
 - `:` → **፡** (`0x1361`)
-- Escape `'`: breaks digraphs (`s'h` → `ስህ`), breaks syllables (`se'el` → `ሰእል`). Double escape `''` outputs a literal `'`.
+- Escape `'`: breaks digraphs (`s'h` → `ስህ`), breaks syllables (`se'el` → `ሰእል`), breaks labialization (`k'wa` → `ክዋ`). Double escape `''` outputs a literal `'`.
 
 ---
 
@@ -128,6 +132,9 @@ console.log(transliterate('selam , endiet nesh'));
 
 console.log(transliterate('he ha hie h ho hua'));
 // Output: ሀ ሃ ሄ ህ ሆ ኋ
+
+console.log(transliterate('kwa'));   // ኳ (labialized default)
+console.log(transliterate("k'wa"));  // ክዋ (escaped unlabialized)
 ```
 
 ### 3.2 Live Typing Engine (IME & Input components)

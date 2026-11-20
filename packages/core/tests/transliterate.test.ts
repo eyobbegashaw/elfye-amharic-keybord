@@ -102,4 +102,47 @@ describe('transliterate - Whole String Function', () => {
   it('leaves digits Latin by default', () => {
     expect(transliterate('12345')).toBe('12345');
   });
+
+  it('handles locked defaults for rare and unlabeled forms', () => {
+    // 4th of አ = "aa" (ኣ)
+    expect(transliterate('aa')).toBe('ኣ');
+
+    // 4th of ዐ = "Aa" (alias "AA") (ዓ)
+    expect(transliterate('Aa')).toBe('ዓ');
+    expect(transliterate('AA')).toBe('ዓ');
+
+    // 5th of ዐ = "Aie" (alias "EE") (ዔ)
+    expect(transliterate('Aie')).toBe('ዔ');
+    expect(transliterate('EE')).toBe('ዔ');
+
+    // ኀ row = "hh" (alias "x")
+    expect(transliterate('hhe')).toBe('ኀ');
+    expect(transliterate('hha')).toBe('ኃ');
+    expect(transliterate('hhie')).toBe('ኄ');
+    expect(transliterate('hh')).toBe('ኅ');
+    expect(transliterate('hhua')).toBe('ኋ');
+    expect(transliterate('xe')).toBe('ኀ');
+
+    // f = ፈ row (standard)
+    expect(transliterate('fe')).toBe('ፈ');
+    expect(transliterate('fa')).toBe('ፋ');
+    expect(transliterate('fie')).toBe('ፌ');
+    expect(transliterate('f')).toBe('ፍ');
+    expect(transliterate('fua')).toBe('ፏ');
+    expect(transliterate('fwa')).toBe('ፏ');
+
+    // ኧ (8th of አ) = "ea"
+    expect(transliterate('ea')).toBe('ኧ');
+
+    // "wa" alias stays enabled by default, escape with apostrophe
+    expect(transliterate('kwa')).toBe('ኳ');
+    expect(transliterate("k'wa")).toBe('ክዋ');
+    expect(transliterate('gwa')).toBe('ጓ');
+    expect(transliterate("g'wa")).toBe('ግዋ');
+
+    // Duplicated ኋ for h and hh is intentional (Unicode U+128B)
+    expect(transliterate('hua')).toBe('ኋ');
+    expect(transliterate('hhua')).toBe('ኋ');
+    expect('ኋ'.charCodeAt(0)).toBe(0x128b);
+  });
 });
