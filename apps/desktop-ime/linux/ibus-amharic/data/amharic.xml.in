@@ -1,0 +1,23 @@
+<component>
+    <name>org.freedesktop.IBus.Amharic</name>
+    <description>Amharic Phonetic Input Method Component</description>
+    <version>1.0.0</version>
+    <license>MIT</license>
+    <author>Antigravity</author>
+    <homepage>https://github.com/DBU/amharic-keyboard</homepage>
+    <exec>@LIBEXECDIR@/ibus-engine-amharic --ibus</exec>
+    <textdomain>ibus-amharic</textdomain>
+    <engines>
+        <engine>
+            <name>amharic-phonetic</name>
+            <language>am</language>
+            <license>MIT</license>
+            <author>Antigravity</author>
+            <icon>ibus-amharic</icon>
+            <layout>us</layout>
+            <longname>Amharic (Addiyon Phonetic)</longname>
+            <description>Amharic Phonetic Transliteration (Addiyon Scheme)</description>
+            <rank>99</rank>
+        </engine>
+    </engines>
+</component>
