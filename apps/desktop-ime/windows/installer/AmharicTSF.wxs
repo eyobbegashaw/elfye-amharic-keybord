@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <!--
+    Amharic Phonetic Keyboard (Addiyon Scheme) - Windows WiX Installer Definition
+    Builds a dual 64-bit / 32-bit MSI installer for Windows 10/11 and Windows Server.
+  -->
+  <Product Id="*"
+           Name="Amharic Phonetic Keyboard (Addiyon)"
+           Language="1033"
+           Version="1.0.0.0"
+           Manufacturer="DBU App Team"
+           UpgradeCode="5B4B6E1F-B03A-4D2B-89E6-D0E19BC4169F">
+
+    <Package InstallerVersion="500"
+             Compressed="yes"
+             InstallScope="perMachine"
+             Platform="x64"
+             Description="Amharic Phonetic Text Services Framework Input Method" />
+
+    <MajorUpgrade DowngradeErrorMessage="A newer version of Amharic Phonetic Keyboard is already installed." />
+    <MediaTemplate EmbedCab="yes" />
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <!-- 64-bit installation directory: Program Files\AmharicKeyboard -->
+      <Directory Id="ProgramFiles64Folder">
+        <Directory Id="INSTALLDIR64" Name="AmharicKeyboard">
+          <Component Id="C_AmharicTSF64" Guid="D200E4A4-A78C-49CE-90F5-85B726053301" Win64="yes">
+            <File Id="F_AmharicTSF64_dll"
+                  Source="..\bin\x64\AmharicTSF64.dll"
+                  KeyPath="yes"
+                  SelfRegCost="1" />
+            <!-- Grant AppContainer read permissions for UWP / Windows Store apps -->
+            <Permission User="ALL APPLICATION PACKAGES" GenericRead="yes" GenericExecute="yes" />
+          </Component>
+        </Directory>
+      </Directory>
+
+      <!-- 32-bit installation directory: Program Files (x86)\AmharicKeyboard -->
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLDIR32" Name="AmharicKeyboard">
+          <Component Id="C_AmharicTSF32" Guid="E63B66D2-B83F-4187-8A20-4FBE30113A78" Win64="no">
+            <File Id="F_AmharicTSF32_dll"
+                  Source="..\bin\x86\AmharicTSF32.dll"
+                  KeyPath="yes"
+                  SelfRegCost="1" />
+            <!-- Grant AppContainer read permissions for UWP 32-bit apps -->
+            <Permission User="ALL APPLICATION PACKAGES" GenericRead="yes" GenericExecute="yes" />
+          </Component>
+        </Directory>
+      </Directory>
+    </Directory>
+
+    <Feature Id="ProductFeature" Title="Amharic Phonetic Keyboard" Level="1">
+      <ComponentRef Id="C_AmharicTSF64" />
+      <ComponentRef Id="C_AmharicTSF32" />
+    </Feature>
+  </Product>
+</Wix>

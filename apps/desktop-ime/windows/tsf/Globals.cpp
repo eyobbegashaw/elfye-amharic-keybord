@@ -1,0 +1,19 @@
+#include "Globals.hpp"
+
+HINSTANCE g_hInst = nullptr;
+LONG g_cRefDll = 0;
+
+// CLSID_AmharicTextService: {792C6287-E8DF-4CA1-82BB-A9250646BF63}
+const CLSID CLSID_AmharicTextService = {
+    0x792c6287, 0xe8df, 0x4ca1, { 0x82, 0xbb, 0xa9, 0x25, 0x06, 0x46, 0xbf, 0x63 }
+};
+
+// GUID_AmharicProfile: {C8894451-9C4E-4FD7-A0E5-0D5460E58552}
+const GUID GUID_AmharicProfile = {
+    0xc8894451, 0x9c4e, 0x4fd7, { 0xa0, 0xe5, 0x0d, 0x54, 0x60, 0xe5, 0x85, 0x52 }
+};
+
+// GUID_AmharicDisplayAttribute: {98774781-8B0C-4A0B-88FE-98D7C81B8553}
+const GUID GUID_AmharicDisplayAttribute = {
+    0x98774781, 0x8b0c, 0x4a0b, { 0x88, 0xfe, 0x98, 0xd7, 0xc8, 0x1b, 0x85, 0x53 }
+};
