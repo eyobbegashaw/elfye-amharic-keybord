@@ -23,9 +23,8 @@ export interface AmharicTextInputProps extends Omit<TextInputProps, 'onChangeTex
 /**
  * Mobile companion AmharicTextInput component.
  *
- * Built directly on @amharic-keyboard/core (LiveTypingEngine).
- * Note: Works exclusively inside this companion application for testing and preview.
- * System-wide typing in other apps is powered by the native keyboard extensions.
+ * Built directly on @elfye/core (LiveTypingEngine).
+ * High-performance, low-latency live phonetic input matching web and desktop speed.
  */
 export const AmharicTextInput: React.FC<AmharicTextInputProps> = ({
   value: controlledValue,
@@ -39,14 +38,19 @@ export const AmharicTextInput: React.FC<AmharicTextInputProps> = ({
   ...restProps
 }) => {
   const [internalValue, setInternalValue] = useState(defaultValue);
-  const [selection, setSelection] = useState<{ start: number; end: number }>({ start: 0, end: 0 });
   const [isAmharic, setIsAmharic] = useState(enabled);
 
-  const engineRef = useRef(new LiveTypingEngine());
   const textValue = controlledValue !== undefined ? controlledValue : internalValue;
+  const textRef = useRef(textValue);
+  textRef.current = textValue;
+
+  const selectionRef = useRef({ start: textValue.length, end: textValue.length });
+  const composingSpanRef = useRef<{ start: number; end: number } | null>(null);
+  const engineRef = useRef(new LiveTypingEngine());
 
   const updateText = useCallback(
     (newText: string) => {
+      textRef.current = newText;
       if (controlledValue === undefined) {
         setInternalValue(newText);
       }
@@ -58,51 +62,125 @@ export const AmharicTextInput: React.FC<AmharicTextInputProps> = ({
   const handleSelectionChange = (
     e: NativeSyntheticEvent<TextInputSelectionChangeEventData>,
   ) => {
-    setSelection(e.nativeEvent.selection);
+    const sel = e.nativeEvent.selection;
+    selectionRef.current = sel;
+
+    // If user tapped elsewhere outside the active composing syllable, commit buffer
+    if (composingSpanRef.current !== null) {
+      const span = composingSpanRef.current;
+      if (sel.start < span.start || sel.start > span.end) {
+        engineRef.current.commitCurrent();
+        composingSpanRef.current = null;
+      }
+    }
   };
 
-  const handleChangeText = (newText: string) => {
+  const handleChangeText = (incomingText: string) => {
     if (!isAmharic) {
-      updateText(newText);
+      composingSpanRef.current = null;
+      engineRef.current.reset();
+      updateText(incomingText);
       return;
     }
 
-    const prevText = textValue;
+    const prev = textRef.current;
+    if (incomingText === prev) return;
 
-    // Detection: deletion / backspace
-    if (newText.length < prevText.length) {
-      if (engineRef.current.getBuffer().length > 0) {
-        // Progressive backspace on composing syllable
-        engineRef.current.backspace();
+    // Case 1: Deletion / Backspace
+    if (incomingText.length < prev.length) {
+      if (composingSpanRef.current !== null && engineRef.current.getBuffer().length > 0) {
+        const span = composingSpanRef.current;
+        const res = engineRef.current.backspace();
+        const before = prev.slice(0, span.start);
+        const after = prev.slice(span.end);
+
+        if (res.composing) {
+          const transformed = before + res.composing + after;
+          composingSpanRef.current = {
+            start: span.start,
+            end: span.start + res.composing.length,
+          };
+          updateText(transformed);
+          return;
+        } else {
+          const transformed = before + after;
+          composingSpanRef.current = null;
+          updateText(transformed);
+          return;
+        }
       }
-      updateText(newText);
+
+      // Normal deletion outside active composing syllable
+      engineRef.current.reset();
+      composingSpanRef.current = null;
+      updateText(incomingText);
       return;
     }
 
-    // Detection: character addition at cursor
-    const addedCount = newText.length - prevText.length;
-    const insertPos = Math.max(0, selection.start);
-    const addedChars = newText.slice(insertPos, insertPos + addedCount);
+    // Case 2: Character addition / typing
+    let before = '';
+    let after = '';
+    let addedChars = '';
+
+    if (composingSpanRef.current !== null) {
+      const span = composingSpanRef.current;
+      before = prev.slice(0, span.start);
+      after = prev.slice(span.end);
+
+      // Part of incomingText corresponding to replacement zone
+      const middle = incomingText.slice(before.length, incomingText.length - after.length);
+      const prevComposing = prev.slice(span.start, span.end);
+
+      if (middle.startsWith(prevComposing)) {
+        addedChars = middle.slice(prevComposing.length);
+      } else {
+        addedChars = middle;
+      }
+    } else {
+      const caret = Math.max(0, Math.min(selectionRef.current.start, prev.length));
+      before = prev.slice(0, caret);
+      after = prev.slice(caret);
+      const addedCount = incomingText.length - prev.length;
+      addedChars = incomingText.slice(caret, caret + addedCount);
+    }
 
     if (!addedChars) {
-      updateText(newText);
+      updateText(incomingText);
       return;
     }
 
-    // Process through LiveTypingEngine
-    let resultCommitted = '';
-    let resultComposing = '';
+    // Fast-path processing via LiveTypingEngine
+    let committedOutput = '';
+    let currentComposing = '';
 
-    for (const ch of addedChars) {
+    for (let i = 0; i < addedChars.length; i++) {
+      const ch = addedChars[i];
       const res = engineRef.current.input(ch);
-      resultCommitted += res.committed;
-      resultComposing = res.composing;
+      committedOutput += res.committed;
+      currentComposing = res.composing;
     }
 
-    // Reconstruct string with transliterated output
-    const before = prevText.slice(0, insertPos);
-    const after = prevText.slice(insertPos);
-    const transformed = before + resultCommitted + resultComposing + after;
+    const replacement = committedOutput + currentComposing;
+    const transformed = before + replacement + after;
+
+    if (currentComposing.length > 0) {
+      const compStart = before.length + committedOutput.length;
+      composingSpanRef.current = {
+        start: compStart,
+        end: compStart + currentComposing.length,
+      };
+      selectionRef.current = {
+        start: compStart + currentComposing.length,
+        end: compStart + currentComposing.length,
+      };
+    } else {
+      composingSpanRef.current = null;
+      const newPos = before.length + replacement.length;
+      selectionRef.current = {
+        start: newPos,
+        end: newPos,
+      };
+    }
 
     updateText(transformed);
   };
@@ -111,6 +189,7 @@ export const AmharicTextInput: React.FC<AmharicTextInputProps> = ({
     const next = !isAmharic;
     setIsAmharic(next);
     engineRef.current.reset();
+    composingSpanRef.current = null;
     onToggleEnabled?.(next);
   };
 
@@ -119,7 +198,12 @@ export const AmharicTextInput: React.FC<AmharicTextInputProps> = ({
       {showToggle && (
         <View style={styles.toolbar}>
           <View style={styles.badgeContainer}>
-            <View style={[styles.statusDot, { backgroundColor: isAmharic ? '#10b981' : '#94a3b8' }]} />
+            <View
+              style={[
+                styles.statusDot,
+                { backgroundColor: isAmharic ? '#10b981' : '#94a3b8' },
+              ]}
+            />
             <Text style={styles.statusText}>
               {isAmharic ? 'አማርኛ (Phonetic)' : 'English (Latin)'}
             </Text>
@@ -140,6 +224,10 @@ export const AmharicTextInput: React.FC<AmharicTextInputProps> = ({
         placeholder={placeholder ?? 'በእንግሊዝኛ ይተይቡ... (selam -> ሰላም)'}
         placeholderTextColor="#94a3b8"
         multiline
+        autoCapitalize="none"
+        autoCorrect={false}
+        spellCheck={false}
+        keyboardType="default"
         {...restProps}
       />
     </View>

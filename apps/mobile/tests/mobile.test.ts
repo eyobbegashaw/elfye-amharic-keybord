@@ -54,4 +54,21 @@ describe('Mobile Companion App', () => {
     const b2 = engine.backspace();
     expect(b2.composing).toBe('');
   });
+
+  it('handles rapid sequential typing without latency or duplicate letters', () => {
+    const engine = new LiveTypingEngine();
+    const word = 'selam';
+    let output = '';
+
+    for (const char of word) {
+      const res = engine.input(char);
+      if (res.committed) {
+        output += res.committed;
+      }
+    }
+    const end = engine.commitCurrent();
+    output += end;
+
+    expect(output).toBe('ሰላም');
+  });
 });
