@@ -34,7 +34,7 @@
 }
 
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Nyala', 'Abyssinica SIL', sans-serif;
+  font-family: 'Noto Serif Ethiopic', 'Nyala', 'Abyssinica SIL', serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   background-color: var(--bg-primary);
   color: var(--text-main);
   line-height: 1.5;

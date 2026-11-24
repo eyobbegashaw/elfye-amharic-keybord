@@ -78,7 +78,7 @@ The following defaults are locked into `@elfye/core`:
 - **Typing Rules Reference Chart (የፊደል ገበታ)**: Generated dynamically from core tables (`CONSONANT_DEFINITIONS`, `getEthiopicChar`, etc.) with zero drift, searchable by Latin key or Ethiopic glyph, and click-to-insert.
 - **Try It Practice Area (ተለማመዱ)**: Interactive typing practice with prompt rotation and instant visual feedback on match.
 - **Installation Guide (የአጫጫን መመሪያ)**: Clear steps for enabling native Android, iOS, and desktop system-wide keyboards.
-- **Accessibility & Themes**: Full Light/Dark mode, mobile-first responsive layout, and Google Font `Noto Sans Ethiopic` with system fallbacks. Amharic UI by default with English toggle.
+- **Accessibility & Themes**: Full Light/Dark mode, mobile-first responsive layout, and Google Font `Noto Serif Ethiopic` with system fallbacks. Amharic UI by default with English toggle.
 
 ---
 

@@ -5,6 +5,7 @@ import {
   Text,
   TouchableOpacity,
   StyleSheet,
+  Platform,
   TextInputProps,
   NativeSyntheticEvent,
   TextInputSelectionChangeEventData,
@@ -281,5 +282,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     textAlignVertical: 'top',
     minHeight: 120,
+    fontFamily: Platform.select({
+      web: "'Noto Serif Ethiopic', 'Nyala', serif",
+      default: undefined,
+    }),
   },
 });

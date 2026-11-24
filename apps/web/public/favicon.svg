@@ -23,7 +23,7 @@
   
   <!-- Ethiopic 'እ' Glyph -->
   <text x="64" y="80" 
-        font-family="system-ui, -apple-system, 'Noto Sans Ethiopic', 'Segoe UI', 'Nyala', sans-serif" 
+        font-family="'Noto Serif Ethiopic', 'Nyala', 'Abyssinica SIL', serif, system-ui, sans-serif" 
         font-size="62" 
         font-weight="bold" 
         text-anchor="middle"
