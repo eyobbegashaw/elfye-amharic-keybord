@@ -17,7 +17,9 @@ describe('Desktop Companion App', () => {
 
     expect(translations.en.linuxSteps[0]).toContain('IBus');
     expect(translations.en.macosSteps[0]).toContain('Input Methods');
-    expect(translations.en.windowsSteps[1]).toContain('register.bat');
+    expect(translations.en.windowsSteps[1]).toContain('Install Keyboard');
+    expect(translations.en.dashboardTitle).toBeDefined();
+    expect(translations.am.dashboardTitle).toBeDefined();
   });
 
   it('generates the reference chart rows from @amharic-keyboard/react', () => {

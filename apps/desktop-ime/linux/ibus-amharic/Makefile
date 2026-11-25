@@ -40,7 +40,15 @@ install-user:
 	install -m 755 build/ibus-engine-amharic $(HOME)/.local/libexec/ibus-engine-amharic
 	@echo "Installed to ~/.local. Run 'ibus restart' to load the new engine."
 
+uninstall:
+	rm -f $(DESTDIR)$(LIBEXECDIR)/ibus-engine-amharic
+	rm -f $(DESTDIR)$(DATADIR)/ibus/component/amharic.xml
+
+uninstall-user:
+	rm -f $(HOME)/.local/libexec/ibus-engine-amharic
+	rm -f $(HOME)/.local/share/ibus/component/amharic.xml
+
 clean:
 	rm -rf build
 
-.PHONY: all test install install-user clean
+.PHONY: all test install install-user uninstall uninstall-user clean

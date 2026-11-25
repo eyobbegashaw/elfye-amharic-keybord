@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { AmharicTextarea } from '@elfye/react';
+import type { TransliterationOptions } from '@elfye/core';
 import { DesktopTranslations } from '../translations.js';
 
 interface PracticeViewProps {
   t: DesktopTranslations;
+  transliterationOptions?: TransliterationOptions;
 }
 
-export const PracticeView: React.FC<PracticeViewProps> = ({ t }) => {
+export const PracticeView: React.FC<PracticeViewProps> = ({ t, transliterationOptions }) => {
   const [text, setText] = useState('');
   const [copied, setCopied] = useState(false);
   const [enabled, setEnabled] = useState(true);
@@ -59,6 +61,7 @@ export const PracticeView: React.FC<PracticeViewProps> = ({ t }) => {
         value={text}
         onChange={(e) => setText(e.target.value)}
         enabled={enabled}
+        options={transliterationOptions}
         rows={8}
       />
 

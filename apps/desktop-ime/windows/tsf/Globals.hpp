@@ -28,5 +28,5 @@ extern const GUID GUID_AmharicDisplayAttribute;
 constexpr LANGID AMHARIC_LANGID = 0x045E;
 
 // Text Service Description
-constexpr const wchar_t* TEXTSERVICE_DESC = L"Amharic Phonetic Keyboard (Addiyon)";
+constexpr const wchar_t* TEXTSERVICE_DESC = L"Elfye Amharic Phonetic (Addiyon)";
 constexpr const wchar_t* TEXTSERVICE_MODEL = L"Apartment";

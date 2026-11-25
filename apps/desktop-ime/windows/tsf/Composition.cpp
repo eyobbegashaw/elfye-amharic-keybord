@@ -164,6 +164,20 @@ private:
     HRESULT DoEndComposition(TfEditCookie ec) {
         ITfComposition* pComp = m_pService->GetComposition();
         if (pComp) {
+            ITfRange* pRange = nullptr;
+            if (SUCCEEDED(pComp->GetRange(&pRange)) && pRange) {
+                // Clear any remaining preedit text before ending composition (e.g., backspace to empty)
+                pRange->SetText(ec, 0, L"", 0);
+                pRange->Collapse(ec, TF_ANCHOR_END);
+
+                TF_SELECTION sel;
+                sel.range = pRange;
+                sel.style.ase = TF_AE_NONE;
+                sel.style.fInterimChar = FALSE;
+                m_pContext->SetSelection(ec, 1, &sel);
+                pRange->Release();
+            }
+
             pComp->EndComposition(ec);
             pComp->Release();
             m_pService->SetComposition(nullptr);

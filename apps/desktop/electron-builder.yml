@@ -1,6 +1,6 @@
-appId: com.dbu.amharickeyboard.desktop
-productName: Amharic Keyboard Companion
-copyright: Copyright © 2026 DBU App Team
+appId: com.elfye.desktop
+productName: Elfye Amharic Keyboard
+copyright: Copyright © 2026 Elfye Team
 
 directories:
   output: release
@@ -16,31 +16,55 @@ linux:
   target:
     - AppImage
     - deb
+  icon: public/icon.png
   category: Utility
-  synopsis: Amharic Phonetic Keyboard Companion & Practice Tool
-  description: Companion app for typing practice and native IME setup on Linux (IBus).
+  synopsis: Elfye Amharic Phonetic Keyboard & Native IME Manager
+  description: System-wide Amharic Phonetic Keyboard manager and practice tool for Linux (IBus).
+  extraResources:
+    - from: ../desktop-ime/linux/ibus-amharic
+      to: desktop-ime/linux/ibus-amharic
+      filter:
+        - "**/*"
+        - "!build/**"
 
-# macOS configuration
+# macOS configuration (requires Apple Developer ID & notarization for distribution)
 mac:
   target:
     - dmg
     - zip
+  icon: public/icon.png
   category: public.app-category.utilities
   hardenedRuntime: true
   gatekeeperAssess: false
-  entitlements: build/entitlements.mac.plist
-  entitlementsInherit: build/entitlements.mac.plist
+  extraResources:
+    - from: ../desktop-ime/macos
+      to: desktop-ime/macos
+      filter:
+        - "**/*"
+        - "!.build/**"
 
 # Windows configuration
 win:
   target:
     - nsis
     - portable
-  publisherName: DBU App Team
+  icon: public/icon.png
+  publisherName: Elfye Team
   verifyUpdateCodeSignature: false
+  extraResources:
+    - from: ../desktop-ime/windows/bin
+      to: desktop-ime/windows/bin
+      filter:
+        - "x64/AmharicTSF64.dll"
+        - "x86/AmharicTSF32.dll"
+    - from: ../desktop-ime/windows/scripts
+      to: desktop-ime/windows/scripts
+      filter:
+        - "*.ps1"
 
 nsis:
   oneClick: false
   perMachine: false
   allowToChangeInstallationDirectory: true
   deleteAppDataOnUninstall: true
+  include: build/installer.nsh

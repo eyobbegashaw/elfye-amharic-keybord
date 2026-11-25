@@ -117,4 +117,21 @@ describe('LiveTypingEngine - Live Typing & Composing State', () => {
     const res = engine.input(',');
     expect(res).toEqual({ committed: 'ሰ፣', composing: '' });
   });
+
+  it('passes through special characters cleanly without losing composing text', () => {
+    engine.input('h');
+    engine.input('a');
+    const res = engine.input('!');
+    expect(res).toEqual({ committed: 'ሃ!', composing: '' });
+
+    const paren = engine.input('(2026)');
+    expect(paren).toEqual({ committed: '(2026)', composing: '' });
+  });
+
+  it('supports Ethiopic digits when convertDigits is enabled', () => {
+    const digitEngine = new LiveTypingEngine({ convertDigits: true });
+    digitEngine.input('1');
+    digitEngine.input('2');
+    expect(digitEngine.getText()).toBe('፩፪');
+  });
 });

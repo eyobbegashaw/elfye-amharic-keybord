@@ -15,8 +15,8 @@
             <author>Antigravity</author>
             <icon>ibus-amharic</icon>
             <layout>us</layout>
-            <longname>Amharic (Addiyon Phonetic)</longname>
-            <description>Amharic Phonetic Transliteration (Addiyon Scheme)</description>
+            <longname>Elfye Amharic (Addiyon Phonetic)</longname>
+            <description>Elfye Amharic Phonetic Transliteration (Addiyon Scheme)</description>
             <rank>99</rank>
         </engine>
     </engines>

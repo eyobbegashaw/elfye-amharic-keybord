@@ -1,7 +1,7 @@
 import React from 'react';
 import { DesktopTranslations } from '../translations.js';
 
-export type TabId = 'practice' | 'chart' | 'ime' | 'settings';
+export type TabId = 'dashboard' | 'ime' | 'practice' | 'chart' | 'settings';
 
 interface NavbarProps {
   currentTab: TabId;
@@ -19,6 +19,20 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, onSelectTab, t }) =>
       <nav className="nav-tabs" aria-label="Navigation">
         <button
           type="button"
+          className={`nav-btn ${currentTab === 'dashboard' ? 'active' : ''}`}
+          onClick={() => onSelectTab('dashboard')}
+        >
+          🏠 {t.dashboardTab}
+        </button>
+        <button
+          type="button"
+          className={`nav-btn ${currentTab === 'ime' ? 'active' : ''}`}
+          onClick={() => onSelectTab('ime')}
+        >
+          ⚙️ {t.imeGuideTab}
+        </button>
+        <button
+          type="button"
           className={`nav-btn ${currentTab === 'practice' ? 'active' : ''}`}
           onClick={() => onSelectTab('practice')}
         >
@@ -30,13 +44,6 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, onSelectTab, t }) =>
           onClick={() => onSelectTab('chart')}
         >
           📖 {t.chartTab}
-        </button>
-        <button
-          type="button"
-          className={`nav-btn ${currentTab === 'ime' ? 'active' : ''}`}
-          onClick={() => onSelectTab('ime')}
-        >
-          ⚙️ {t.imeGuideTab}
         </button>
         <button
           type="button"
