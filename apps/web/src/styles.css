@@ -692,3 +692,137 @@ body {
     color: var(--primary-text);
   }
 }
+
+
+/* ==========================================================================
+   Advanced UI/UX Polish Across All 5 Sections
+   ========================================================================== */
+
+.editor-card,
+.practice-card,
+.chart-card,
+.install-card {
+  border-radius: 20px;
+  padding: 1.75rem;
+  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+[data-theme='dark'] .editor-card,
+[data-theme='dark'] .practice-card,
+[data-theme='dark'] .chart-card,
+[data-theme='dark'] .install-card {
+  box-shadow: 0 14px 36px -12px rgba(0, 0, 0, 0.55);
+}
+
+.editor-card {
+  border-top: 3px solid var(--primary);
+}
+
+.section-icon-badge {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background-color: var(--primary-light);
+  color: var(--primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.step-counter-pill {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--primary-text);
+  background-color: var(--primary-light);
+  padding: 0.25rem 0.7rem;
+  border-radius: 9999px;
+}
+
+/* 1. Editor Enhancements */
+.editor-textarea {
+  min-height: 210px;
+  font-size: 1.35rem;
+  border-radius: 14px;
+  padding: 1.15rem;
+}
+
+.editor-stats span {
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+  background-color: var(--bg-surface-elevated);
+  border: 1px solid var(--border-color);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.btn {
+  border-radius: 10px;
+  padding: 0.55rem 1.05rem;
+}
+
+.btn:not(:disabled):hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* 2. Practice Area Enhancements */
+.practice-box {
+  border-radius: 14px;
+  padding: 1.35rem;
+}
+
+.practice-input {
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+}
+
+.practice-input:focus {
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* 3. Reference Chart Enhancements */
+.table-wrapper {
+  max-height: 520px;
+  overflow: auto;
+  border-radius: 14px;
+}
+
+.reference-table th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.reference-table tbody tr:hover td {
+  background-color: rgba(37, 99, 235, 0.03);
+}
+
+.cell-button {
+  border-radius: 8px;
+  padding: 0.45rem 0.25rem;
+}
+
+.cell-button:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* 4 & 5. Install & Packages Cards */
+.platform-box {
+  border-radius: 14px;
+  padding: 1.35rem;
+  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.platform-box:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}

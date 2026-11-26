@@ -34,10 +34,17 @@ export const PracticeSection: React.FC<PracticeSectionProps> = ({ t }) => {
 
   return (
     <section className="practice-card" aria-label={t.practiceTitle}>
-      <h2 className="section-title" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-        <Target size={22} aria-hidden="true" />
-        <span>{t.practiceTitle}</span>
-      </h2>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem' }}>
+        <h2 className="section-title" style={{ display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
+          <span className="section-icon-badge" aria-hidden="true">
+            <Target size={18} />
+          </span>
+          <span>{t.practiceTitle}</span>
+        </h2>
+        <span className="step-counter-pill">
+          {currentIndex + 1} / {PRACTICE_ITEMS.length}
+        </span>
+      </div>
       <p className="section-desc">{t.practiceSubtitle}</p>
 
       <div className="practice-box">
