@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Platform } from 'react-native';
+import { Smartphone, PenLine } from 'lucide-react-native';
 import { MobileTranslations } from '../utils/translations';
 import { openKeyboardSettings } from '../utils/linking';
 
@@ -20,15 +21,20 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ t, onNavigat
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
       <View style={styles.header}>
-        <Text style={styles.icon}>📱</Text>
+        <View style={styles.icon}>
+          <Smartphone size={44} color="#2563eb" />
+        </View>
         <Text style={styles.title}>{t.onboardingTitle}</Text>
         <Text style={styles.subtitle}>{t.onboardingSubtitle}</Text>
       </View>
 
       <View style={styles.platformBadge}>
-        <Text style={styles.platformBadgeText}>
-          {Platform.OS === 'ios' ? '🍎 iOS Device' : '🤖 Android Device'}
-        </Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+          <Smartphone size={14} color="#1d4ed8" />
+          <Text style={styles.platformBadgeText}>
+            {Platform.OS === 'ios' ? 'iOS Device' : 'Android Device'}
+          </Text>
+        </View>
       </View>
 
       <View style={styles.card}>
@@ -68,7 +74,10 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ t, onNavigat
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.secondaryButton} onPress={onNavigateToPractice}>
-        <Text style={styles.secondaryButtonText}>✍️ {t.practiceTab}</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+          <PenLine size={16} color="#2563eb" />
+          <Text style={styles.secondaryButtonText}>{t.practiceTab}</Text>
+        </View>
       </TouchableOpacity>
     </ScrollView>
   );

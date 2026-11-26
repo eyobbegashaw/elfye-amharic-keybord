@@ -1,4 +1,18 @@
 import React, { useState } from 'react';
+import {
+  Settings2,
+  RefreshCw,
+  Monitor,
+  CheckCircle2,
+  Circle,
+  AlertTriangle,
+  Download,
+  Wrench,
+  Trash2,
+  Globe,
+  Terminal,
+  Loader2,
+} from 'lucide-react';
 import { DesktopTranslations } from '../translations.js';
 import type { ImeStatus } from '../../preload/preload.js';
 
@@ -46,7 +60,10 @@ export const ImeGuideView: React.FC<ImeGuideViewProps> = ({
     <div className="card">
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '0.75rem' }}>
         <div>
-          <h2 className="section-title">⚙️ {t.imeTitle}</h2>
+          <h2 className="section-title" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <Settings2 size={20} aria-hidden="true" />
+            <span>{t.imeTitle}</span>
+          </h2>
           <p className="section-desc">{t.imeSubtitle}</p>
         </div>
         {isElectron && (
@@ -55,24 +72,30 @@ export const ImeGuideView: React.FC<ImeGuideViewProps> = ({
             className="btn btn-outline"
             onClick={onRefresh}
             disabled={busy}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}
           >
-            🔄 {t.refreshBtn}
+            <RefreshCw size={15} aria-hidden="true" />
+            <span>{t.refreshBtn}</span>
           </button>
         )}
       </div>
 
       {detectedPlatform && (
         <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '1rem' }}>
-          <span className="badge badge-amharic">
-            🖥️ {t.currentPlatformBadge}:{' '}
-            {detectedPlatform === 'win32'
-              ? 'Windows'
-              : detectedPlatform === 'darwin'
-              ? 'macOS'
-              : 'Linux'}
+          <span className="badge badge-amharic" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
+            <Monitor size={14} aria-hidden="true" />
+            <span>
+              {t.currentPlatformBadge}:{' '}
+              {detectedPlatform === 'win32'
+                ? 'Windows'
+                : detectedPlatform === 'darwin'
+                ? 'macOS'
+                : 'Linux'}
+            </span>
           </span>
-          <span className={`badge ${status?.installed ? 'badge-amharic' : 'badge-english'}`}>
-            {status?.installed ? `🟢 ${t.statusInstalled}` : `⚪ ${t.statusNotInstalled}`}
+          <span className={`badge ${status?.installed ? 'badge-amharic' : 'badge-english'}`} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
+            {status?.installed ? <CheckCircle2 size={14} aria-hidden="true" /> : <Circle size={14} aria-hidden="true" />}
+            <span>{status?.installed ? t.statusInstalled : t.statusNotInstalled}</span>
           </span>
         </div>
       )}
@@ -86,10 +109,13 @@ export const ImeGuideView: React.FC<ImeGuideViewProps> = ({
             background: actionFeedback.type === 'success' ? 'rgba(16, 185, 129, 0.12)' : 'rgba(239, 68, 68, 0.12)',
             border: `1px solid ${actionFeedback.type === 'success' ? 'var(--accent-green)' : 'var(--accent-red)'}`,
             fontSize: '0.9rem',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem',
           }}
         >
-          {actionFeedback.type === 'success' ? '✓ ' : '⚠️ '}
-          {actionFeedback.text}
+          {actionFeedback.type === 'success' ? <CheckCircle2 size={16} aria-hidden="true" /> : <AlertTriangle size={16} aria-hidden="true" />}
+          <span>{actionFeedback.text}</span>
         </div>
       )}
 
@@ -111,12 +137,24 @@ export const ImeGuideView: React.FC<ImeGuideViewProps> = ({
             className="btn btn-primary"
             onClick={onInstallOrRepair}
             disabled={busy}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}
           >
-            {busyAction === 'install'
-              ? `⏳ ${t.installingText}`
-              : status?.installed
-              ? `🔧 ${t.repairBtn}`
-              : `⬇️ ${t.installBtn}`}
+            {busyAction === 'install' ? (
+              <>
+                <Loader2 size={16} aria-hidden="true" />
+                <span>{t.installingText}</span>
+              </>
+            ) : status?.installed ? (
+              <>
+                <Wrench size={16} aria-hidden="true" />
+                <span>{t.repairBtn}</span>
+              </>
+            ) : (
+              <>
+                <Download size={16} aria-hidden="true" />
+                <span>{t.installBtn}</span>
+              </>
+            )}
           </button>
 
           {status?.installed && (
@@ -125,9 +163,19 @@ export const ImeGuideView: React.FC<ImeGuideViewProps> = ({
               className="btn btn-outline"
               onClick={onUninstall}
               disabled={busy}
-              style={{ color: 'var(--accent-red)', borderColor: 'var(--accent-red)' }}
+              style={{ color: 'var(--accent-red)', borderColor: 'var(--accent-red)', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}
             >
-              {busyAction === 'uninstall' ? `⏳ ${t.uninstallingText}` : `🗑️ ${t.uninstallBtn}`}
+              {busyAction === 'uninstall' ? (
+                <>
+                  <Loader2 size={16} aria-hidden="true" />
+                  <span>{t.uninstallingText}</span>
+                </>
+              ) : (
+                <>
+                  <Trash2 size={16} aria-hidden="true" />
+                  <span>{t.uninstallBtn}</span>
+                </>
+              )}
             </button>
           )}
 
@@ -136,8 +184,10 @@ export const ImeGuideView: React.FC<ImeGuideViewProps> = ({
             className="btn btn-outline"
             onClick={onOpenOsSettings}
             disabled={busy}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}
           >
-            🌐 {t.openOsSettingsBtn}
+            <Globe size={16} aria-hidden="true" />
+            <span>{t.openOsSettingsBtn}</span>
           </button>
         </div>
       )}
@@ -147,22 +197,28 @@ export const ImeGuideView: React.FC<ImeGuideViewProps> = ({
           type="button"
           className={`btn ${activeTab === 'windows' ? 'btn-primary' : 'btn-outline'}`}
           onClick={() => setActiveTab('windows')}
+          style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}
         >
-          🪟 {t.windowsTab}
+          <Monitor size={15} aria-hidden="true" />
+          <span>{t.windowsTab}</span>
         </button>
         <button
           type="button"
           className={`btn ${activeTab === 'macos' ? 'btn-primary' : 'btn-outline'}`}
           onClick={() => setActiveTab('macos')}
+          style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}
         >
-          🍎 {t.macosTab}
+          <Monitor size={15} aria-hidden="true" />
+          <span>{t.macosTab}</span>
         </button>
         <button
           type="button"
           className={`btn ${activeTab === 'linux' ? 'btn-primary' : 'btn-outline'}`}
           onClick={() => setActiveTab('linux')}
+          style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}
         >
-          🐧 {t.linuxTab}
+          <Terminal size={15} aria-hidden="true" />
+          <span>{t.linuxTab}</span>
         </button>
       </div>
 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TextInput } from 'react-native';
+import { BookOpen } from 'lucide-react-native';
 import { MobileTranslations } from '../utils/translations';
 
 interface RulesChartScreenProps {
@@ -61,7 +62,10 @@ export const RulesChartScreen: React.FC<RulesChartScreenProps> = ({ t }) => {
 
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
-      <Text style={styles.title}>📖 {t.chartTitle}</Text>
+      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 4 }}>
+        <BookOpen size={20} color="#0f172a" />
+        <Text style={[styles.title, { marginBottom: 0 }]}>{t.chartTitle}</Text>
+      </View>
       <Text style={styles.subtitle}>{t.chartSubtitle}</Text>
 
       <TextInput

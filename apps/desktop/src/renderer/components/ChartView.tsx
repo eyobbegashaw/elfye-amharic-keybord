@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Check } from 'lucide-react';
 import { ReferenceChart } from '@elfye/react';
 import { DesktopTranslations } from '../translations.js';
 
@@ -33,9 +34,13 @@ export const ChartView: React.FC<ChartViewProps> = ({ t }) => {
             borderRadius: 'var(--radius)',
             boxShadow: 'var(--shadow-md)',
             zIndex: 100,
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.4rem',
           }}
         >
-          ✓ '{copiedChar}' ተቀድቷል!
+          <Check size={16} aria-hidden="true" />
+          <span>&apos;{copiedChar}&apos; ተቀድቷል!</span>
         </div>
       )}
       <ReferenceChart

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Target, ArrowRight } from 'lucide-react';
 import { AmharicInput } from '@elfye/react';
 import { Translations } from '../translations.js';
 
@@ -33,7 +34,10 @@ export const PracticeSection: React.FC<PracticeSectionProps> = ({ t }) => {
 
   return (
     <section className="practice-card" aria-label={t.practiceTitle}>
-      <h2 className="section-title">🎯 {t.practiceTitle}</h2>
+      <h2 className="section-title" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+        <Target size={22} aria-hidden="true" />
+        <span>{t.practiceTitle}</span>
+      </h2>
       <p className="section-desc">{t.practiceSubtitle}</p>
 
       <div className="practice-box">
@@ -42,7 +46,7 @@ export const PracticeSection: React.FC<PracticeSectionProps> = ({ t }) => {
             {t.practicePromptLabel}
           </span>
           <code className="prompt-latin">{currentItem.latin}</code>
-          <span className="prompt-arrow">➔</span>
+          <ArrowRight size={16} className="prompt-arrow" aria-hidden="true" />
           <span className="prompt-expected">{currentItem.expected}</span>
         </div>
 
@@ -61,9 +65,10 @@ export const PracticeSection: React.FC<PracticeSectionProps> = ({ t }) => {
               type="button"
               className="btn btn-secondary"
               onClick={handleNext}
-              style={{ padding: '0.3rem 0.75rem', fontSize: '0.85rem' }}
+              style={{ padding: '0.3rem 0.75rem', fontSize: '0.85rem', display: 'inline-flex', alignItems: 'center', gap: '0.3rem' }}
             >
-              {t.practiceNext} ➔
+              <span>{t.practiceNext}</span>
+              <ArrowRight size={14} aria-hidden="true" />
             </button>
           </div>
         )}

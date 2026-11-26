@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import { SlidersHorizontal, Lock, Info } from 'lucide-react-native';
 import { MobileLocale } from '../types';
 import { MobileTranslations } from '../utils/translations';
 
@@ -16,7 +17,10 @@ export const SettingsScreen: React.FC<SettingsScreenProps> = ({
 }) => {
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
-      <Text style={styles.title}>⚙️ {t.settingsTitle}</Text>
+      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 16 }}>
+        <SlidersHorizontal size={20} color="#0f172a" />
+        <Text style={[styles.title, { marginBottom: 0 }]}>{t.settingsTitle}</Text>
+      </View>
 
       {/* Language Section */}
       <View style={styles.card}>
@@ -44,13 +48,19 @@ export const SettingsScreen: React.FC<SettingsScreenProps> = ({
 
       {/* Privacy & Offline Section */}
       <View style={styles.card}>
-        <Text style={styles.sectionHeader}>🔒 {t.offlineTitle}</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 10 }}>
+          <Lock size={16} color="#0f172a" />
+          <Text style={[styles.sectionHeader, { marginBottom: 0 }]}>{t.offlineTitle}</Text>
+        </View>
         <Text style={styles.desc}>{t.offlineDesc}</Text>
       </View>
 
       {/* App Version Info */}
       <View style={styles.card}>
-        <Text style={styles.sectionHeader}>ℹ️ {t.appName}</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 10 }}>
+          <Info size={16} color="#0f172a" />
+          <Text style={[styles.sectionHeader, { marginBottom: 0 }]}>{t.appName}</Text>
+        </View>
         <Text style={styles.desc}>{t.versionLabel}</Text>
       </View>
     </ScrollView>

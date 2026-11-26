@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import { PenLine, Info, Check } from 'lucide-react-native';
 import { MobileTranslations } from '../utils/translations';
 import { AmharicTextInput } from '../components/AmharicTextInput';
 
@@ -26,11 +27,14 @@ export const PracticeScreen: React.FC<PracticeScreenProps> = ({ t }) => {
 
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
-      <Text style={styles.title}>✍️ {t.practiceTitle}</Text>
+      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 12 }}>
+        <PenLine size={20} color="#0f172a" />
+        <Text style={[styles.title, { marginBottom: 0 }]}>{t.practiceTitle}</Text>
+      </View>
 
       {/* Honesty Banner */}
       <View style={styles.noticeCard}>
-        <Text style={styles.noticeIcon}>ℹ️</Text>
+        <Info size={18} color="#92400e" style={styles.noticeIcon} />
         <Text style={styles.noticeText}>{t.practiceNotice}</Text>
       </View>
 
@@ -53,7 +57,10 @@ export const PracticeScreen: React.FC<PracticeScreenProps> = ({ t }) => {
 
         <View style={styles.actionsRow}>
           {copied && (
-            <Text style={styles.copiedMsg}>✓ {t.copiedToast}</Text>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
+              <Check size={14} color="#16a34a" />
+              <Text style={styles.copiedMsg}>{t.copiedToast}</Text>
+            </View>
           )}
           <View style={styles.buttonGroup}>
             <TouchableOpacity

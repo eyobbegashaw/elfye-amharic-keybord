@@ -1,4 +1,5 @@
 import { forwardRef, useState } from 'react';
+import { Trash2, Copy, Check } from 'lucide-react';
 import { AmharicTextarea } from '@elfye/react';
 import { Translations } from '../translations.js';
 
@@ -79,16 +80,20 @@ export const TypingArea = forwardRef<HTMLTextAreaElement, TypingAreaProps>(funct
             className="btn btn-secondary"
             onClick={handleClear}
             disabled={!text}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}
           >
-            🗑️ {t.clearBtn}
+            <Trash2 size={16} aria-hidden="true" />
+            <span>{t.clearBtn}</span>
           </button>
           <button
             type="button"
             className="btn btn-primary"
             onClick={handleCopy}
             disabled={!text}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}
           >
-            📋 {copying ? t.copiedToast : t.copyBtn}
+            {copying ? <Check size={16} aria-hidden="true" /> : <Copy size={16} aria-hidden="true" />}
+            <span>{copying ? t.copiedToast : t.copyBtn}</span>
           </button>
         </div>
       </div>

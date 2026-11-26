@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from 'react';
+import { BookOpen, Lightbulb } from 'lucide-react';
 import { generateReferenceChart } from '../chartData.js';
 import { Translations } from '../translations.js';
 
@@ -42,7 +43,10 @@ export const ReferenceChart: React.FC<ReferenceChartProps> = ({ t, onSelectChar 
 
   return (
     <section className="chart-card" aria-label={t.chartTitle}>
-      <h2 className="section-title">📖 {t.chartTitle}</h2>
+      <h2 className="section-title" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+        <BookOpen size={22} aria-hidden="true" />
+        <span>{t.chartTitle}</span>
+      </h2>
       <p className="section-desc">{t.chartSubtitle}</p>
 
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem' }}>
@@ -54,8 +58,9 @@ export const ReferenceChart: React.FC<ReferenceChartProps> = ({ t, onSelectChar 
           onChange={(e) => setSearch(e.target.value)}
           aria-label={t.chartSearchPlaceholder}
         />
-        <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '1rem' }}>
-          💡 {t.chartClickHint}
+        <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '1rem', display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
+          <Lightbulb size={15} aria-hidden="true" />
+          <span>{t.chartClickHint}</span>
         </span>
       </div>
 

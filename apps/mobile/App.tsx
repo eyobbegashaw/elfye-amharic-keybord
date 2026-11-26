@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { SafeAreaView, View, Text, TouchableOpacity, StyleSheet, StatusBar } from 'react-native';
+import { Keyboard, Settings2, PenLine, BookOpen, SlidersHorizontal } from 'lucide-react-native';
 import { ScreenName, MobileLocale } from './src/types';
 import { mobileTranslations } from './src/utils/translations';
 import { OnboardingScreen } from './src/screens/OnboardingScreen';
@@ -19,7 +20,10 @@ export default function App() {
 
       {/* Top Header */}
       <View style={styles.topHeader}>
-        <Text style={styles.appTitle}>⌨️ {t.appName}</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+          <Keyboard size={20} color="#1e293b" />
+          <Text style={styles.appTitle}>{t.appName}</Text>
+        </View>
       </View>
 
       {/* Screen Body */}
@@ -47,9 +51,7 @@ export default function App() {
           style={styles.navItem}
           onPress={() => setCurrentScreen('onboarding')}
         >
-          <Text style={[styles.navIcon, currentScreen === 'onboarding' && styles.activeNavIcon]}>
-            ⚙️
-          </Text>
+          <Settings2 size={20} color={currentScreen === 'onboarding' ? '#2563eb' : '#64748b'} style={styles.navIconWrap} />
           <Text style={[styles.navText, currentScreen === 'onboarding' && styles.activeNavText]}>
             {t.onboardingTab}
           </Text>
@@ -59,9 +61,7 @@ export default function App() {
           style={styles.navItem}
           onPress={() => setCurrentScreen('practice')}
         >
-          <Text style={[styles.navIcon, currentScreen === 'practice' && styles.activeNavIcon]}>
-            ✍️
-          </Text>
+          <PenLine size={20} color={currentScreen === 'practice' ? '#2563eb' : '#64748b'} style={styles.navIconWrap} />
           <Text style={[styles.navText, currentScreen === 'practice' && styles.activeNavText]}>
             {t.practiceTab}
           </Text>
@@ -71,9 +71,7 @@ export default function App() {
           style={styles.navItem}
           onPress={() => setCurrentScreen('chart')}
         >
-          <Text style={[styles.navIcon, currentScreen === 'chart' && styles.activeNavIcon]}>
-            📖
-          </Text>
+          <BookOpen size={20} color={currentScreen === 'chart' ? '#2563eb' : '#64748b'} style={styles.navIconWrap} />
           <Text style={[styles.navText, currentScreen === 'chart' && styles.activeNavText]}>
             {t.chartTab}
           </Text>
@@ -83,9 +81,7 @@ export default function App() {
           style={styles.navItem}
           onPress={() => setCurrentScreen('settings')}
         >
-          <Text style={[styles.navIcon, currentScreen === 'settings' && styles.activeNavIcon]}>
-            🔧
-          </Text>
+          <SlidersHorizontal size={20} color={currentScreen === 'settings' ? '#2563eb' : '#64748b'} style={styles.navIconWrap} />
           <Text style={[styles.navText, currentScreen === 'settings' && styles.activeNavText]}>
             {t.settingsTab}
           </Text>
@@ -127,13 +123,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  navIcon: {
-    fontSize: 18,
-    marginBottom: 2,
-    opacity: 0.6,
-  },
-  activeNavIcon: {
-    opacity: 1,
+  navIconWrap: {
+    marginBottom: 4,
   },
   navText: {
     fontSize: 11,
