@@ -140,6 +140,29 @@ export const App: React.FC = () => {
             {toastMessage}
           </div>
         )}
+
+        <footer
+          style={{
+            marginTop: '2.5rem',
+            paddingTop: '1.25rem',
+            borderTop: '1px solid var(--border-color)',
+            textAlign: 'center',
+            fontSize: '0.875rem',
+            color: 'var(--text-secondary)',
+          }}
+        >
+          <div>
+            Developed by <strong>Eyob Begashaw</strong> &bull;{' '}
+            <a
+              href="https://github.com/eyobbegashaw"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: 'var(--primary-text)', fontWeight: 600, textDecoration: 'none' }}
+            >
+              https://github.com/eyobbegashaw
+            </a>
+          </div>
+        </footer>
       </div>
     </div>
   );

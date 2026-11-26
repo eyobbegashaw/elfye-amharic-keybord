@@ -174,6 +174,18 @@ struct ContentView: View {
                 .font(.footnote)
                 .foregroundColor(.secondary)
                 .lineSpacing(4)
+
+            Divider()
+
+            VStack(alignment: .leading, spacing: 4) {
+                Text("Developed by Eyob Begashaw")
+                    .font(.footnote)
+                    .fontWeight(.semibold)
+                if let url = URL(string: "https://github.com/eyobbegashaw") {
+                    Link("https://github.com/eyobbegashaw", destination: url)
+                        .font(.footnote)
+                }
+            }
         }
         .padding()
         .frame(maxWidth: .infinity, alignment: .leading)

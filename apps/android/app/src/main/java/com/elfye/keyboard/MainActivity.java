@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.TypedValue;
@@ -72,6 +73,15 @@ public class MainActivity extends Activity {
         testInput.setHint("Tap here and type 'selam' -> ሰላም");
         testInput.setMinLines(3);
         root.addView(testInput);
+
+        TextView authorView = new TextView(this);
+        authorView.setText("Developed by Eyob Begashaw\nhttps://github.com/eyobbegashaw");
+        authorView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 13);
+        authorView.setTextColor(Color.parseColor("#2563EB"));
+        authorView.setPadding(0, dp(24), 0, dp(8));
+        authorView.setOnClickListener(v ->
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/eyobbegashaw"))));
+        root.addView(authorView);
 
         scroll.addView(root);
         setContentView(scroll);

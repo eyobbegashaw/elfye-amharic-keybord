@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Linking } from 'react-native';
 import { SlidersHorizontal, Lock, Info } from 'lucide-react-native';
 import { MobileLocale } from '../types';
 import { MobileTranslations } from '../utils/translations';
@@ -62,6 +62,14 @@ export const SettingsScreen: React.FC<SettingsScreenProps> = ({
           <Text style={[styles.sectionHeader, { marginBottom: 0 }]}>{t.appName}</Text>
         </View>
         <Text style={styles.desc}>{t.versionLabel}</Text>
+        <Text style={[styles.desc, { marginTop: 8, fontWeight: '600', color: '#0f172a' }]}>
+          Developed by Eyob Begashaw
+        </Text>
+        <TouchableOpacity onPress={() => Linking.openURL('https://github.com/eyobbegashaw')}>
+          <Text style={[styles.desc, { marginTop: 4, color: '#2563eb', fontWeight: '600' }]}>
+            https://github.com/eyobbegashaw
+          </Text>
+        </TouchableOpacity>
       </View>
     </ScrollView>
   );

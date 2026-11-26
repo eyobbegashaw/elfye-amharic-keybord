@@ -240,6 +240,17 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
         <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>
           {t.aboutDesc}
         </p>
+        <p style={{ fontSize: '0.9rem', color: 'var(--text-main)', marginTop: '0.5rem' }}>
+          Developed by <strong>Eyob Begashaw</strong> &bull;{' '}
+          <a
+            href="https://github.com/eyobbegashaw"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: 'var(--primary)', fontWeight: 600, textDecoration: 'none' }}
+          >
+            https://github.com/eyobbegashaw
+          </a>
+        </p>
       </div>
     </div>
   );
