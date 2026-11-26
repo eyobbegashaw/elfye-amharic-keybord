@@ -789,15 +789,24 @@ body {
 
 /* 3. Reference Chart Enhancements */
 .table-wrapper {
-  max-height: 520px;
-  overflow: auto;
+  max-height: none;
+  overflow: visible;
   border-radius: 14px;
 }
 
+.reference-table {
+  width: 100%;
+  table-layout: fixed;
+}
+
 .reference-table th {
-  position: sticky;
-  top: 0;
-  z-index: 2;
+  white-space: normal;
+  font-size: 0.82rem;
+  padding: 0.6rem 0.25rem;
+}
+
+.reference-table td {
+  padding: 0.35rem 0.15rem;
 }
 
 .reference-table tbody tr:hover td {
