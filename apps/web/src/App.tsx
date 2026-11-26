@@ -1,13 +1,21 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Locale, translations } from './translations.js';
-import { Header } from './components/Header.js';
+import { Header, WebPage } from './components/Header.js';
 import { TypingArea } from './components/TypingArea.js';
 import { PracticeSection } from './components/PracticeSection.js';
 import { ReferenceChart } from './components/ReferenceChart.js';
 import { InstallGuide } from './components/InstallGuide.js';
 import { PackagesGuide } from './components/PackagesGuide.js';
 
+const VALID_PAGES: WebPage[] = ['editor', 'practice', 'chart', 'download', 'packages'];
+
+function getInitialPage(): WebPage {
+  const hash = window.location.hash.replace('#', '') as WebPage;
+  return VALID_PAGES.includes(hash) ? hash : 'editor';
+}
+
 export const App: React.FC = () => {
+  const [activePage, setActivePage] = useState<WebPage>(getInitialPage);
   const [locale, setLocale] = useState<Locale>('am');
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
   const [text, setText] = useState('');
@@ -17,6 +25,14 @@ export const App: React.FC = () => {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
 
   const t = translations[locale];
+
+  // Sync activePage with browser hash
+  const handleSelectPage = useCallback((page: WebPage) => {
+    setActivePage(page);
+    if (window.location.hash !== `#${page}`) {
+      window.history.replaceState(null, '', `#${page}`);
+    }
+  }, []);
 
   // Initialize theme from preference or localStorage
   useEffect(() => {
@@ -58,70 +74,65 @@ export const App: React.FC = () => {
     }, 2500);
   }, []);
 
-  // Insert character from reference chart into textarea
-  const handleSelectChar = useCallback((char: string) => {
-    const el = textareaRef.current;
-    if (el) {
-      const start = el.selectionStart ?? el.value.length;
-      const end = el.selectionEnd ?? el.value.length;
-      const val = el.value;
-      const next = val.slice(0, start) + char + val.slice(end);
-      setText(next);
-
-      // Restore caret right after inserted char
-      setTimeout(() => {
-        el.focus();
-        el.setSelectionRange(start + char.length, start + char.length);
-      }, 0);
-    } else {
+  // Insert character from reference chart into editor and return to editor page
+  const handleSelectChar = useCallback(
+    (char: string) => {
       setText((prev) => prev + char);
-    }
-  }, []);
+      handleSelectPage('editor');
+      showToast(`'${char}' ${t.copiedToast}`);
+      setTimeout(() => {
+        const el = textareaRef.current;
+        if (el) {
+          el.focus();
+          const len = el.value.length;
+          el.setSelectionRange(len, len);
+        }
+      }, 30);
+    },
+    [handleSelectPage, showToast, t.copiedToast],
+  );
 
   return (
-    <>
+    <div className="web-shell">
       <Header
         t={t}
         locale={locale}
         onToggleLocale={toggleLocale}
         theme={theme}
         onToggleTheme={toggleTheme}
+        activePage={activePage}
+        onSelectPage={handleSelectPage}
       />
 
       <div className="container">
-        <section className="hero-banner">
-          <h1 className="hero-title">{t.title}</h1>
-          <p className="hero-subtitle">{t.subtitle}</p>
-        </section>
+        <main className="page-panel" key={activePage}>
+          {activePage === 'editor' && (
+            <>
+              <section className="hero-banner">
+                <h1 className="hero-title">{t.title}</h1>
+                <p className="hero-subtitle">{t.subtitle}</p>
+              </section>
+              <TypingArea
+                ref={textareaRef}
+                t={t}
+                text={text}
+                onChangeText={setText}
+                enabled={enabled}
+                onToggleEnabled={toggleEnabled}
+                onShowToast={showToast}
+              />
+            </>
+          )}
 
-        <main>
-          <div id="editor" className="section-anchor">
-            <TypingArea
-              ref={textareaRef}
-              t={t}
-              text={text}
-              onChangeText={setText}
-              enabled={enabled}
-              onToggleEnabled={toggleEnabled}
-              onShowToast={showToast}
-            />
-          </div>
+          {activePage === 'practice' && <PracticeSection t={t} />}
 
-          <div id="practice" className="section-anchor">
-            <PracticeSection t={t} />
-          </div>
-
-          <div id="chart" className="section-anchor">
+          {activePage === 'chart' && (
             <ReferenceChart t={t} onSelectChar={handleSelectChar} />
-          </div>
+          )}
 
-          <div id="download" className="section-anchor">
-            <InstallGuide t={t} />
-          </div>
+          {activePage === 'download' && <InstallGuide t={t} />}
 
-          <div id="packages" className="section-anchor">
-            <PackagesGuide t={t} />
-          </div>
+          {activePage === 'packages' && <PackagesGuide t={t} />}
         </main>
 
         {toastMessage && (
@@ -130,6 +141,6 @@ export const App: React.FC = () => {
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 };

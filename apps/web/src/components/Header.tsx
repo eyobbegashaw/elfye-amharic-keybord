@@ -2,12 +2,16 @@ import React, { useState } from 'react';
 import { Globe, Sun, Moon, Keyboard, Target, BookOpen, Download, Package, Menu, X } from 'lucide-react';
 import { Locale, Translations } from '../translations.js';
 
+export type WebPage = 'editor' | 'practice' | 'chart' | 'download' | 'packages';
+
 interface HeaderProps {
   t: Translations;
   locale: Locale;
   onToggleLocale: () => void;
   theme: 'light' | 'dark';
   onToggleTheme: () => void;
+  activePage: WebPage;
+  onSelectPage: (page: WebPage) => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -16,21 +20,33 @@ export const Header: React.FC<HeaderProps> = ({
   onToggleLocale,
   theme,
   onToggleTheme,
+  activePage,
+  onSelectPage,
 }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  const navItems = [
-    { href: '#editor', label: t.navEditor, Icon: Keyboard },
-    { href: '#practice', label: t.navPractice, Icon: Target },
-    { href: '#chart', label: t.navChart, Icon: BookOpen },
-    { href: '#download', label: t.navDownload, Icon: Download },
-    { href: '#packages', label: t.navPackages, Icon: Package },
+  const navItems: Array<{ id: WebPage; label: string; Icon: typeof Keyboard }> = [
+    { id: 'editor', label: t.navEditor, Icon: Keyboard },
+    { id: 'practice', label: t.navPractice, Icon: Target },
+    { id: 'chart', label: t.navChart, Icon: BookOpen },
+    { id: 'download', label: t.navDownload, Icon: Download },
+    { id: 'packages', label: t.navPackages, Icon: Package },
   ];
+
+  const handleNavClick = (id: WebPage) => {
+    onSelectPage(id);
+    setMobileOpen(false);
+  };
 
   return (
     <header className="navbar-shell" role="banner">
       <div className="navbar-inner">
-        <a href="#editor" className="brand-wrapper" style={{ textDecoration: 'none', color: 'inherit' }}>
+        <button
+          type="button"
+          className="brand-wrapper"
+          onClick={() => handleNavClick('editor')}
+          style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'inherit', padding: 0, textAlign: 'left' }}
+        >
           <div className="brand-icon" aria-hidden="true">
             እ
           </div>
@@ -40,19 +56,27 @@ export const Header: React.FC<HeaderProps> = ({
               <span className="brand-tag">Elfye</span>
             </div>
           </div>
-        </a>
+        </button>
 
         <nav className="navbar-links" aria-label="Main navigation">
-          {navItems.map(({ href, label, Icon }) => (
-            <a key={href} href={href} className="navbar-link">
+          {navItems.map(({ id, label, Icon }) => (
+            <button
+              key={id}
+              type="button"
+              data-page={id}
+              className={`navbar-link ${activePage === id ? 'active' : ''}`}
+              onClick={() => handleNavClick(id)}
+              aria-current={activePage === id ? 'page' : undefined}
+            >
               <Icon size={15} aria-hidden="true" />
               <span>{label}</span>
-            </a>
+            </button>
           ))}
         </nav>
 
         <div className="header-controls">
           <button
+            type="button"
             className="btn-pill"
             onClick={onToggleLocale}
             aria-label={t.langToggle}
@@ -62,6 +86,7 @@ export const Header: React.FC<HeaderProps> = ({
           </button>
 
           <button
+            type="button"
             className="btn-pill"
             onClick={onToggleTheme}
             aria-label={t.themeToggle}
@@ -93,16 +118,17 @@ export const Header: React.FC<HeaderProps> = ({
 
       {mobileOpen && (
         <nav className="navbar-mobile-drawer" aria-label="Mobile navigation">
-          {navItems.map(({ href, label, Icon }) => (
-            <a
-              key={href}
-              href={href}
-              className="navbar-mobile-link"
-              onClick={() => setMobileOpen(false)}
+          {navItems.map(({ id, label, Icon }) => (
+            <button
+              key={id}
+              type="button"
+              data-page={id}
+              className={`navbar-mobile-link ${activePage === id ? 'active' : ''}`}
+              onClick={() => handleNavClick(id)}
             >
               <Icon size={16} aria-hidden="true" />
               <span>{label}</span>
-            </a>
+            </button>
           ))}
         </nav>
       )}

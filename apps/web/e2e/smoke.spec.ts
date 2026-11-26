@@ -18,17 +18,20 @@ test.describe('Amharic Phonetic Keyboard Web App Smoke Test', () => {
 
   test('clicking a reference chart cell inserts character into editor', async ({ page }) => {
     await page.goto('/');
-    const textarea = page.locator('.editor-textarea');
-    await expect(textarea).toBeVisible();
 
-    // Clear any text first
-    await textarea.fill('');
+    // Navigate to Chart page
+    const chartNav = page.locator('.navbar-links [data-page="chart"]');
+    await expect(chartNav).toBeVisible();
+    await chartNav.click();
 
     // Click a chart cell with "ሀ"
     const cellBtn = page.locator('.cell-button:has-text("ሀ")').first();
     await expect(cellBtn).toBeVisible();
     await cellBtn.click();
 
+    // Returns to editor with "ሀ" inserted
+    const textarea = page.locator('.editor-textarea');
+    await expect(textarea).toBeVisible();
     await expect(textarea).toHaveValue('ሀ');
   });
 });
