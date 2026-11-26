@@ -68,7 +68,7 @@ export const ReferenceChart: React.FC<ReferenceChartProps> = ({ t, onSelectChar 
         <table className="reference-table">
           <thead>
             <tr>
-              <th style={{ width: '60px' }}>ቁጥር</th>
+              <th style={{ width: '108px' }}>ቁጥር</th>
               {headers.map((h, i) => (
                 <th key={i}>{h}</th>
               ))}
@@ -77,7 +77,7 @@ export const ReferenceChart: React.FC<ReferenceChartProps> = ({ t, onSelectChar 
           <tbody>
             {filteredRows.map((row) => (
               <tr key={row.key}>
-                <td style={{ fontWeight: 700, color: 'var(--primary-text)', backgroundColor: 'var(--bg-surface-elevated)' }}>
+                <td className="chart-row-key">
                   {row.key}
                 </td>
                 {row.cells.map((cell, idx) => (
