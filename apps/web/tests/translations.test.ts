@@ -12,5 +12,7 @@ describe('Web Localization & Translations', () => {
     expect(translations.am.title).toBe('የአማርኛ ፎኔቲክ ኪቦርድ');
     expect(translations.am.copyBtn).toBe('ኮፒ አድርግ');
     expect(translations.am.clearBtn).toBe('አጽዳ');
+    expect(translations.en.downloadAndroidBtn).toContain('Android');
+    expect(translations.en.downloadDesktopBtn).toContain('Desktop');
   });
 });

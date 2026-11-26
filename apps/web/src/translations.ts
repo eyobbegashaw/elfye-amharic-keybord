@@ -43,7 +43,10 @@ export interface Translations {
   iosDesc: string;
   desktopTitle: string;
   desktopDesc: string;
-  downloadPlaceholder: string;
+  downloadAndroidBtn: string;
+  downloadIosBtn: string;
+  downloadDesktopBtn: string;
+  viewAllReleasesBtn: string;
 }
 
 export const translations: Record<Locale, Translations> = {
@@ -90,7 +93,10 @@ export const translations: Record<Locale, Translations> = {
     iosDesc: 'በቅንብሮች (Settings → General → Keyboard → Add New Keyboard) በኩል ይጨምሩ።',
     desktopTitle: 'ዴስክቶፕ (Windows / macOS / Linux)',
     desktopDesc: 'በስርዓተ-አሰራር (OS) ደረጃ በቋንቋ መምረጫ ውስጥ በቀጥታ ይካተታል።',
-    downloadPlaceholder: 'በቅርቡ ይለቀቃል (Phase 3-5)',
+    downloadAndroidBtn: 'የአንድሮይድ APK አውርድ (GitHub)',
+    downloadIosBtn: 'የiOS መጫኛ / Releases (GitHub)',
+    downloadDesktopBtn: 'የዴስክቶፕ መጫኛ አውርድ (GitHub)',
+    viewAllReleasesBtn: 'ሁሉንም የ GitHub Releases ይመልከቱ',
   },
   en: {
     title: 'Amharic Phonetic Keyboard',
@@ -135,6 +141,9 @@ export const translations: Record<Locale, Translations> = {
     iosDesc: 'Enable via Settings → General → Keyboard → Keyboards → Add New Keyboard.',
     desktopTitle: 'Desktop (Windows / macOS / Linux)',
     desktopDesc: 'Native OS-level input method engine (TSF / InputMethodKit / IBus).',
-    downloadPlaceholder: 'Coming Soon (Phase 3-5)',
+    downloadAndroidBtn: 'Download Android APK',
+    downloadIosBtn: 'View iOS Release',
+    downloadDesktopBtn: 'Download Desktop App',
+    viewAllReleasesBtn: 'View all releases on GitHub',
   },
 };
