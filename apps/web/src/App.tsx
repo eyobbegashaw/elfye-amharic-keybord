@@ -79,7 +79,7 @@ export const App: React.FC = () => {
   }, []);
 
   return (
-    <div className="container">
+    <>
       <Header
         t={t}
         locale={locale}
@@ -88,31 +88,48 @@ export const App: React.FC = () => {
         onToggleTheme={toggleTheme}
       />
 
-      <main>
-        <TypingArea
-          ref={textareaRef}
-          t={t}
-          text={text}
-          onChangeText={setText}
-          enabled={enabled}
-          onToggleEnabled={toggleEnabled}
-          onShowToast={showToast}
-        />
+      <div className="container">
+        <section className="hero-banner">
+          <h1 className="hero-title">{t.title}</h1>
+          <p className="hero-subtitle">{t.subtitle}</p>
+        </section>
 
-        <PracticeSection t={t} />
+        <main>
+          <div id="editor" className="section-anchor">
+            <TypingArea
+              ref={textareaRef}
+              t={t}
+              text={text}
+              onChangeText={setText}
+              enabled={enabled}
+              onToggleEnabled={toggleEnabled}
+              onShowToast={showToast}
+            />
+          </div>
 
-        <ReferenceChart t={t} onSelectChar={handleSelectChar} />
+          <div id="practice" className="section-anchor">
+            <PracticeSection t={t} />
+          </div>
 
-        <InstallGuide t={t} />
+          <div id="chart" className="section-anchor">
+            <ReferenceChart t={t} onSelectChar={handleSelectChar} />
+          </div>
 
-        <PackagesGuide t={t} />
-      </main>
+          <div id="download" className="section-anchor">
+            <InstallGuide t={t} />
+          </div>
 
-      {toastMessage && (
-        <div className="toast" role="status" aria-live="polite">
-          {toastMessage}
-        </div>
-      )}
-    </div>
+          <div id="packages" className="section-anchor">
+            <PackagesGuide t={t} />
+          </div>
+        </main>
+
+        {toastMessage && (
+          <div className="toast" role="status" aria-live="polite">
+            {toastMessage}
+          </div>
+        )}
+      </div>
+    </>
   );
 };

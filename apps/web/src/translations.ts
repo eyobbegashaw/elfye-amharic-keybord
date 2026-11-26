@@ -56,6 +56,11 @@ export interface Translations {
   runSelfTestBtn: string;
   selfTestPassed: string;
   selfTestFailed: string;
+  navEditor: string;
+  navPractice: string;
+  navChart: string;
+  navDownload: string;
+  navPackages: string;
 }
 
 export const translations: Record<Locale, Translations> = {
@@ -115,6 +120,11 @@ export const translations: Record<Locale, Translations> = {
     runSelfTestBtn: 'የፓኬጅ ሙከራ አሂድ (Run Self-Test)',
     selfTestPassed: 'ሁሉም የፓኬጅ ሙከራዎች በትክክል አልፈዋል!',
     selfTestFailed: 'በፓኬጅ ሙከራው ላይ ስህተት ተገኝቷል።',
+    navEditor: 'መጻፊያ',
+    navPractice: 'ልምምድ',
+    navChart: 'ሰንጠረዥ',
+    navDownload: 'ማውረጃ',
+    navPackages: 'ፓኬጆች',
   },
   en: {
     title: 'Amharic Phonetic Keyboard',
@@ -172,5 +182,10 @@ export const translations: Record<Locale, Translations> = {
     runSelfTestBtn: 'Run Live Package Self-Test',
     selfTestPassed: 'All package diagnostics passed!',
     selfTestFailed: 'Package diagnostic failed.',
+    navEditor: 'Editor',
+    navPractice: 'Practice',
+    navChart: 'Chart',
+    navDownload: 'Download',
+    navPackages: 'Packages',
   },
 };
