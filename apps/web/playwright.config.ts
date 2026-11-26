@@ -4,13 +4,13 @@ export default defineConfig({
   testDir: './e2e',
   fullyParallel: true,
   webServer: {
-    command: 'pnpm dev --port 5173',
-    url: 'http://localhost:5173',
-    reuseExistingServer: !process.env.CI,
+    command: 'pnpm dev --port 4174',
+    url: 'http://localhost:4174',
+    reuseExistingServer: false,
     timeout: 120000,
   },
   use: {
-    baseURL: 'http://localhost:5173',
+    baseURL: 'http://localhost:4174',
     trace: 'on-first-retry',
   },
   projects: [

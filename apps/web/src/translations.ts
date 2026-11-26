@@ -47,6 +47,15 @@ export interface Translations {
   downloadIosBtn: string;
   downloadDesktopBtn: string;
   viewAllReleasesBtn: string;
+  packagesTitle: string;
+  packagesSubtitle: string;
+  packagesInstallTitle: string;
+  packagesUsageTitle: string;
+  packagesDebugTitle: string;
+  packagesDebugDesc: string;
+  runSelfTestBtn: string;
+  selfTestPassed: string;
+  selfTestFailed: string;
 }
 
 export const translations: Record<Locale, Translations> = {
@@ -97,6 +106,15 @@ export const translations: Record<Locale, Translations> = {
     downloadIosBtn: 'የiOS መጫኛ / Releases (GitHub)',
     downloadDesktopBtn: 'የዴስክቶፕ መጫኛ አውርድ (GitHub)',
     viewAllReleasesBtn: 'ሁሉንም የ GitHub Releases ይመልከቱ',
+    packagesTitle: 'ለገንቢዎች (Developers) — የ npm ፓኬጆች እና ማረሚያ (Debug)',
+    packagesSubtitle: '@elfye/core እና @elfye/react ፓኬጆችን በራስዎ ድረ-ገጽ ወይም React መተግበሪያ ውስጥ እንዴት እንደሚጠቀሙ እና እንደሚፈትሹ።',
+    packagesInstallTitle: '1. ፓኬጆቹን መጫን (Install)',
+    packagesUsageTitle: '2. በኮድ ውስጥ መጠቀም (Core & React)',
+    packagesDebugTitle: '3. ፓኬጆቹ በትክክል መስራታቸውን ማረጋገጥ (Debug & Self-Test)',
+    packagesDebugDesc: 'ከታች ያለውን ቁልፍ በመጫን @elfye/core በብሮውዘርዎ ውስጥ በትክክል እየሰራ መሆኑን ወዲያውኑ ይፈትሹ፤ ወይም በተርሚናል ሙከራዎችን ያሂዱ።',
+    runSelfTestBtn: 'የፓኬጅ ሙከራ አሂድ (Run Self-Test)',
+    selfTestPassed: 'ሁሉም የፓኬጅ ሙከራዎች በትክክል አልፈዋል!',
+    selfTestFailed: 'በፓኬጅ ሙከራው ላይ ስህተት ተገኝቷል።',
   },
   en: {
     title: 'Amharic Phonetic Keyboard',
@@ -145,5 +163,14 @@ export const translations: Record<Locale, Translations> = {
     downloadIosBtn: 'View iOS Release',
     downloadDesktopBtn: 'Download Desktop App',
     viewAllReleasesBtn: 'View all releases on GitHub',
+    packagesTitle: 'For Developers — Packages & Debugging Guide',
+    packagesSubtitle: 'How to install, use, and debug @elfye/core and @elfye/react in your own web or React applications.',
+    packagesInstallTitle: '1. Install Packages',
+    packagesUsageTitle: '2. Usage Example (Core & React)',
+    packagesDebugTitle: '3. Debug & Verify Packages Work Properly',
+    packagesDebugDesc: 'Run the live browser diagnostic below to verify @elfye/core transliteration, live composition, and progressive backspace, or run the CLI test suite.',
+    runSelfTestBtn: 'Run Live Package Self-Test',
+    selfTestPassed: 'All package diagnostics passed!',
+    selfTestFailed: 'Package diagnostic failed.',
   },
 };

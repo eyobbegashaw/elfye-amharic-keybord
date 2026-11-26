@@ -5,6 +5,7 @@ import { TypingArea } from './components/TypingArea.js';
 import { PracticeSection } from './components/PracticeSection.js';
 import { ReferenceChart } from './components/ReferenceChart.js';
 import { InstallGuide } from './components/InstallGuide.js';
+import { PackagesGuide } from './components/PackagesGuide.js';
 
 export const App: React.FC = () => {
   const [locale, setLocale] = useState<Locale>('am');
@@ -103,6 +104,8 @@ export const App: React.FC = () => {
         <ReferenceChart t={t} onSelectChar={handleSelectChar} />
 
         <InstallGuide t={t} />
+
+        <PackagesGuide t={t} />
       </main>
 
       {toastMessage && (
