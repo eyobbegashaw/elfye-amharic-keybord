@@ -96,7 +96,9 @@ describe('transliterate - Whole String Function', () => {
   });
 
   it('converts digits when convertDigits is true', () => {
-    expect(transliterate('12345', { convertDigits: true })).toBe('፩፪፫፬፭');
+    expect(transliterate('1 10 12 100 2026 12345', { convertDigits: true })).toBe(
+      '፩ ፲ ፲፪ ፻ ፳፻፳፮ ፼፳፫፻፵፭',
+    );
   });
 
   it('leaves digits Latin by default', () => {

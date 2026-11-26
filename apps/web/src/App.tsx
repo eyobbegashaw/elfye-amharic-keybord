@@ -20,6 +20,7 @@ export const App: React.FC = () => {
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
   const [text, setText] = useState('');
   const [enabled, setEnabled] = useState(true);
+  const [convertDigits, setConvertDigits] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
@@ -119,6 +120,8 @@ export const App: React.FC = () => {
                 onChangeText={setText}
                 enabled={enabled}
                 onToggleEnabled={toggleEnabled}
+                convertDigits={convertDigits}
+                onToggleConvertDigits={() => setConvertDigits((prev) => !prev)}
                 onShowToast={showToast}
               />
             </>

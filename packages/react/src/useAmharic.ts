@@ -78,11 +78,19 @@ export function useAmharic<T extends HTMLInputElement | HTMLTextAreaElement = HT
   // Track native composition (Android Chrome / virtual keyboards)
   const isNativeComposingRef = useRef(false);
 
-  // Update engine options if coreOptions change
+  // Update engine only when coreOptions values actually change (avoid resetting buffer on inline object renders)
   const prevOptionsRef = useRef(coreOptions);
-  if (prevOptionsRef.current !== coreOptions) {
+  const prev = prevOptionsRef.current;
+  if (
+    prev?.allowWaForLabial !== coreOptions?.allowWaForLabial ||
+    prev?.convertPunctuation !== coreOptions?.convertPunctuation ||
+    prev?.convertDigits !== coreOptions?.convertDigits ||
+    prev?.enableSeraAliases !== coreOptions?.enableSeraAliases ||
+    prev?.escapeChar !== coreOptions?.escapeChar
+  ) {
     prevOptionsRef.current = coreOptions;
     engineRef.current = new LiveTypingEngine(coreOptions);
+    composingSpanRef.current = null;
   }
 
   const setEnabled = useCallback(

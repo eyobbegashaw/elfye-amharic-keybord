@@ -1,5 +1,6 @@
 import { EngineResult, EthiopicOrder, TransliterationOptions } from './types.js';
 import { buildCompiledRules, getEthiopicChar, CompiledRules } from './table.js';
+import { toGeezNumber } from './geezNumber.js';
 
 /**
  * Live typing engine for real-time Amharic transliteration.
@@ -77,14 +78,16 @@ export class LiveTypingEngine {
       return { committed, composing: '' };
     }
 
-    // 4. Digits
-    if (this.rules.digits[char]) {
+    // 4. Digits (compose contiguous ASCII digits into Ge'ez numerals when convertDigits is enabled)
+    if (Object.keys(this.rules.digits).length > 0 && char >= '0' && char <= '9') {
+      if (/^\d+$/.test(this.buffer)) {
+        this.buffer += char;
+        return { committed: '', composing: toGeezNumber(this.buffer) };
+      }
       const pending = this.buffer.length > 0 ? (this.renderBuffer(this.buffer) ?? this.buffer) : '';
-      this.buffer = '';
-      const digit = this.rules.digits[char];
-      const committed = pending + digit;
-      this.fullCommitted += committed;
-      return { committed, composing: '' };
+      this.fullCommitted += pending;
+      this.buffer = char;
+      return { committed: pending, composing: toGeezNumber(this.buffer) };
     }
 
     // 5. Latin letter input
@@ -184,6 +187,11 @@ export class LiveTypingEngine {
   private renderBuffer(buf: string): string | null {
     if (!buf) {
       return null;
+    }
+
+    // Check if buffer is a Ge'ez numeral sequence
+    if (Object.keys(this.rules.digits).length > 0 && /^\d+$/.test(buf)) {
+      return toGeezNumber(buf);
     }
 
     // 1. Match longest consonant

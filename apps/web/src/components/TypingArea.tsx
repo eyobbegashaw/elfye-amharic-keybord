@@ -9,11 +9,13 @@ interface TypingAreaProps {
   onChangeText: (text: string) => void;
   enabled: boolean;
   onToggleEnabled: () => void;
+  convertDigits: boolean;
+  onToggleConvertDigits: () => void;
   onShowToast: (msg: string) => void;
 }
 
 export const TypingArea = forwardRef<HTMLTextAreaElement, TypingAreaProps>(function TypingArea(
-  { t, text, onChangeText, enabled, onToggleEnabled, onShowToast },
+  { t, text, onChangeText, enabled, onToggleEnabled, convertDigits, onToggleConvertDigits, onShowToast },
   forwardedRef,
 ) {
   const [copying, setCopying] = useState(false);
@@ -61,6 +63,7 @@ export const TypingArea = forwardRef<HTMLTextAreaElement, TypingAreaProps>(funct
       <AmharicTextarea
         ref={forwardedRef}
         enabled={enabled}
+        options={{ convertDigits }}
         className="editor-textarea"
         placeholder={t.textareaPlaceholder}
         value={text}
@@ -70,9 +73,28 @@ export const TypingArea = forwardRef<HTMLTextAreaElement, TypingAreaProps>(funct
       />
 
       <div className="editor-footer">
-        <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-          {t.schemeBadge}
-        </span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
+          <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
+            {t.schemeBadge}
+          </span>
+          <label
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.4rem',
+              fontSize: '0.84rem',
+              color: 'var(--text-secondary)',
+              cursor: 'pointer',
+            }}
+          >
+            <input
+              type="checkbox"
+              checked={convertDigits}
+              onChange={onToggleConvertDigits}
+            />
+            <span>{t.geezNumbersToggle}</span>
+          </label>
+        </div>
 
         <div className="editor-actions">
           <button

@@ -130,8 +130,15 @@ describe('LiveTypingEngine - Live Typing & Composing State', () => {
 
   it('supports Ethiopic digits when convertDigits is enabled', () => {
     const digitEngine = new LiveTypingEngine({ convertDigits: true });
-    digitEngine.input('1');
-    digitEngine.input('2');
-    expect(digitEngine.getText()).toBe('፩፪');
+    expect(digitEngine.input('1')).toEqual({ committed: '', composing: '፩' });
+    expect(digitEngine.input('2')).toEqual({ committed: '', composing: '፲፪' });
+    expect(digitEngine.backspace()).toEqual({ committed: '', composing: '፩' });
+    expect(digitEngine.input('0')).toEqual({ committed: '', composing: '፲' });
+    expect(digitEngine.input('0')).toEqual({ committed: '', composing: '፻' });
+    expect(digitEngine.input(' ')).toEqual({ committed: '፻ ', composing: '' });
+
+    const yearEngine = new LiveTypingEngine({ convertDigits: true });
+    yearEngine.input('2026');
+    expect(yearEngine.getText()).toBe('፳፻፳፮');
   });
 });

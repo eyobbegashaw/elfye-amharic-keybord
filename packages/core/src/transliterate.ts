@@ -1,5 +1,6 @@
 import { EthiopicOrder, TransliterationOptions } from './types.js';
 import { buildCompiledRules, getEthiopicChar, CompiledRules } from './table.js';
+import { toGeezNumber } from './geezNumber.js';
 
 /**
  * Pure function to transliterate an entire string from Latin to Ethiopic (Amharic)
@@ -49,10 +50,14 @@ export function transliterateWithRules(input: string, rules: CompiledRules): str
       continue;
     }
 
-    // 4. Digits
-    if (rules.digits[char]) {
-      result += rules.digits[char];
-      i++;
+    // 4. Digits (convert contiguous ASCII digits into Ge'ez numerals when enabled)
+    if (Object.keys(rules.digits).length > 0 && char >= '0' && char <= '9') {
+      let end = i + 1;
+      while (end < len && input[end] >= '0' && input[end] <= '9') {
+        end++;
+      }
+      result += toGeezNumber(input.slice(i, end));
+      i = end;
       continue;
     }
 

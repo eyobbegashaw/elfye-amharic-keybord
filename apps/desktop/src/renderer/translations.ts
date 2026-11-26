@@ -170,7 +170,7 @@ export const translations: Record<Locale, DesktopTranslations> = {
     inputPrefsLabel: 'የመጻፊያ ምርጫዎች (ለልምምድ ሳጥን)',
     allowWaLabel: 'ለ8ኛ ፊደላት "wa" ን ፍቀድ (ለምሳሌ kwa = ኳ)',
     convertPunctLabel: 'ሥርዓተ ነጥብን ወደ ግዕዝ ቀይር (, -> ፣ , . -> ።)',
-    convertDigitsLabel: 'ቁጥሮችን ወደ ግዕዝ ቁጥር ቀይር (1 -> ፩)',
+    convertDigitsLabel: 'ቁጥሮችን ወደ ግዕዝ ቁጥር ቀይር (12 -> ፲፪)',
     hotkeyLabel: 'የቋንቋ መቀየሪያ አቋራጭ ቁልፍ (Hotkey)',
     hotkeyDesc:
       'የሲስተሙ ነባሪ መቀየሪያ Ctrl + Space ነው። እንዲሁም Win + Space (Windows) ወይም Super + Space (Linux) መጠቀም ይችላሉ።',
@@ -271,7 +271,7 @@ export const translations: Record<Locale, DesktopTranslations> = {
     inputPrefsLabel: 'Phonetic Input Preferences (Practice Area)',
     allowWaLabel: 'Enable "wa" alias for 8th labialized forms (e.g. kwa = ኳ)',
     convertPunctLabel: 'Convert punctuation to Ethiopic (, -> ፣ , . -> ።)',
-    convertDigitsLabel: 'Convert numbers to Ethiopic numerals (1 -> ፩)',
+    convertDigitsLabel: 'Convert numbers to Ethiopic numerals (12 -> ፲፪)',
     hotkeyLabel: 'Language Toggle Shortcut',
     hotkeyDesc:
       'Press Ctrl + Space inside the IME to switch between Amharic and English, or Win + Space (Windows) / Super + Space (Linux) to switch OS input sources.',

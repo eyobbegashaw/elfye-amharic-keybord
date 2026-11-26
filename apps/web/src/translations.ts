@@ -10,6 +10,7 @@ export interface Translations {
   darkMode: string;
   amharicEnabled: string;
   englishEnabled: string;
+  geezNumbersToggle: string;
   toggleShortcutHint: string;
   textareaPlaceholder: string;
   charCount: string;
@@ -74,6 +75,7 @@ export const translations: Record<Locale, Translations> = {
     darkMode: 'ጨለማ',
     amharicEnabled: 'አማርኛ በርቷል',
     englishEnabled: 'እንግሊዝኛ በርቷል',
+    geezNumbersToggle: 'የግዕዝ ቁጥሮች (12 ➔ ፲፪)',
     toggleShortcutHint: 'ለመቀያየር Ctrl + Space ይጫኑ',
     textareaPlaceholder: 'እዚህ ይተይቡ (ለምሳሌ፦ selam, endiet nesh)...',
     charCount: 'ፊደላት',
@@ -136,6 +138,7 @@ export const translations: Record<Locale, Translations> = {
     darkMode: 'Dark',
     amharicEnabled: 'Amharic ON',
     englishEnabled: 'English ON',
+    geezNumbersToggle: "Ge'ez Numbers (12 ➔ ፲፪)",
     toggleShortcutHint: 'Press Ctrl + Space to toggle',
     textareaPlaceholder: 'Type here (e.g. selam, endiet nesh)...',
     charCount: 'Characters',
