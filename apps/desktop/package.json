@@ -5,6 +5,7 @@
   "main": "dist-electron/main/main.js",
   "scripts": {
     "dev": "vite",
+    "electron": "electron .",
     "build": "tsc && tsc -p tsconfig.electron.json && vite build",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",

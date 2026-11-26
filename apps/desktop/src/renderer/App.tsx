@@ -54,7 +54,13 @@ export const App: React.FC = () => {
   };
 
   const handleInstallOrRepair = async () => {
-    if (!window.electronAPI?.installIme) return;
+    if (!window.electronAPI?.installIme) {
+      setActionFeedback({
+        type: 'error',
+        text: 'Browser preview cannot run native OS installers. Please open the Electron Desktop app (Elfye Amharic Keyboard.exe) or run the manual steps below.',
+      });
+      return;
+    }
     setBusyAction('install');
     setActionFeedback(null);
     try {

@@ -137,43 +137,41 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
         )}
 
         <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={onQuickInstall}
+            disabled={busy}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}
+          >
+            {busy ? (
+              <>
+                <Loader2 size={16} aria-hidden="true" />
+                <span>{t.installingText}</span>
+              </>
+            ) : status?.installed ? (
+              <>
+                <Wrench size={16} aria-hidden="true" />
+                <span>{t.repairBtn}</span>
+              </>
+            ) : (
+              <>
+                <Download size={16} aria-hidden="true" />
+                <span>{t.quickInstallBtn}</span>
+              </>
+            )}
+          </button>
           {isElectron && (
-            <>
-              <button
-                type="button"
-                className="btn btn-primary"
-                onClick={onQuickInstall}
-                disabled={busy}
-                style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}
-              >
-                {busy ? (
-                  <>
-                    <Loader2 size={16} aria-hidden="true" />
-                    <span>{t.installingText}</span>
-                  </>
-                ) : status?.installed ? (
-                  <>
-                    <Wrench size={16} aria-hidden="true" />
-                    <span>{t.repairBtn}</span>
-                  </>
-                ) : (
-                  <>
-                    <Download size={16} aria-hidden="true" />
-                    <span>{t.quickInstallBtn}</span>
-                  </>
-                )}
-              </button>
-              <button
-                type="button"
-                className="btn btn-outline"
-                onClick={onOpenOsSettings}
-                disabled={busy}
-                style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}
-              >
-                <Globe size={16} aria-hidden="true" />
-                <span>{t.openOsSettingsBtn}</span>
-              </button>
-            </>
+            <button
+              type="button"
+              className="btn btn-outline"
+              onClick={onOpenOsSettings}
+              disabled={busy}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}
+            >
+              <Globe size={16} aria-hidden="true" />
+              <span>{t.openOsSettingsBtn}</span>
+            </button>
           )}
           <button
             type="button"

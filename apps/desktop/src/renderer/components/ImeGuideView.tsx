@@ -52,6 +52,7 @@ export const ImeGuideView: React.FC<ImeGuideViewProps> = ({
 
   const [activeTab, setActiveTab] = useState<PlatformTab>(initialTab);
   const isCurrentOsTab =
+    !detectedPlatform ||
     (activeTab === 'windows' && detectedPlatform === 'win32') ||
     (activeTab === 'macos' && detectedPlatform === 'darwin') ||
     (activeTab === 'linux' && detectedPlatform === 'linux');
@@ -119,7 +120,7 @@ export const ImeGuideView: React.FC<ImeGuideViewProps> = ({
         </div>
       )}
 
-      {isElectron && isCurrentOsTab && (
+      {isCurrentOsTab && (
         <div
           style={{
             display: 'flex',
