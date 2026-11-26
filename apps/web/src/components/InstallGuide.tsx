@@ -4,7 +4,7 @@ import { Translations } from '../translations.js';
 
 const GITHUB_REPO_URL =
   (import.meta as unknown as { env?: Record<string, string> }).env?.VITE_GITHUB_REPO_URL ||
-  'https://github.com/elfye/elfye';
+  'https://github.com/eyobbegashaw/elfye-amharic-keybord';
 
 export const GITHUB_RELEASES_LATEST_URL = `${GITHUB_REPO_URL}/releases/latest`;
 export const GITHUB_RELEASES_ALL_URL = `${GITHUB_REPO_URL}/releases`;

@@ -1,0 +1,83 @@
+name: Desktop Build & Release
+
+on:
+  push:
+    branches: [master, main]
+    tags:
+      - 'v*'
+  pull_request:
+    paths:
+      - 'apps/desktop/**'
+      - 'apps/desktop-ime/**'
+      - '.github/workflows/desktop.yml'
+
+jobs:
+  build-desktop:
+    name: Build Desktop (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            platform: win
+            artifact: elfye-desktop-windows
+            files: |
+              apps/desktop/release/*.exe
+          - os: macos-14
+            platform: mac
+            artifact: elfye-desktop-macos
+            files: |
+              apps/desktop/release/*.dmg
+              apps/desktop/release/*.zip
+          - os: ubuntu-latest
+            platform: linux
+            artifact: elfye-desktop-linux
+            files: |
+              apps/desktop/release/*.AppImage
+              apps/desktop/release/*.deb
+
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build Windows TSF DLLs
+        if: matrix.platform == 'win'
+        shell: cmd
+        run: call apps\desktop-ime\windows\build.bat
+
+      - name: Build macOS InputMethodKit bundle
+        if: matrix.platform == 'mac'
+        run: |
+          cd apps/desktop-ime/macos
+          ./build.sh
+
+      - name: Build workspace packages & desktop app
+        run: |
+          pnpm --filter @elfye/core build
+          pnpm --filter @elfye/react build
+          pnpm --filter desktop build
+
+      - name: Package Desktop Installer (${{ matrix.platform }})
+        working-directory: apps/desktop
+        run: npx electron-builder --${{ matrix.platform }} --publish never
+
+      - name: Upload Desktop Release Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact }}
+          path: ${{ matrix.files }}

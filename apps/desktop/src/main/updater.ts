@@ -10,7 +10,7 @@ export interface UpdateCheckResult {
   error?: string;
 }
 
-const GITHUB_RELEASE_URL = 'https://api.github.com/repos/elfye/elfye/releases/latest';
+const GITHUB_RELEASE_URL = 'https://api.github.com/repos/eyobbegashaw/elfye-amharic-keybord/releases/latest';
 
 function compareSemver(a: string, b: string): number {
   const pa = a.replace(/^v/, '').split('.').map((n) => parseInt(n, 10) || 0);
