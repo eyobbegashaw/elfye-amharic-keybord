@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Elfye Amharic Keyboard</string>
+    <string name="ime_name">Elfye Amharic Phonetic (Addiyon)</string>
+    <string name="subtype_amharic">Amharic (Addiyon Phonetic)</string>
+    <string name="subtype_english">English (US)</string>
+</resources>
