@@ -50,7 +50,7 @@ jobs:
             os: ubuntu-latest
             type: c
           - name: 'Swift Core (macOS/iOS)'
-            os: macos-14
+            os: macos-latest
             type: swift
           - name: 'Java Engine (Android)'
             os: ubuntu-latest

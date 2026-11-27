@@ -26,7 +26,7 @@ jobs:
             artifact: elfye-desktop-windows
             files: |
               apps/desktop/release/*.exe
-          - os: macos-14
+          - os: macos-latest
             platform: mac
             artifact: elfye-desktop-macos
             files: |

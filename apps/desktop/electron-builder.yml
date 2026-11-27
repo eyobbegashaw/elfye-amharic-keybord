@@ -16,6 +16,7 @@ linux:
   target:
     - AppImage
     - deb
+  maintainer: Eyob Begashaw <eyobbegashaw@users.noreply.github.com>
   icon: public/icon.png
   category: Utility
   synopsis: Elfye Amharic Phonetic Keyboard & Native IME Manager
