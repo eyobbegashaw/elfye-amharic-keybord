@@ -11,39 +11,47 @@ function insertTextAtRange(
   replacement: string,
   start: number,
   end: number,
+  isInternalEditRef?: React.MutableRefObject<boolean>,
 ): number {
-  el.focus();
-  el.setSelectionRange(start, end);
+  const safeStart = Math.max(0, Math.min(start, el.value.length));
+  const safeEnd = Math.max(safeStart, Math.min(end, el.value.length));
+  const newCaret = safeStart + replacement.length;
 
-  let success = false;
+  if (isInternalEditRef) isInternalEditRef.current = true;
   try {
-    if (typeof document !== 'undefined' && typeof document.execCommand === 'function') {
-      success = document.execCommand('insertText', false, replacement);
-    }
-  } catch {
-    success = false;
-  }
+    el.focus();
+    el.setSelectionRange(safeStart, safeEnd);
 
-  const newCaret = start + replacement.length;
-
-  if (!success) {
-    const val = el.value;
-    const nextVal = val.slice(0, start) + replacement + val.slice(end);
-
-    // Call native prototype setter to notify React's internal value tracker
-    const prototype = el instanceof HTMLTextAreaElement ? HTMLTextAreaElement.prototype : HTMLInputElement.prototype;
-    const nativeSetter = Object.getOwnPropertyDescriptor(prototype, 'value')?.set;
-    if (nativeSetter) {
-      nativeSetter.call(el, nextVal);
-    } else {
-      el.value = nextVal;
+    let success = false;
+    try {
+      if (typeof document !== 'undefined' && typeof document.execCommand === 'function') {
+        success = document.execCommand('insertText', false, replacement);
+      }
+    } catch {
+      success = false;
     }
 
-    el.dispatchEvent(new Event('input', { bubbles: true }));
+    if (!success) {
+      const val = el.value;
+      const nextVal = val.slice(0, safeStart) + replacement + val.slice(safeEnd);
+
+      // Call native prototype setter to notify React's internal value tracker
+      const prototype = el instanceof HTMLTextAreaElement ? HTMLTextAreaElement.prototype : HTMLInputElement.prototype;
+      const nativeSetter = Object.getOwnPropertyDescriptor(prototype, 'value')?.set;
+      if (nativeSetter) {
+        nativeSetter.call(el, nextVal);
+      } else {
+        el.value = nextVal;
+      }
+
+      el.dispatchEvent(new Event('input', { bubbles: true }));
+    }
+
     el.setSelectionRange(newCaret, newCaret);
+    return newCaret;
+  } finally {
+    if (isInternalEditRef) isInternalEditRef.current = false;
   }
-
-  return newCaret;
 }
 
 /**
@@ -77,6 +85,9 @@ export function useAmharic<T extends HTMLInputElement | HTMLTextAreaElement = HT
 
   // Track native composition (Android Chrome / virtual keyboards)
   const isNativeComposingRef = useRef(false);
+
+  // Guard against onSelect firing during our own programmatic selection/execCommand edits
+  const isInternalEditRef = useRef(false);
 
   // Update engine only when coreOptions values actually change (avoid resetting buffer on inline object renders)
   const prevOptionsRef = useRef(coreOptions);
@@ -120,9 +131,14 @@ export function useAmharic<T extends HTMLInputElement | HTMLTextAreaElement = HT
   // Restore caret position after DOM updates
   useLayoutEffect(() => {
     if (targetCaretRef.current !== null && ref.current) {
-      const pos = targetCaretRef.current;
+      const pos = Math.max(0, Math.min(targetCaretRef.current, ref.current.value.length));
       targetCaretRef.current = null;
-      ref.current.setSelectionRange(pos, pos);
+      isInternalEditRef.current = true;
+      try {
+        ref.current.setSelectionRange(pos, pos);
+      } finally {
+        isInternalEditRef.current = false;
+      }
     }
   });
 
@@ -139,9 +155,16 @@ export function useAmharic<T extends HTMLInputElement | HTMLTextAreaElement = HT
       let start = el.selectionStart ?? el.value.length;
       let end = el.selectionEnd ?? el.value.length;
 
-      // If we have an active composing syllable span
+      // If we have an active composing syllable span, validate it against current value bounds
       if (composingSpanRef.current !== null) {
-        [start, end] = composingSpanRef.current;
+        const [spanStart, spanEnd] = composingSpanRef.current;
+        if (spanStart >= 0 && spanEnd >= spanStart && spanEnd <= el.value.length) {
+          start = spanStart;
+          end = spanEnd;
+        } else {
+          composingSpanRef.current = null;
+          engine.reset();
+        }
       }
 
       for (let i = 0; i < text.length; i++) {
@@ -151,7 +174,7 @@ export function useAmharic<T extends HTMLInputElement | HTMLTextAreaElement = HT
         if (res.committed && res.composing) {
           // Both committed (previous syllable) and new composing syllable
           const fullInsert = res.committed + res.composing;
-          const newCaret = insertTextAtRange(el, fullInsert, start, end);
+          const newCaret = insertTextAtRange(el, fullInsert, start, end, isInternalEditRef);
           const newSpanStart = start + res.committed.length;
           const newSpanEnd = newCaret;
           composingSpanRef.current = [newSpanStart, newSpanEnd];
@@ -160,13 +183,13 @@ export function useAmharic<T extends HTMLInputElement | HTMLTextAreaElement = HT
           targetCaretRef.current = newCaret;
         } else if (res.composing) {
           // Only composing syllable updated (e.g. 's' -> 'e' -> 'ሰ')
-          const newCaret = insertTextAtRange(el, res.composing, start, end);
+          const newCaret = insertTextAtRange(el, res.composing, start, end, isInternalEditRef);
           composingSpanRef.current = [start, newCaret];
           end = newCaret;
           targetCaretRef.current = newCaret;
         } else if (res.committed) {
           // Character/syllable finalized (e.g. space, punctuation)
-          const newCaret = insertTextAtRange(el, res.committed, start, end);
+          const newCaret = insertTextAtRange(el, res.committed, start, end, isInternalEditRef);
           composingSpanRef.current = null;
           start = newCaret;
           end = newCaret;
@@ -190,16 +213,22 @@ export function useAmharic<T extends HTMLInputElement | HTMLTextAreaElement = HT
     }
 
     const [start, end] = composingSpanRef.current;
+    if (start < 0 || end < start || end > el.value.length) {
+      composingSpanRef.current = null;
+      engine.reset();
+      return false;
+    }
+
     const res = engine.backspace();
 
     if (res.composing) {
       // Replaced with previous form (e.g. ሰ -> ስ)
-      const newCaret = insertTextAtRange(el, res.composing, start, end);
+      const newCaret = insertTextAtRange(el, res.composing, start, end, isInternalEditRef);
       composingSpanRef.current = [start, newCaret];
       targetCaretRef.current = newCaret;
     } else {
       // Buffer became empty -> delete composing char
-      const newCaret = insertTextAtRange(el, '', start, end);
+      const newCaret = insertTextAtRange(el, '', start, end, isInternalEditRef);
       composingSpanRef.current = null;
       targetCaretRef.current = newCaret;
     }
@@ -214,9 +243,13 @@ export function useAmharic<T extends HTMLInputElement | HTMLTextAreaElement = HT
       if (!isEnabled) return;
 
       const rawEvent = 'nativeEvent' in e ? e.nativeEvent : e;
-      // If React synthesized onBeforeInput from compositionend, do not insert text again
-      if ((rawEvent as any).type === 'compositionend') {
+      // If React synthesized onBeforeInput from compositionend or keypress, do not insert text again
+      const rawType = (rawEvent as any).type;
+      if (rawType === 'compositionend') {
         commitCurrentSpan();
+        return;
+      }
+      if (rawType === 'keypress') {
         return;
       }
 
@@ -328,6 +361,8 @@ export function useAmharic<T extends HTMLInputElement | HTMLTextAreaElement = HT
 
   const onSelect = useCallback(
     (e: React.SyntheticEvent<T>) => {
+      if (isInternalEditRef.current) return;
+
       const el = e.currentTarget;
       if (composingSpanRef.current !== null) {
         const [start, end] = composingSpanRef.current;

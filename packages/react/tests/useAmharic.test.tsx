@@ -138,4 +138,65 @@ describe('useAmharic Hook & beforeinput handling', () => {
     fireEvent.compositionEnd(input, { data: 'ሰ' });
     expect(input.value).toBe('ሰ');
   });
+
+  it('keeps Ge\'ez numeral buffer and caret position intact across multi-digit typing', () => {
+    function GeezNumberComponent() {
+      const { bind } = useAmharic<HTMLInputElement>({
+        defaultEnabled: true,
+        options: { convertDigits: true },
+      });
+      return <input data-testid="geez-input" {...bind} />;
+    }
+
+    render(<GeezNumberComponent />);
+    const input = screen.getByTestId('geez-input') as HTMLInputElement;
+
+    fireEvent.beforeInput(input, { inputType: 'insertText', data: '1' });
+    expect(input.value).toBe('፩');
+    expect(input.selectionStart).toBe(1);
+
+    fireEvent.beforeInput(input, { inputType: 'insertText', data: '2' });
+    expect(input.value).toBe('፲፪');
+    expect(input.selectionStart).toBe(2);
+
+    fireEvent.beforeInput(input, { inputType: 'insertText', data: '3' });
+    expect(input.value).toBe('፻፳፫');
+    expect(input.selectionStart).toBe(3);
+  });
+
+  it('does not reset composing buffer or jump caret when execCommand triggers select', () => {
+    const origExecCommand = document.execCommand;
+    document.execCommand = ((cmd: string, _ui?: boolean, val?: string) => {
+      if (cmd === 'insertText' && document.activeElement instanceof HTMLInputElement) {
+        const el = document.activeElement;
+        const s = el.selectionStart ?? 0;
+        const e = el.selectionEnd ?? 0;
+        const text = val ?? '';
+        el.value = el.value.slice(0, s) + text + el.value.slice(e);
+        const caret = s + text.length;
+        el.setSelectionRange(caret, caret);
+        // Simulate browser firing select synchronously during execCommand
+        fireEvent.select(el);
+        return true;
+      }
+      return false;
+    }) as typeof document.execCommand;
+
+    try {
+      render(<TestComponent />);
+      const input = screen.getByTestId('amharic-input') as HTMLInputElement;
+
+      fireEvent.beforeInput(input, { inputType: 'insertText', data: 's' });
+      fireEvent.beforeInput(input, { inputType: 'insertText', data: 'e' });
+      fireEvent.beforeInput(input, { inputType: 'insertText', data: 'l' });
+      fireEvent.beforeInput(input, { inputType: 'insertText', data: 'a' });
+      fireEvent.beforeInput(input, { inputType: 'insertText', data: 'm' });
+
+      expect(input.value).toBe('ሰላም');
+      expect(input.selectionStart).toBe(3);
+      expect(input.selectionEnd).toBe(3);
+    } finally {
+      document.execCommand = origExecCommand;
+    }
+  });
 });
