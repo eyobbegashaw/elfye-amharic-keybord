@@ -3,17 +3,19 @@ name: iOS Keyboard Extension & Core
 on:
   push:
     branches: [master, main]
-    paths:
-      - 'apps/ios/**'
-      - '.github/workflows/ios.yml'
+    tags:
+      - 'v*'
   pull_request:
     paths:
       - 'apps/ios/**'
       - '.github/workflows/ios.yml'
 
+permissions:
+  contents: write
+
 jobs:
   ios-test-build:
-    name: Build & Test AmharicCore (macOS Runner)
+    name: Build, Archive & Test iOS (macOS Runner)
     runs-on: macos-14
     steps:
       - name: Checkout repository
@@ -26,12 +28,53 @@ jobs:
         working-directory: apps/ios/AmharicCore
         run: swift test --enable-code-coverage
 
-      - name: Build iOS Container App & Keyboard Target (No Code Signing)
+      - name: Archive iOS Container App & Keyboard Extension (Unsigned)
         working-directory: apps/ios
         run: |
-          xcodebuild build-for-testing \
+          xcodebuild archive \
+            -project AmharicKeyboard.xcodeproj \
             -scheme AmharicKeyboard \
             -destination 'generic/platform=iOS' \
+            -archivePath build/AmharicKeyboard.xcarchive \
             CODE_SIGNING_ALLOWED=NO \
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGN_IDENTITY=""
+
+      - name: Package Unsigned IPA & Archive Zip
+        working-directory: apps/ios
+        run: |
+          mkdir -p build/ipa/Payload
+          cp -R build/AmharicKeyboard.xcarchive/Products/Applications/AmharicKeyboard.app build/ipa/Payload/
+          (cd build/ipa && zip -r ../AmharicKeyboard-unsigned.ipa Payload)
+          (cd build && zip -r AmharicKeyboard.xcarchive.zip AmharicKeyboard.xcarchive)
+
+      - name: Upload iOS Build Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: elfye-keyboard-ios
+          path: |
+            apps/ios/build/AmharicKeyboard-unsigned.ipa
+            apps/ios/build/AmharicKeyboard.xcarchive.zip
+          if-no-files-found: error
+
+  release-ios:
+    name: Attach iOS Artifacts to GitHub Release
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: ios-test-build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download iOS artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: elfye-keyboard-ios
+          path: release-assets
+
+      - name: Upload iOS Assets to GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            release-assets/*.ipa
+            release-assets/*.zip
+          fail_on_unmatched_files: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

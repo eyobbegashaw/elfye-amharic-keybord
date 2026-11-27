@@ -11,6 +11,9 @@ on:
       - 'apps/desktop-ime/**'
       - '.github/workflows/desktop.yml'
 
+permissions:
+  contents: write
+
 jobs:
   build-desktop:
     name: Build Desktop (${{ matrix.os }})
@@ -44,7 +47,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 10
+          version: 12.21.0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -66,6 +69,13 @@ jobs:
           cd apps/desktop-ime/macos
           ./build.sh
 
+      - name: Install Linux IBus dependencies & build ibus-engine-amharic
+        if: matrix.platform == 'linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libibus-1.0-dev libglib2.0-dev
+          make -C apps/desktop-ime/linux/ibus-amharic all test
+
       - name: Build workspace packages & desktop app
         run: |
           pnpm --filter @elfye/core build
@@ -81,3 +91,28 @@ jobs:
         with:
           name: ${{ matrix.artifact }}
           path: ${{ matrix.files }}
+          if-no-files-found: error
+
+  release-desktop:
+    name: Attach Desktop Installers to GitHub Release
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: build-desktop
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download all desktop artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: release-assets
+
+      - name: Upload Desktop Assets to GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            release-assets/elfye-desktop-windows/*.exe
+            release-assets/elfye-desktop-macos/*.dmg
+            release-assets/elfye-desktop-macos/*.zip
+            release-assets/elfye-desktop-linux/*.AppImage
+            release-assets/elfye-desktop-linux/*.deb
+          fail_on_unmatched_files: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
