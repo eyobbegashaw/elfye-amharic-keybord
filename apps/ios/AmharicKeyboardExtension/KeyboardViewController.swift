@@ -1,5 +1,7 @@
 import UIKit
+#if canImport(AmharicCore)
 import AmharicCore
+#endif
 
 public final class KeyboardViewController: UIInputViewController, KeyboardKeyDelegate {
     private var keyboardView: KeyboardView!
