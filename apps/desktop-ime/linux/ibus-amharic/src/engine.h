@@ -7,6 +7,7 @@
 G_BEGIN_DECLS
 
 #define IBUS_TYPE_AMHARIC_ENGINE (ibus_amharic_engine_get_type())
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(IBusEngine, g_object_unref)
 G_DECLARE_FINAL_TYPE(IBusAmharicEngine, ibus_amharic_engine, IBUS, AMHARIC_ENGINE, IBusEngine)
 
 struct _IBusAmharicEngine {
